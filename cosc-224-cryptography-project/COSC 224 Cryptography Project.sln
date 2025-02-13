@@ -1,0 +1,19 @@
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "COSC 224 Cryptography Project", "COSC 224 Cryptography Project.csproj", "{9E64B2FB-2AB9-495B-AB8B-2F18FFB6599F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9E64B2FB-2AB9-495B-AB8B-2F18FFB6599F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E64B2FB-2AB9-495B-AB8B-2F18FFB6599F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E64B2FB-2AB9-495B-AB8B-2F18FFB6599F}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{9E64B2FB-2AB9-495B-AB8B-2F18FFB6599F}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{9E64B2FB-2AB9-495B-AB8B-2F18FFB6599F}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{9E64B2FB-2AB9-495B-AB8B-2F18FFB6599F}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+	EndGlobalSection
+EndGlobal
