@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bogouexgrer3d"]
+[gd_scene load_steps=3 format=3 uid="uid://bogouexgrer3d"]
 
+[ext_resource type="PackedScene" uid="uid://bau1ojq7rcyh2" path="res://scenes/menu-bar.tscn" id="1_mop3f"]
 [ext_resource type="PackedScene" uid="uid://b38ramit5egv6" path="res://scenes/level.tscn" id="2_4b6ie"]
 
 [node name="game" type="Node2D"]
@@ -24,29 +25,8 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 647.0
 
-[node name="MenuBar" type="HBoxContainer" parent="Control/MenuStack"]
+[node name="MenuBar" parent="Control/MenuStack" instance=ExtResource("1_mop3f")]
 layout_mode = 2
-
-[node name="LevelSlector" type="Button" parent="Control/MenuStack/MenuBar"]
-layout_mode = 2
-size_flags_horizontal = 7
-text = "Level Selector
-"
-
-[node name="Codex" type="Button" parent="Control/MenuStack/MenuBar"]
-layout_mode = 2
-size_flags_horizontal = 7
-text = "Codex"
-
-[node name="Settings" type="Button" parent="Control/MenuStack/MenuBar"]
-layout_mode = 2
-size_flags_horizontal = 7
-text = "Settings"
-
-[node name="Exit" type="Button" parent="Control/MenuStack/MenuBar"]
-layout_mode = 2
-size_flags_horizontal = 7
-text = "Exit"
 
 [node name="Level" parent="Control/MenuStack" instance=ExtResource("2_4b6ie")]
 layout_mode = 2

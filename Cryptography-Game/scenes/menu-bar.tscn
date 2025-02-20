@@ -25,3 +25,5 @@ layout_mode = 2
 size_flags_horizontal = 7
 text = "Exit"
 script = ExtResource("1_re7sk")
+
+[connection signal="pressed" from="Exit" to="Exit" method="_on_pressed"]
