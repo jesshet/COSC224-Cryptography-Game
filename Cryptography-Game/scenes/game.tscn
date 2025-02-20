@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://bogouexgrer3d"]
+[gd_scene load_steps=2 format=3 uid="uid://bogouexgrer3d"]
 
-[ext_resource type="Script" path="res://scripts/MenuController.cs" id="1_t0md1"]
 [ext_resource type="PackedScene" uid="uid://b38ramit5egv6" path="res://scenes/level.tscn" id="2_4b6ie"]
 
 [node name="game" type="Node2D"]
@@ -24,7 +23,6 @@ z_index = 1
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 647.0
-script = ExtResource("1_t0md1")
 
 [node name="MenuBar" type="HBoxContainer" parent="Control/MenuStack"]
 layout_mode = 2
