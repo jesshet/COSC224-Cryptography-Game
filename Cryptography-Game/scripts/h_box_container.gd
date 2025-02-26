@@ -12,9 +12,11 @@ func _process(delta: float) -> void:
 	
 
 func _on_left_pressed() -> void:
+	$click.play();
 	shift -= 1;
 	$shift.text = "[center]" + str(shift % 26);
 
 func _on_right_pressed() -> void:
+	$click.play();
 	shift += 1;
 	$shift.text = "[center]" + str(shift % 26);
