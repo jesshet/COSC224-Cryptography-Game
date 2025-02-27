@@ -2,3 +2,5 @@
 .godot/
 /android/
 .DS_Store
+.vscode/
+export_presets.cfg
