@@ -14,18 +14,56 @@ func _process(delta: float) -> void:
 	pass
 	
 
-func _on_left_pressed() -> void:
+func _on_left_pressed():
+	$click.play();
+	shift = (shift - 1) % 26;
+	$shift.text = "[center]" + str((26 + shift) % 26);
 	left_pressed.emit();
-	$click.play();
-	shift -= 1;
-	$shift.text = "[center]" + str((26 + shift) % 26);
+	return shift;
 
-func _on_right_pressed() -> void:
-	right_pressed.emit();
-	$click.play();
-	shift += 1;
-	$shift.text = "[center]" + str((26 + shift) % 26);
+func _on_right_pressed():
 	
-func shift_text(String: text, int: shift) -> String:
-	#for(int i = 0; i < text.length(); i++){
-	return text;
+	$click.play();
+	shift = (shift + 1) % 26;
+	$shift.text = "[center]" + str((26 + shift) % 26);
+	right_pressed.emit();
+	return shift;
+	
+func get_shift():
+	return shift;
+	
+func shift_left(text):
+	#Convert to ASCII array for shifting
+	var letters = text.to_upper().to_ascii_buffer();
+	for i in range(letters.size()):
+		var n = letters[i];
+		
+		#Ignore Spaces
+		if(n != 32):
+			print(n);
+			if(n == 65):
+				n += 26;
+			#Shifting Logic
+			letters[i] = ((n - 65 - 1) % 26) + 65;
+	#Revert Back to string
+	text = letters.get_string_from_ascii();
+	print(text);
+	#Add Center Alignment and return
+	return "[center]" + text;
+	
+func shift_right(text):
+	#Convert to ASCII array for shifting
+	var letters = text.to_upper().to_ascii_buffer();
+	for i in range(letters.size()):
+		var n = letters[i];
+		
+		#Ignore Spaces
+		if(n != 32):
+			#Shifting Logic
+			letters[i] = ((n - 65 + 1) % 26) + 65;
+			print(letters[i]);
+	#Revert Back to string
+	text = letters.get_string_from_ascii();
+	print(text);
+	#Add Center Alignment and return
+	return "[center]" + text;
