@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dyb6n87cbrioh"]
 
-[ext_resource type="Script" path="res://scripts/h_box_container.gd" id="2_5vfg3"]
+[ext_resource type="Script" path="res://scripts/caesar-shift.gd" id="2_5vfg3"]
 [ext_resource type="Shader" path="res://assets/shaders/vapor.gdshader" id="3_l3bhd"]
 [ext_resource type="Texture2D" uid="uid://bs435ew2ufawy" path="res://assets/sprites/arrow.png" id="4_crxs7"]
 [ext_resource type="AudioStream" uid="uid://dupff68qtndrn" path="res://assets/sounds/caesar-click.mp3" id="5_6s655"]
@@ -54,35 +54,46 @@ shader_parameter/alpha = 1.0
 shader_parameter/noise_amount = 0.4
 shader_parameter/effect_factor = 0.4
 
-[node name="Control" type="Control"]
+[node name="Caesar" type="Control"]
 custom_minimum_size = Vector2(403, 172)
 layout_mode = 3
-anchor_right = 0.35
-anchor_bottom = 0.281
-offset_right = -0.200012
-offset_bottom = -0.0880127
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -201.5
+offset_top = -172.0
+offset_right = 201.5
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_right = 0.351
-anchor_bottom = 0.207
-offset_right = -0.35202
-offset_bottom = -0.136017
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -66.5
+offset_right = 202.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
 alignment = 1
 script = ExtResource("2_5vfg3")
 
-[node name="left" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
+[node name="left" type="TextureButton" parent="HBoxContainer"]
 material = SubResource("ShaderMaterial_h04c1")
 layout_mode = 2
 texture_normal = ExtResource("4_crxs7")
 flip_h = true
 script = SubResource("GDScript_rbauj")
 
-[node name="shift" type="RichTextLabel" parent="CanvasLayer/HBoxContainer"]
+[node name="shift" type="RichTextLabel" parent="HBoxContainer"]
 material = SubResource("ShaderMaterial_0e87u")
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -93,32 +104,36 @@ bbcode_enabled = true
 text = "[center]0"
 fit_content = true
 
-[node name="right" type="TextureButton" parent="CanvasLayer/HBoxContainer"]
+[node name="right" type="TextureButton" parent="HBoxContainer"]
 material = SubResource("ShaderMaterial_iwf0r")
 layout_mode = 2
 texture_normal = ExtResource("4_crxs7")
 script = SubResource("GDScript_rbauj")
 
-[node name="click" type="AudioStreamPlayer" parent="CanvasLayer/HBoxContainer"]
+[node name="click" type="AudioStreamPlayer" parent="HBoxContainer"]
 stream = ExtResource("5_6s655")
 volume_db = -10.0
 bus = &"SFX"
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.136
-anchor_top = 0.228
-anchor_right = 0.214
-anchor_bottom = 0.276
-offset_left = 0.327988
-offset_top = 0.255997
-offset_right = 0.471985
-offset_bottom = 0.151978
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -31.0
+offset_right = 45.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0.231373, 0.882353, 1, 1)
 text = "Enter Shift"
 
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/left" to="CanvasLayer/HBoxContainer" method="_on_left_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/left" to="CanvasLayer/HBoxContainer/left" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/right" to="CanvasLayer/HBoxContainer" method="_on_right_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/right" to="CanvasLayer/HBoxContainer/right" method="_on_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="pressed" from="HBoxContainer/left" to="HBoxContainer" method="_on_left_pressed"]
+[connection signal="pressed" from="HBoxContainer/left" to="HBoxContainer/left" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/right" to="HBoxContainer" method="_on_right_pressed"]
+[connection signal="pressed" from="HBoxContainer/right" to="HBoxContainer/right" method="_on_pressed"]

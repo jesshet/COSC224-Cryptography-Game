@@ -1,0 +1,23 @@
+extends VBoxContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+	
+func connect_caesar() -> void:
+	var Caesar = get_node("Caesar/HBoxContainer");
+	Caesar.left_pressed.connect(_on_h_box_container_left_pressed);
+	
+
+
+func _on_h_box_container_left_pressed() -> void:
+	print("Left");
+
+
+func _on_h_box_container_right_pressed() -> void:
+	pass # Replace with function body.

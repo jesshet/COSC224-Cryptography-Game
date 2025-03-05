@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj3givo7ll2ia"]
+[gd_scene load_steps=6 format=3 uid="uid://cj3givo7ll2ia"]
 
 [ext_resource type="Shader" path="res://assets/shaders/wave.gdshader" id="1_isqsy"]
 [ext_resource type="PackedScene" uid="uid://bau1ojq7rcyh2" path="res://scenes/menu-bar.tscn" id="1_va3g4"]
@@ -20,6 +20,26 @@ shader_parameter/saturation = 0.85
 shader_parameter/rotation = null
 shader_parameter/colorampMix = 0.5
 shader_parameter/isColoramp = false
+
+[sub_resource type="GDScript" id="GDScript_ot8ka"]
+script/source = "extends HBoxContainer
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+	 # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+
+	
+"
 
 [node name="caesarLevel" type="Node2D"]
 
@@ -59,3 +79,4 @@ layout_mode = 2
 
 [node name="Level" parent="Control/MenuStack/VBoxContainer" instance=ExtResource("2_b50pb")]
 layout_mode = 2
+script = SubResource("GDScript_ot8ka")
