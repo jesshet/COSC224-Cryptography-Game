@@ -3,7 +3,7 @@ extends VBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	connect_caesar();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -16,8 +16,9 @@ func connect_caesar() -> void:
 
 
 func _on_h_box_container_left_pressed() -> void:
+	$Problem
 	print("Left");
 
 
 func _on_h_box_container_right_pressed() -> void:
-	pass # Replace with function body.
+	print("Right"); # Replace with function body.

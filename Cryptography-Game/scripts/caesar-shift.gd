@@ -11,7 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass # Replace with function body.
+	pass
 	
 
 func _on_left_pressed() -> void:
@@ -25,3 +25,7 @@ func _on_right_pressed() -> void:
 	$click.play();
 	shift += 1;
 	$shift.text = "[center]" + str((26 + shift) % 26);
+	
+func shift_text(String: text, int: shift) -> String:
+	#for(int i = 0; i < text.length(); i++){
+	return text;
