@@ -28,7 +28,7 @@ void fragment() {
 	vec4 line_color = mix(color1, color2, line_grade);
 
 	// change the "240.0" literal to control line color shifting
-	COLOR = color_shift(UV, TEXTURE, vec2(1.0, 0.0)*smooth_line_grade/240.0*effect_factor);
+	COLOR = color_shift(UV, TEXTURE, vec2(1.0, 0.0)*smooth_line_grade/180.0*effect_factor);
 
 	noise(UV, COLOR);
 

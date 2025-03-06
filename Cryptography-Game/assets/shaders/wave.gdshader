@@ -64,7 +64,7 @@ void fragment()
 		if (r>6) fade*=1.-dm; // dark matter, don't render near
 		//v+=vec3(dm,dm*.5,0.);
 		v+=fade;
-		v+=vec3(s,s*s,s*s*s*s)*a*brightness*fade; // coloring based on distance
+		v+=vec3(s*s*s,s*(s*2.0),s)*a*brightness*fade; // coloring based on distance
 		fade*=distfading; // distance fading
 		s+=stepsize;
 	}
