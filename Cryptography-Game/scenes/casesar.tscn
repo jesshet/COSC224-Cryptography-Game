@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyb6n87cbrioh"]
+[gd_scene load_steps=11 format=3 uid="uid://dyb6n87cbrioh"]
 
-[ext_resource type="Shader" path="res://assets/wave.gdshader" id="1_3hubt"]
-[ext_resource type="Script" path="res://scripts/h_box_container.gd" id="1_xbgod"]
-[ext_resource type="Texture2D" uid="uid://bs435ew2ufawy" path="res://assets/arrow.png" id="2_ht6ry"]
-[ext_resource type="Shader" path="res://assets/vapor.gdshader" id="3_rnrxh"]
+[ext_resource type="Shader" path="res://assets/shaders/wave.gdshader" id="1_3hubt"]
+[ext_resource type="Script" path="res://scripts/caesar-shift.gd" id="1_xbgod"]
+[ext_resource type="Texture2D" uid="uid://bs435ew2ufawy" path="res://assets/sprites/arrow.png" id="2_ht6ry"]
+[ext_resource type="Shader" path="res://assets/shaders/vapor.gdshader" id="3_rnrxh"]
+[ext_resource type="AudioStream" uid="uid://dupff68qtndrn" path="res://assets/sounds/caesar-click.mp3" id="5_mxg6w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hlbjv"]
 shader = ExtResource("1_3hubt")
@@ -116,6 +117,10 @@ material = SubResource("ShaderMaterial_iwf0r")
 layout_mode = 2
 texture_normal = ExtResource("2_ht6ry")
 script = SubResource("GDScript_rbauj")
+
+[node name="click" type="AudioStreamPlayer" parent="CanvasLayer/ColorRect/HBoxContainer"]
+stream = ExtResource("5_mxg6w")
+volume_db = -10.0
 
 [connection signal="pressed" from="CanvasLayer/ColorRect/HBoxContainer/left" to="CanvasLayer/ColorRect/HBoxContainer" method="_on_left_pressed"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/HBoxContainer/left" to="CanvasLayer/ColorRect/HBoxContainer/left" method="_on_pressed"]

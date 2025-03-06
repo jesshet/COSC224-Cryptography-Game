@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://b38ramit5egv6"]
+[gd_scene load_steps=3 format=3 uid="uid://b38ramit5egv6"]
+
+[ext_resource type="Script" path="res://scripts/level-stack.gd" id="1_8mhkd"]
+[ext_resource type="PackedScene" uid="uid://dyb6n87cbrioh" path="res://scenes/casesar.tscn" id="1_x1mkn"]
 
 [node name="Level" type="HBoxContainer"]
 z_index = 5
@@ -11,6 +14,7 @@ size_flags_vertical = 3
 [node name="LevelStack" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+script = ExtResource("1_8mhkd")
 
 [node name="Message" type="RichTextLabel" parent="LevelStack"]
 layout_mode = 2
@@ -24,10 +28,17 @@ scroll_active = false
 layout_mode = 2
 size_flags_vertical = 6
 bbcode_enabled = true
-text = "[center] Problem string"
+text = "[center]HAAHJR HA KHDU"
 fit_content = true
 scroll_active = false
+
+[node name="Caesar" parent="LevelStack" instance=ExtResource("1_x1mkn")]
+layout_mode = 2
 
 [node name="SideBar" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
+
+[connection signal="child_order_changed" from="LevelStack" to="LevelStack" method="_on_child_order_changed"]
+
+[editable path="LevelStack/Caesar"]
