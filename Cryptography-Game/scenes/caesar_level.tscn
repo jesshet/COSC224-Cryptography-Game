@@ -1,61 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj3givo7ll2ia"]
+[gd_scene load_steps=2 format=3 uid="uid://cj3givo7ll2ia"]
 
-[ext_resource type="Shader" path="res://assets/shaders/wave.gdshader" id="1_isqsy"]
-[ext_resource type="PackedScene" uid="uid://bau1ojq7rcyh2" path="res://scenes/menu-bar.tscn" id="1_va3g4"]
-[ext_resource type="PackedScene" uid="uid://b38ramit5egv6" path="res://scenes/level.tscn" id="2_b50pb"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2p7ks"]
-shader = ExtResource("1_isqsy")
-shader_parameter/iterations = 17
-shader_parameter/formuparam = 0.48
-shader_parameter/volsteps = 7
-shader_parameter/stepsize = 0.1
-shader_parameter/zoom = 0.8
-shader_parameter/tile = 0.85
-shader_parameter/speed = 0.001
-shader_parameter/brightness = 0.0015
-shader_parameter/darkmatter = 5.0
-shader_parameter/distfading = 0.73
-shader_parameter/saturation = 0.85
-shader_parameter/rotation = null
-shader_parameter/colorampMix = 0.5
-shader_parameter/isColoramp = false
+[ext_resource type="Script" path="res://scripts/caesar_level.gd" id="1_diafk"]
 
 [node name="caesarLevel" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_2p7ks")
-offset_right = 1275.0
-offset_bottom = 727.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0, 0, 0.678431, 0.117647)
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 649.0
-
-[node name="Panel" type="Panel" parent="Control"]
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-
-[node name="MenuStack" type="VBoxContainer" parent="Control"]
-z_index = 1
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 647.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MenuStack"]
-layout_mode = 2
-
-[node name="MenuBar" parent="Control/MenuStack/VBoxContainer" instance=ExtResource("1_va3g4")]
-layout_mode = 2
-
-[node name="Level" parent="Control/MenuStack/VBoxContainer" instance=ExtResource("2_b50pb")]
-layout_mode = 2
+script = ExtResource("1_diafk")

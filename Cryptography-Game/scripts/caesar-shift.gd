@@ -40,7 +40,6 @@ func shift_left(text):
 		
 		#Ignore Spaces
 		if(n != 32):
-			print(n);
 			if(n == 65):
 				n += 26;
 			#Shifting Logic
