@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://bau1ojq7rcyh2"]
 
-[ext_resource type="Script" path="res://scripts/exit-button.gd" id="1_re7sk"]
+[ext_resource type="Script" path="res://scripts/menu-bar.gd" id="1_yhnac"]
 
 [node name="MenuBar" type="HBoxContainer"]
+script = ExtResource("1_yhnac")
 
 [node name="LevelSelector" type="Button" parent="."]
 layout_mode = 2
@@ -24,6 +25,7 @@ text = "Settings"
 layout_mode = 2
 size_flags_horizontal = 7
 text = "Exit"
-script = ExtResource("1_re7sk")
 
-[connection signal="pressed" from="Exit" to="Exit" method="_on_pressed"]
+[connection signal="pressed" from="Codex" to="." method="_on_codex_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
