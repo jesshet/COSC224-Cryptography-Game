@@ -1,32 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bogouexgrer3d"]
+[gd_scene load_steps=2 format=3 uid="uid://bogouexgrer3d"]
 
-[ext_resource type="PackedScene" uid="uid://bau1ojq7rcyh2" path="res://scenes/menu-bar.tscn" id="1_mop3f"]
-[ext_resource type="PackedScene" uid="uid://b38ramit5egv6" path="res://scenes/level.tscn" id="2_4b6ie"]
+[ext_resource type="PackedScene" uid="uid://cj3givo7ll2ia" path="res://scenes/caesar_level.tscn" id="1_cajj6"]
 
 [node name="game" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 649.0
+[node name="caesarLevel" parent="." instance=ExtResource("1_cajj6")]
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="Background" parent="caesarLevel/Control" index="0"]
 layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
 
-[node name="MenuStack" type="VBoxContainer" parent="Control"]
-z_index = 1
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 647.0
-
-[node name="MenuBar" parent="Control/MenuStack" instance=ExtResource("1_mop3f")]
-layout_mode = 2
-
-[node name="Level" parent="Control/MenuStack" instance=ExtResource("2_4b6ie")]
-layout_mode = 2
+[editable path="caesarLevel"]
+[editable path="caesarLevel/Control/MenuStack/Level"]
+[editable path="caesarLevel/Control/MenuStack/Level/LevelStack/Caesar"]
