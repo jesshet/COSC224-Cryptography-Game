@@ -71,5 +71,5 @@ text = "Close Menu"
 [connection signal="toggled" from="MuteButton" to="." method="_on_mute_button_toggled"]
 [connection signal="value_changed" from="VBoxControls/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="VBoxControls/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

@@ -16,4 +16,4 @@ func _on_mute_button_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(music_bus, toggled_on)
 
 func _on_close_button_pressed() -> void:
-	pass
+	queue_free()
