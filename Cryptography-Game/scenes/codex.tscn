@@ -1,3 +1,35 @@
-[gd_scene format=3 uid="uid://b1go2mftqyl3l"]
+[gd_scene load_steps=2 format=3 uid="uid://d2kq4h07ybuq1"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://bvkeat41yqqqk" path="res://scenes/codex-entry.tscn" id="1_cfxri"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Codex Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 606.0
+offset_top = 32.0
+offset_right = 663.0
+offset_bottom = 57.0
+text = "Codex"
+
+[node name="Background Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="Codex Entries VBox" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 95.0
+offset_right = 1279.0
+offset_bottom = 716.0
+
+[node name="Entry A" parent="Codex Entries VBox" instance=ExtResource("1_cfxri")]
+layout_mode = 2
+
+[node name="Entry B" parent="Codex Entries VBox" instance=ExtResource("1_cfxri")]
+layout_mode = 2
+
+[node name="Entry C" parent="Codex Entries VBox" instance=ExtResource("1_cfxri")]
+layout_mode = 2
