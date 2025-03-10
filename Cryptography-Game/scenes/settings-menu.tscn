@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://moqaoqy1j10v"]
+
+[ext_resource type="Script" path="res://scripts/settings-menu.gd" id="1_gihle"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_gihle")
+
+[node name="Background Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 645.0
+
+[node name="Menu Title" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 522.0
+offset_top = 38.0
+offset_right = 611.0
+offset_bottom = 76.0
+text = "Settings"
+fit_content = true
+
+[node name="MuteButton" type="CheckButton" parent="."]
+texture_filter = 1
+layout_mode = 2
+offset_left = 220.0
+offset_top = 186.0
+offset_right = 321.0
+offset_bottom = 217.0
+text = "Mute   "
+
+[node name="VBoxControls" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 219.0
+offset_right = 899.0
+offset_bottom = 425.0
+
+[node name="SFXLabel" type="RichTextLabel" parent="VBoxControls"]
+texture_filter = 1
+layout_mode = 2
+text = "SFX Volume"
+fit_content = true
+
+[node name="SFXSlider" type="HSlider" parent="VBoxControls"]
+layout_mode = 2
+value = 100.0
+
+[node name="MusicLabal" type="RichTextLabel" parent="VBoxControls"]
+texture_filter = 1
+layout_mode = 2
+text = "Music Volume"
+fit_content = true
+
+[node name="MusicSlider" type="HSlider" parent="VBoxControls"]
+layout_mode = 2
+value = 100.0
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 545.0
+offset_right = 624.0
+offset_bottom = 576.0
+text = "Close Menu"
+
+[connection signal="toggled" from="MuteButton" to="." method="_on_mute_button_toggled"]
+[connection signal="value_changed" from="VBoxControls/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="VBoxControls/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_button_pressed"]
