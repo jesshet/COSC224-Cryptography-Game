@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://qhppkbq1twcb"]
+[gd_scene load_steps=5 format=3 uid="uid://qhppkbq1twcb"]
 
 [ext_resource type="PackedScene" uid="uid://dfkh1qqtl3hce" path="res://scenes/level-select-button.tscn" id="1_righb"]
 [ext_resource type="Script" path="res://scripts/level-select-menu.gd" id="1_rl0j8"]
-[ext_resource type="PackedScene" uid="uid://cj3givo7ll2ia" path="res://scenes/caesar_level.tscn" id="3_lg3ln"]
+[ext_resource type="PackedScene" uid="uid://cj3givo7ll2ia" path="res://scenes/caesar-level.tscn" id="3_lg3ln"]
+[ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_777na"]
 
 [node name="Level-Select-Menu" type="MarginContainer"]
 anchors_preset = 15
@@ -49,7 +50,8 @@ theme_override_constants/margin_bottom = 64
 
 [node name="CloseButton" type="Button" parent="MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_fonts/font = ExtResource("4_777na")
+theme_override_font_sizes/font_size = 32
 text = "Close Menu"
 
 [connection signal="load_level" from="AspectRatioContainer/Level Select Menu/Level" to="." method="_on_level_load_level"]
