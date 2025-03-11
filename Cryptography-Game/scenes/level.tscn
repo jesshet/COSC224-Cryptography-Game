@@ -1,13 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b38ramit5egv6"]
+[gd_scene load_steps=4 format=3 uid="uid://b38ramit5egv6"]
 
 [ext_resource type="Script" path="res://scripts/level-stack.gd" id="1_8mhkd"]
 [ext_resource type="PackedScene" uid="uid://dyb6n87cbrioh" path="res://scenes/caesar-shifter.tscn" id="2_17m6a"]
+[ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="2_tqw6q"]
 
 [node name="Level" type="HBoxContainer"]
 z_index = 5
 custom_minimum_size = Vector2(320, 180)
-offset_right = 5.0
-offset_bottom = 4.0
+offset_right = 738.0
+offset_bottom = 418.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -18,15 +19,20 @@ script = ExtResource("1_8mhkd")
 
 [node name="Message" type="RichTextLabel" parent="LevelStack"]
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 16
+theme_override_colors/default_color = Color(0, 0.862745, 0.917647, 1)
+theme_override_fonts/normal_font = ExtResource("2_tqw6q")
+theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "[center] AI Message to Player"
+text = "[center] Help My Dick Fell Off"
 fit_content = true
 scroll_active = false
 
 [node name="Problem" type="RichTextLabel" parent="LevelStack"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_colors/default_color = Color(0, 0.862745, 0.917647, 1)
+theme_override_fonts/normal_font = ExtResource("2_tqw6q")
+theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
 text = "[center]HAAHJR HA KHDU"
 fit_content = true

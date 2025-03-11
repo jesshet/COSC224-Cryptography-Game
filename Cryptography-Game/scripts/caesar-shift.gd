@@ -64,7 +64,11 @@ func shift_right(text):
 	#Add Center Alignment and return
 	return "[center]" + text;
 	
-
+func success() -> void:
+	$success.play();
+	
+func incorrect() -> void:
+	$incorrect.play();
 
 func _on_button_pressed() -> void:
 	submit.emit();
