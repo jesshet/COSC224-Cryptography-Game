@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyb6n87cbrioh"]
+[gd_scene load_steps=12 format=3 uid="uid://dyb6n87cbrioh"]
 
 [ext_resource type="Script" path="res://scripts/caesar-shift.gd" id="2_5vfg3"]
 [ext_resource type="Shader" path="res://assets/shaders/vapor.gdshader" id="3_l3bhd"]
 [ext_resource type="Texture2D" uid="uid://bs435ew2ufawy" path="res://assets/sprites/arrow.png" id="4_crxs7"]
+[ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_o284c"]
 [ext_resource type="AudioStream" uid="uid://dupff68qtndrn" path="res://assets/sounds/caesar-click.mp3" id="5_6s655"]
+[ext_resource type="AudioStream" uid="uid://dgiwxcpoppd6f" path="res://assets/sounds/incorrect.wav" id="6_sjde0"]
+[ext_resource type="AudioStream" uid="uid://gconcr16wu11" path="res://assets/sounds/success.wav" id="7_dfqf3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h04c1"]
 shader = ExtResource("3_l3bhd")
@@ -98,6 +101,7 @@ material = SubResource("ShaderMaterial_0e87u")
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("4_o284c")
 theme_override_font_sizes/bold_italics_font_size = 1
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
@@ -115,6 +119,12 @@ stream = ExtResource("5_6s655")
 volume_db = -20.0
 bus = &"SFX"
 
+[node name="incorrect" type="AudioStreamPlayer" parent="HBoxContainer"]
+stream = ExtResource("6_sjde0")
+
+[node name="success" type="AudioStreamPlayer" parent="HBoxContainer"]
+stream = ExtResource("7_dfqf3")
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -129,8 +139,12 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0.231373, 0.882353, 1, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("4_o284c")
+theme_override_font_sizes/font_size = 32
 text = "Enter Shift"
 
+[connection signal="button_down" from="HBoxContainer/left" to="HBoxContainer" method="_on_left_button_down"]
 [connection signal="pressed" from="HBoxContainer/left" to="HBoxContainer" method="_on_left_pressed"]
 [connection signal="pressed" from="HBoxContainer/left" to="HBoxContainer/left" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/right" to="HBoxContainer" method="_on_right_pressed"]

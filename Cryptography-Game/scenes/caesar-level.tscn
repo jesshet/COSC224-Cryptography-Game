@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cj3givo7ll2ia"]
+[gd_scene load_steps=8 format=3 uid="uid://cj3givo7ll2ia"]
 
 [ext_resource type="Script" path="res://scripts/caesar_level.gd" id="1_diafk"]
 [ext_resource type="Shader" path="res://assets/shaders/wave.gdshader" id="2_dopob"]
 [ext_resource type="PackedScene" uid="uid://bau1ojq7rcyh2" path="res://scenes/menu-bar.tscn" id="3_y8y2t"]
 [ext_resource type="PackedScene" uid="uid://b38ramit5egv6" path="res://scenes/level.tscn" id="4_rdosw"]
+[ext_resource type="Shader" path="res://assets/shaders/crt.gdshader" id="5_i50tk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hlbjv"]
 shader = ExtResource("2_dopob")
@@ -22,6 +23,23 @@ shader_parameter/rotation = null
 shader_parameter/colorampMix = 0.5
 shader_parameter/isColoramp = false
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_23tcs"]
+shader = ExtResource("5_i50tk")
+shader_parameter/resolution = Vector2(600, 600)
+shader_parameter/scan_line_amount = 0.292
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.0
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/aberation_amount = 0.0
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
 [node name="caesarLevel" type="Node2D"]
 script = ExtResource("1_diafk")
 
@@ -33,6 +51,7 @@ offset_bottom = 649.0
 
 [node name="Background" type="ColorRect" parent="Control"]
 material = SubResource("ShaderMaterial_hlbjv")
+layout_mode = 0
 offset_right = 1444.0
 offset_bottom = 841.0
 scale = Vector2(1.00056, 1)
@@ -57,5 +76,21 @@ layout_mode = 2
 
 [node name="Level" parent="Control/MenuStack" instance=ExtResource("4_rdosw")]
 layout_mode = 2
+
+[node name="Caesar" parent="Control/MenuStack/Level/LevelStack" index="2"]
+z_index = 1
+z_as_relative = false
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+z_index = 1
+scale = Vector2(1.00056, 1)
+copy_mode = 2
+
+[node name="crt" type="ColorRect" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_23tcs")
+offset_right = 1212.0
+offset_bottom = 716.0
+mouse_filter = 2
 
 [editable path="Control/MenuStack/Level"]
