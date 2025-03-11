@@ -5,7 +5,6 @@
 [ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="2_tqw6q"]
 
 [node name="Level" type="HBoxContainer"]
-z_index = 5
 custom_minimum_size = Vector2(320, 180)
 offset_right = 738.0
 offset_bottom = 418.0

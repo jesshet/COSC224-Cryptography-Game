@@ -144,6 +144,7 @@ theme_override_fonts/font = ExtResource("4_o284c")
 theme_override_font_sizes/font_size = 32
 text = "Enter Shift"
 
+[connection signal="button_down" from="HBoxContainer/left" to="HBoxContainer" method="_on_left_button_down"]
 [connection signal="pressed" from="HBoxContainer/left" to="HBoxContainer" method="_on_left_pressed"]
 [connection signal="pressed" from="HBoxContainer/left" to="HBoxContainer/left" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/right" to="HBoxContainer" method="_on_right_pressed"]

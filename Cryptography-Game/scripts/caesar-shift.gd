@@ -54,7 +54,6 @@ func shift_right(text):
 	var letters = text.to_upper().to_ascii_buffer();
 	for i in range(letters.size()):
 		var n = letters[i];
-		
 		#Ignore Spaces
 		if(n != 32):
 			#Shifting Logic
@@ -72,3 +71,9 @@ func incorrect() -> void:
 
 func _on_button_pressed() -> void:
 	submit.emit();
+
+
+func _on_left_button_down() -> void:
+	while($left._pressed()):
+		OS.delay_msec(200);
+		_on_left_pressed();

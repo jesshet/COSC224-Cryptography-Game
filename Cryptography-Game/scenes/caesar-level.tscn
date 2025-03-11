@@ -81,6 +81,11 @@ layout_mode = 2
 z_index = 1
 z_as_relative = false
 
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+z_index = 1
+scale = Vector2(1.00056, 1)
+copy_mode = 2
+
 [node name="crt" type="ColorRect" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_23tcs")
