@@ -1,25 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2kq4h07ybuq1"]
+[gd_scene load_steps=6 format=3 uid="uid://d2kq4h07ybuq1"]
 
 [ext_resource type="PackedScene" uid="uid://bvkeat41yqqqk" path="res://scenes/codex-entry.tscn" id="1_cfxri"]
 [ext_resource type="Script" path="res://scripts/codex.gd" id="1_dfrem"]
+[ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="2_h4hnd"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="3_lerh8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rliaw"]
+shader = ExtResource("3_lerh8")
+shader_parameter/lod = 4.5
 
 [node name="Control" type="Control"]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_dfrem")
 
+[node name="Background Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_rliaw")
+layout_mode = 0
+offset_right = 1297.0
+offset_bottom = 803.0
+
 [node name="Codex Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 547.0
-offset_top = 32.0
-offset_right = 604.0
-offset_bottom = 57.0
+offset_left = 534.0
+offset_top = 36.0
+offset_right = 613.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_h4hnd")
+theme_override_font_sizes/font_size = 36
 text = "Codex"
-
-[node name="Background Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 644.0
+horizontal_alignment = 1
 
 [node name="Codex Entries VBox" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -37,10 +49,13 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="CloseButton" type="Button" parent="."]
-offset_left = 526.0
-offset_top = 545.0
-offset_right = 624.0
-offset_bottom = 576.0
+layout_mode = 0
+offset_left = 522.0
+offset_top = 542.0
+offset_right = 626.0
+offset_bottom = 574.0
+theme_override_fonts/font = ExtResource("2_h4hnd")
+theme_override_font_sizes/font_size = 24
 text = "Close Menu"
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
