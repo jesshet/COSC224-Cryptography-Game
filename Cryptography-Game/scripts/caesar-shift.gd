@@ -71,9 +71,3 @@ func incorrect() -> void:
 
 func _on_button_pressed() -> void:
 	submit.emit();
-
-
-func _on_left_button_down() -> void:
-	while($left._pressed()):
-		OS.delay_msec(200);
-		_on_left_pressed();
