@@ -34,6 +34,7 @@ theme_override_fonts/font = ExtResource("2_p1gl0")
 theme_override_font_sizes/font_size = 24
 text = "Exit"
 
+[connection signal="pressed" from="LevelSelector" to="." method="_on_level_selector_pressed"]
 [connection signal="pressed" from="Codex" to="." method="_on_codex_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

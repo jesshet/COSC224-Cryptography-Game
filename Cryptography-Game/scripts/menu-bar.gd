@@ -2,6 +2,7 @@ extends HBoxContainer
 var game
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	game = get_tree().get_root()
@@ -28,3 +29,10 @@ func _on_codex_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_level_selector_pressed() -> void:
+	print("level select clicked");
+	var codex = preload("res://scenes/level-select-menu.tscn").instantiate();
+	game.add_child(codex);
+	print("after level select node");
