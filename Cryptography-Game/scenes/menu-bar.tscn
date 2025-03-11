@@ -26,6 +26,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 text = "Exit"
 
+[connection signal="pressed" from="LevelSelector" to="." method="_on_level_selector_pressed"]
 [connection signal="pressed" from="Codex" to="." method="_on_codex_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
