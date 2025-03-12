@@ -77,7 +77,14 @@ layout_mode = 2
 [node name="Level" parent="Control/MenuStack" instance=ExtResource("4_rdosw")]
 layout_mode = 2
 
-[node name="Caesar" parent="Control/MenuStack/Level/LevelStack" index="2"]
+[node name="Message" parent="Control/MenuStack/Level/LevelStack" index="1"]
+text = "[center] I FOUND THIS TEXT ON A PIECE OF PAPER THE TARGET LEFT BEHIND BUT I CAN'T READ IT. I THINK IT MIGHT BE A CAESAR CIPHER."
+
+[node name="Problem" parent="Control/MenuStack/Level/LevelStack" index="2"]
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+text = "[center]TLLA TL HA AOL YPCLY HA MPCL WT ZOHYW"
+
+[node name="Caesar" parent="Control/MenuStack/Level/LevelStack" index="3"]
 z_index = 1
 z_as_relative = false
 
@@ -93,4 +100,5 @@ offset_right = 1212.0
 offset_bottom = 716.0
 mouse_filter = 2
 
+[editable path="Control/MenuStack/MenuBar"]
 [editable path="Control/MenuStack/Level"]

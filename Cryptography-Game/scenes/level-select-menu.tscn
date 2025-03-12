@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://qhppkbq1twcb"]
+[gd_scene load_steps=7 format=3 uid="uid://qhppkbq1twcb"]
 
 [ext_resource type="PackedScene" uid="uid://dfkh1qqtl3hce" path="res://scenes/level-select-button.tscn" id="1_righb"]
 [ext_resource type="Script" path="res://scripts/level-select-menu.gd" id="1_rl0j8"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_bsucj"]
 [ext_resource type="PackedScene" uid="uid://cj3givo7ll2ia" path="res://scenes/caesar-level.tscn" id="3_lg3ln"]
 [ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_777na"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_osmia"]
+shader = ExtResource("2_bsucj")
+shader_parameter/lod = 5.0
+
 [node name="Level-Select-Menu" type="MarginContainer"]
+z_index = 5
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,6 +22,7 @@ size_flags_vertical = 3
 script = ExtResource("1_rl0j8")
 
 [node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_osmia")
 layout_mode = 2
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]

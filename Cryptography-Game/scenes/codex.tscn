@@ -7,7 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rliaw"]
 shader = ExtResource("3_lerh8")
-shader_parameter/lod = 4.5
+shader_parameter/lod = 5.0
 
 [node name="Control" type="Control"]
 z_index = 10
