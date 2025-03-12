@@ -6,10 +6,6 @@ var _root: Node;
 func _ready() -> void:
 	_root = get_tree().get_root();
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_level_load_level(level: PackedScene) -> void:
 	if level == null:

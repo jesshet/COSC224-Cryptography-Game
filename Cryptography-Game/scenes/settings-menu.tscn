@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_32888"]
 shader = ExtResource("2_6etrc")
-shader_parameter/lod = 4.5
+shader_parameter/lod = 5.0
 
 [node name="SettingsMenu" type="Control"]
 z_index = 10

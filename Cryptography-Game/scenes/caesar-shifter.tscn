@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyb6n87cbrioh"]
+[gd_scene load_steps=11 format=3 uid="uid://dyb6n87cbrioh"]
 
 [ext_resource type="Script" path="res://scripts/caesar-shift.gd" id="2_5vfg3"]
 [ext_resource type="Shader" path="res://assets/shaders/vapor.gdshader" id="3_l3bhd"]
@@ -17,25 +17,6 @@ shader_parameter/speed = 0.04
 shader_parameter/alpha = 1.0
 shader_parameter/noise_amount = 0.45
 shader_parameter/effect_factor = 0.4
-
-[sub_resource type="GDScript" id="GDScript_rbauj"]
-script/source = "extends TextureButton
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_pressed() -> void:
-	pass
-	
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0e87u"]
 shader = ExtResource("3_l3bhd")
@@ -72,6 +53,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -94,7 +76,6 @@ material = SubResource("ShaderMaterial_h04c1")
 layout_mode = 2
 texture_normal = ExtResource("4_crxs7")
 flip_h = true
-script = SubResource("GDScript_rbauj")
 
 [node name="shift" type="RichTextLabel" parent="HBoxContainer"]
 material = SubResource("ShaderMaterial_0e87u")
@@ -112,7 +93,6 @@ fit_content = true
 material = SubResource("ShaderMaterial_iwf0r")
 layout_mode = 2
 texture_normal = ExtResource("4_crxs7")
-script = SubResource("GDScript_rbauj")
 
 [node name="click" type="AudioStreamPlayer" parent="HBoxContainer"]
 stream = ExtResource("5_6s655")

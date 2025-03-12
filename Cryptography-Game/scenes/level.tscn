@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b38ramit5egv6"]
+[gd_scene load_steps=5 format=3 uid="uid://b38ramit5egv6"]
 
 [ext_resource type="Script" path="res://scripts/level-stack.gd" id="1_8mhkd"]
 [ext_resource type="PackedScene" uid="uid://dyb6n87cbrioh" path="res://scenes/caesar-shifter.tscn" id="2_17m6a"]
 [ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="2_tqw6q"]
+[ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="2_v8f25"]
 
 [node name="Level" type="HBoxContainer"]
 custom_minimum_size = Vector2(320, 180)
@@ -15,6 +16,10 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_8mhkd")
+
+[node name="Clicks" type="AudioStreamPlayer" parent="LevelStack"]
+stream = ExtResource("2_v8f25")
+volume_db = -15.0
 
 [node name="Message" type="RichTextLabel" parent="LevelStack"]
 layout_mode = 2

@@ -10,5 +10,6 @@ anchor_mode = 0
 [node name="caesarLevel" parent="." instance=ExtResource("1_cajj6")]
 
 [editable path="caesarLevel"]
+[editable path="caesarLevel/Control/MenuStack/MenuBar"]
 [editable path="caesarLevel/Control/MenuStack/Level"]
 [editable path="caesarLevel/Control/MenuStack/Level/LevelStack/Caesar"]

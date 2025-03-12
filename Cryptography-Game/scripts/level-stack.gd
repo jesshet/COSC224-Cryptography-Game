@@ -3,20 +3,51 @@ var Caesar;
 var Solution;
 var Message;
 var guesses;
+var Problem;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Guess Tracker Variable
 	guesses = 0;
-	Solution = "[center]ATTACK AT DAWN";
-	Message = $Message.text;
-	#for i in range($Message.text.length()):
-		#$Message.text += Message.text[i];
+	
+	#Answer Text
+	Solution = "[center]MEET ME AT THE RIVER AT FIVE PM SHARP";
+	
+	#Store Problem Text for Printing
+	Problem = $Problem.text.substr(8, -1);
+	$Problem.text = "[center]";
+	
+	#Store Message Text for Printing
+	Message = $Message.text.substr(8, -1);
+	$Message.text = "[center]";
+	
+	#Disable Mouse Clicking While Text Prints
+	$Caesar.set_mouse_filter(MOUSE_FILTER_IGNORE);
+	
+	#Loop To Print Text
+	for i in range(Message.length()):
+		$Clicks.play();
+		$Message.text = $Message.text + Message[i];
+		if(Message[i] == "."):
+			await get_tree().create_timer(0.3).timeout
+		else:
+			await get_tree().create_timer(0.08).timeout
+		
+		
+	for i in range(Problem.length()):
+		$Clicks.play();
+		$Problem.text = $Problem.text + Problem[i];
+		if(Problem[i] == "."):
+			await get_tree().create_timer(0.3).timeout
+		else:
+			await get_tree().create_timer(0.08).timeout
+		
+	#Enable Mouse Clicking
+	$Caesar.set_mouse_filter(MOUSE_FILTER_PASS);
+	
+	#Connect Caesar Scene Signals
 	connect_caesar();
-	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
 func connect_caesar() -> void:
 	#Connect Caesar Node
 	Caesar = get_node("Caesar/HBoxContainer");
@@ -56,12 +87,12 @@ func _on_child_order_changed() -> void:
 func _on_h_box_container_button_pressed() -> void:
 	if($Problem.text == Solution):
 		#Turn Text Green
-		$Message.text = "[center][color=4BB543]Success!";
+		$Message.text = "[center][color=4BB543]Success!\n\n\n";
 		#Play Success Sound
 		Caesar.success();
 	else:
 		#Turn Text Red
-		$Message.text = "[center][color=ff0000]Incorrect";
+		$Message.text = "[center][color=ff0000]Incorrect\n\n\n";
 		#Play Incorrect Sound
 		Caesar.incorrect();
 		#Increment Guess Counter

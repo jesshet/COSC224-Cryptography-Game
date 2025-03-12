@@ -8,10 +8,6 @@ func _ready() -> void:
 	game = get_tree().get_root()
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_settings_pressed() -> void:
 	var settings = preload("res://scenes/settings-menu.tscn").instantiate()
