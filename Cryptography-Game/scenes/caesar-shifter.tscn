@@ -96,7 +96,7 @@ texture_normal = ExtResource("4_crxs7")
 
 [node name="click" type="AudioStreamPlayer" parent="HBoxContainer"]
 stream = ExtResource("5_6s655")
-volume_db = -20.0
+volume_db = -30.0
 bus = &"SFX"
 
 [node name="incorrect" type="AudioStreamPlayer" parent="HBoxContainer"]

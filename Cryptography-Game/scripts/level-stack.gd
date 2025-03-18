@@ -7,6 +7,7 @@ var Problem;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print(get_parent().get_parent().get_parent().get_parent().get_class())
 	#Guess Tracker Variable
 	guesses = 0;
 	
@@ -22,7 +23,9 @@ func _ready() -> void:
 	$Message.text = "[center]";
 	
 	#Disable Mouse Clicking While Text Prints
-	$Caesar.set_mouse_filter(MOUSE_FILTER_IGNORE);
+	$Caesar/Button.disabled = true;
+	$Caesar/HBoxContainer/left.disabled = true;
+	$Caesar/HBoxContainer/right.disabled = true;
 	
 	#Loop To Print Text
 	for i in range(Message.length()):
@@ -31,7 +34,7 @@ func _ready() -> void:
 		if(Message[i] == "."):
 			await get_tree().create_timer(0.3).timeout
 		else:
-			await get_tree().create_timer(0.08).timeout
+			await get_tree().create_timer(0.04).timeout
 		
 		
 	for i in range(Problem.length()):
@@ -40,10 +43,12 @@ func _ready() -> void:
 		if(Problem[i] == "."):
 			await get_tree().create_timer(0.3).timeout
 		else:
-			await get_tree().create_timer(0.08).timeout
+			await get_tree().create_timer(0.04).timeout
 		
 	#Enable Mouse Clicking
-	$Caesar.set_mouse_filter(MOUSE_FILTER_PASS);
+	$Caesar/Button.disabled = false;
+	$Caesar/HBoxContainer/left.disabled = false;
+	$Caesar/HBoxContainer/right.disabled = false;
 	
 	#Connect Caesar Scene Signals
 	connect_caesar();
