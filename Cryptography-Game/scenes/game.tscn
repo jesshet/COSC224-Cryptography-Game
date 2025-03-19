@@ -22,8 +22,9 @@ shader_parameter/rotation = null
 shader_parameter/colorampMix = 0.5
 shader_parameter/isColoramp = null
 
-[node name="game" type="Node2D"]
+[node name="game" type="Node2D" node_paths=PackedStringArray("_parentOfLevel")]
 script = ExtResource("1_dd7so")
+_parentOfLevel = NodePath("LevelContainer")
 
 [node name="Background" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_q6fra")
