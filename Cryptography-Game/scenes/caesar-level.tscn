@@ -1,104 +1,59 @@
-[gd_scene load_steps=8 format=3 uid="uid://cj3givo7ll2ia"]
+[gd_scene load_steps=5 format=3 uid="uid://b38ramit5egv6"]
 
-[ext_resource type="Script" path="res://scripts/caesar_level.gd" id="1_diafk"]
-[ext_resource type="Shader" path="res://assets/shaders/wave.gdshader" id="2_dopob"]
-[ext_resource type="PackedScene" uid="uid://bau1ojq7rcyh2" path="res://scenes/menu-bar.tscn" id="3_y8y2t"]
-[ext_resource type="PackedScene" uid="uid://b38ramit5egv6" path="res://scenes/level.tscn" id="4_rdosw"]
-[ext_resource type="Shader" path="res://assets/shaders/crt.gdshader" id="5_i50tk"]
+[ext_resource type="Script" path="res://scripts/level-stack.gd" id="1_kj5v7"]
+[ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="2_hb6dt"]
+[ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="3_juho3"]
+[ext_resource type="PackedScene" uid="uid://dyb6n87cbrioh" path="res://scenes/caesar-shifter.tscn" id="4_ugpmg"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hlbjv"]
-shader = ExtResource("2_dopob")
-shader_parameter/iterations = 17
-shader_parameter/formuparam = 0.48
-shader_parameter/volsteps = 7
-shader_parameter/stepsize = 0.1
-shader_parameter/zoom = 0.8
-shader_parameter/tile = 0.85
-shader_parameter/speed = 0.001
-shader_parameter/brightness = 0.0015
-shader_parameter/darkmatter = 5.0
-shader_parameter/distfading = 0.73
-shader_parameter/saturation = 0.85
-shader_parameter/rotation = null
-shader_parameter/colorampMix = 0.5
-shader_parameter/isColoramp = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_23tcs"]
-shader = ExtResource("5_i50tk")
-shader_parameter/resolution = Vector2(600, 600)
-shader_parameter/scan_line_amount = 0.292
-shader_parameter/warp_amount = 0.1
-shader_parameter/noise_amount = 0.03
-shader_parameter/interference_amount = 0.2
-shader_parameter/grille_amount = 0.1
-shader_parameter/grille_size = 1.0
-shader_parameter/vignette_amount = 0.0
-shader_parameter/vignette_intensity = 0.0
-shader_parameter/aberation_amount = 0.0
-shader_parameter/roll_line_amount = 0.3
-shader_parameter/roll_speed = 1.0
-shader_parameter/scan_line_strength = -8.0
-shader_parameter/pixel_strength = -2.0
-
-[node name="caesarLevel" type="Node2D"]
-script = ExtResource("1_diafk")
-
-[node name="Control" type="Control" parent="."]
+[node name="CaesarLevel" type="Control"]
+custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 649.0
-
-[node name="Background" type="ColorRect" parent="Control"]
-material = SubResource("ShaderMaterial_hlbjv")
-layout_mode = 0
-offset_right = 1444.0
-offset_bottom = 841.0
-scale = Vector2(1.00056, 1)
+offset_top = 1.0
+offset_right = 738.0
+offset_bottom = 419.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0, 0, 0.678431, 0.117647)
 
-[node name="Panel" type="Panel" parent="Control"]
-visible = false
-layout_mode = 0
-offset_right = 1280.0
-offset_bottom = 720.0
-
-[node name="MenuStack" type="VBoxContainer" parent="Control"]
-z_index = 1
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 647.0
-
-[node name="MenuBar" parent="Control/MenuStack" instance=ExtResource("3_y8y2t")]
+[node name="Level" type="HBoxContainer" parent="."]
 layout_mode = 2
+offset_right = 1151.0
+offset_bottom = 575.0
 
-[node name="Level" parent="Control/MenuStack" instance=ExtResource("4_rdosw")]
+[node name="LevelStack" type="VBoxContainer" parent="Level"]
 layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_kj5v7")
 
-[node name="Message" parent="Control/MenuStack/Level/LevelStack" index="1"]
-text = "[center] I FOUND THIS TEXT ON A PIECE OF PAPER THE TARGET LEFT BEHIND BUT I CAN'T READ IT. I THINK IT MIGHT BE A CAESAR CIPHER."
+[node name="Clicks" type="AudioStreamPlayer" parent="Level/LevelStack"]
+stream = ExtResource("2_hb6dt")
+volume_db = -15.0
 
-[node name="Problem" parent="Control/MenuStack/Level/LevelStack" index="2"]
+[node name="Message" type="RichTextLabel" parent="Level/LevelStack"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0.862745, 0.917647, 1)
+theme_override_fonts/normal_font = ExtResource("3_juho3")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center] I FOUND THIS MESSAGE ON A PIECE OF PAPER THE TARGET LEFT BEHIND BUT I CANT READ IT. I THINK IT MIGHT BE A CAESAR CIPHER.
+"
+fit_content = true
+scroll_active = false
+
+[node name="Problem" type="RichTextLabel" parent="Level/LevelStack"]
+layout_mode = 2
+size_flags_vertical = 6
 theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_juho3")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
 text = "[center]TLLA TL HA AOL YPCLY HA MPCL WT ZOHYW"
+fit_content = true
+scroll_active = false
 
-[node name="Caesar" parent="Control/MenuStack/Level/LevelStack" index="3"]
-z_index = 1
-z_as_relative = false
+[node name="Caesar" parent="Level/LevelStack" instance=ExtResource("4_ugpmg")]
+layout_mode = 2
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
-z_index = 1
-scale = Vector2(1.00056, 1)
-copy_mode = 2
+[connection signal="child_order_changed" from="Level/LevelStack" to="Level/LevelStack" method="_on_child_order_changed"]
 
-[node name="crt" type="ColorRect" parent="."]
-z_index = 1
-material = SubResource("ShaderMaterial_23tcs")
-offset_right = 1212.0
-offset_bottom = 716.0
-mouse_filter = 2
-
-[editable path="Control/MenuStack/MenuBar"]
-[editable path="Control/MenuStack/Level"]
+[editable path="Level/LevelStack/Caesar"]
