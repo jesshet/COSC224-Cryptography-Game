@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://p88wru5dhjey"]
+
+[ext_resource type="PackedScene" uid="uid://ba5vb1pyvfxw0" path="res://assets/models/WireFrameSphere.glb" id="1_6sfbg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8tf6g"]
+shading_mode = 0
+albedo_color = Color(0.384314, 0.776471, 0.941176, 1)
+
+[node name="WireFrameSphere" instance=ExtResource("1_6sfbg")]
+
+[node name="Sphere" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8tf6g")

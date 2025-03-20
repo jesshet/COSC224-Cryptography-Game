@@ -1,9 +1,12 @@
-extends VBoxContainer
+extends Control
 var Caesar;
 var Solution;
 var Message;
 var guesses;
 var Problem;
+
+@export_category("Level Message")
+@export var levelMessages = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,30 +18,20 @@ func _ready() -> void:
 	Solution = "[center]MEET ME AT THE RIVER AT FIVE PM SHARP";
 	
 	#Store Problem Text for Printing
-	Problem = $Problem.text.substr(8, -1);
-	$Problem.text = "[center]";
+	Problem = $Problem.text.substr(0, -1);
+	$Problem.text = "";
 	
-	#Store Message Text for Printing
-	Message = $Message.text.substr(8, -1);
-	$Message.text = "[center]";
+	#Send the Levels messages to the messagePlayer
+	$MessagePlayer.setMessage(levelMessages);
+	$MessagePlayer.startMessages();
 	
 	#Disable Mouse Clicking While Text Prints
 	$Caesar/Button.disabled = true;
 	$Caesar/HBoxContainer/left.disabled = true;
 	$Caesar/HBoxContainer/right.disabled = true;
-	
-	#Loop To Print Text
-	for i in range(Message.length()):
-		$Clicks.play();
-		$Message.text = $Message.text + Message[i];
-		if(Message[i] == "."):
-			await get_tree().create_timer(0.3).timeout
-		else:
-			await get_tree().create_timer(0.04).timeout
-		
 		
 	for i in range(Problem.length()):
-		$Clicks.play();
+		#$Clicks.play();
 		$Problem.text = $Problem.text + Problem[i];
 		if(Problem[i] == "."):
 			await get_tree().create_timer(0.3).timeout

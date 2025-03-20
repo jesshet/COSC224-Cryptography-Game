@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b38ramit5egv6"]
+[gd_scene load_steps=7 format=3 uid="uid://b38ramit5egv6"]
 
 [ext_resource type="Script" path="res://scripts/level-stack.gd" id="1_kj5v7"]
+[ext_resource type="PackedScene" uid="uid://c8dmgsw6bxpjf" path="res://scenes/ui.tscn" id="1_leofq"]
 [ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="2_hb6dt"]
+[ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="3_dcoku"]
 [ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="3_juho3"]
 [ext_resource type="PackedScene" uid="uid://dyb6n87cbrioh" path="res://scenes/caesar-shifter.tscn" id="4_ugpmg"]
 
@@ -20,28 +22,24 @@ layout_mode = 2
 offset_right = 1151.0
 offset_bottom = 575.0
 
-[node name="LevelStack" type="VBoxContainer" parent="Level"]
+[node name="LevelStack" type="Control" parent="Level"]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_kj5v7")
+levelMessages = ["I found this message on a piece of paper that the target left behind, but i can't figure out what it says. I think it might be a Caesar cipher.", "This is a second messag for testing purposes. please replace later."]
 
 [node name="Clicks" type="AudioStreamPlayer" parent="Level/LevelStack"]
 stream = ExtResource("2_hb6dt")
 volume_db = -15.0
 
-[node name="Message" type="RichTextLabel" parent="Level/LevelStack"]
-layout_mode = 2
-theme_override_colors/default_color = Color(0, 0.862745, 0.917647, 1)
-theme_override_fonts/normal_font = ExtResource("3_juho3")
-theme_override_font_sizes/normal_font_size = 64
-bbcode_enabled = true
-text = "[center] I FOUND THIS MESSAGE ON A PIECE OF PAPER THE TARGET LEFT BEHIND BUT I CANT READ IT. I THINK IT MIGHT BE A CAESAR CIPHER.
-"
-fit_content = true
-scroll_active = false
+[node name="MessagePlayer" parent="Level/LevelStack" instance=ExtResource("3_dcoku")]
 
 [node name="Problem" type="RichTextLabel" parent="Level/LevelStack"]
+visible = false
 layout_mode = 2
+offset_top = 265.0
+offset_right = 1151.0
+offset_bottom = 329.0
 size_flags_vertical = 6
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("3_juho3")
@@ -52,7 +50,20 @@ fit_content = true
 scroll_active = false
 
 [node name="Caesar" parent="Level/LevelStack" instance=ExtResource("4_ugpmg")]
+visible = false
 layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 374.0
+offset_top = 403.0
+offset_right = 777.0
+offset_bottom = 575.0
+
+[node name="Ui" parent="." instance=ExtResource("1_leofq")]
+visible = false
 
 [connection signal="child_order_changed" from="Level/LevelStack" to="Level/LevelStack" method="_on_child_order_changed"]
 
