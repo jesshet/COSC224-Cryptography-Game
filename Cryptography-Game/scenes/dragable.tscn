@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0kvlxf7acn71"]
+[gd_scene load_steps=3 format=3 uid="uid://d0kvlxf7acn71"]
 
 [ext_resource type="Script" path="res://dragable.gd" id="1_3pqcd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8npyj"]
+size = Vector2(63, 38)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -10,12 +13,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Dragable" type="Button" parent="."]
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 499.0
+offset_top = 207.0
+offset_right = 565.0
+offset_bottom = 247.0
+
+[node name="Area2D" type="Area2D" parent="Panel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Area2D"]
+position = Vector2(32.5, 18)
+shape = SubResource("RectangleShape2D_8npyj")
+
+[node name="Dragable" type="Button" parent="." node_paths=PackedStringArray("_rayCenter")]
+z_index = 12
 layout_mode = 0
 offset_right = 42.0
 offset_bottom = 31.0
 text = "Sam"
 script = ExtResource("1_3pqcd")
+_rayCenter = NodePath("Ray")
+
+[node name="Ray" type="RayCast2D" parent="Dragable"]
+target_position = Vector2(0, 0)
+hit_from_inside = true
+collide_with_areas = true
 
 [connection signal="button_down" from="Dragable" to="Dragable" method="_on_button_down"]
 [connection signal="button_up" from="Dragable" to="Dragable" method="_on_button_up"]
