@@ -17,8 +17,9 @@ func _load_new_level(level: PackedScene) -> void:
 	if level == null:
 		return;
 	if _currentLevel != null:
-		print(level.resource_name + "," + _currentLevel.name);
-		if level.resource_name == _currentLevel.name:
+		var list: PackedStringArray = level._bundled.get("names");
+		print(list[0] + "," + _currentLevel.name);
+		if list[0] == _currentLevel.name:
 			return;
 		_currentLevel.queue_free();
 	

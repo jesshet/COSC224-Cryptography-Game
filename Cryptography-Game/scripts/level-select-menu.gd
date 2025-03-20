@@ -10,7 +10,6 @@ func _on_level_load_level(level: PackedScene) -> void:
 		print("Level was null");
 		return;
 	Global.game_scene._load_new_level(level);
-	#Global.game_scene.get_child(1).add_child(level.instantiate());
 	queue_free();
 
 func _on_close_button_pressed() -> void:
