@@ -4,44 +4,24 @@ var Solution;
 var Message;
 var guesses;
 var Problem;
+var windowsOpen;
 
-@export_category("Level Message")
-@export var levelMessages = [];
+@export_category("Level Messages")
+@export var levelMessages : Array[String];
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(get_parent().get_parent().get_parent().get_parent().get_class())
 	#Guess Tracker Variable
 	guesses = 0;
 	
+	#windows start closed
+	windowsOpen = false
+	
 	#Answer Text
-	Solution = "[center]MEET ME AT THE RIVER AT FIVE PM SHARP";
-	
-	#Store Problem Text for Printing
-	Problem = $Problem.text.substr(0, -1);
-	$Problem.text = "";
-	
+	Solution = "MEET ME AT THE RIVER AT FIVE PM SHARP";
+
 	#Send the Levels messages to the messagePlayer
-	$MessagePlayer.setMessage(levelMessages);
-	$MessagePlayer.startMessages();
-	
-	#Disable Mouse Clicking While Text Prints
-	$Caesar/Button.disabled = true;
-	$Caesar/HBoxContainer/left.disabled = true;
-	$Caesar/HBoxContainer/right.disabled = true;
-		
-	for i in range(Problem.length()):
-		#$Clicks.play();
-		$Problem.text = $Problem.text + Problem[i];
-		if(Problem[i] == "."):
-			await get_tree().create_timer(0.3).timeout
-		else:
-			await get_tree().create_timer(0.04).timeout
-		
-	#Enable Mouse Clicking
-	$Caesar/Button.disabled = false;
-	$Caesar/HBoxContainer/left.disabled = false;
-	$Caesar/HBoxContainer/right.disabled = false;
+	$MessagePlayer.startMessages(levelMessages);
 	
 	#Connect Caesar Scene Signals
 	connect_caesar();
@@ -50,8 +30,8 @@ func connect_caesar() -> void:
 	#Connect Caesar Node
 	Caesar = get_node("Caesar/HBoxContainer");
 	
-	#Connect Submit Button Signal
-	Caesar.submit.connect(_on_h_box_container_button_pressed);
+	#Connect MessagePlayer
+	$MessagePlayer.message_complete.connect(_on_message_complete);
 	
 	#Connect Left and Right Shift Signals
 	Caesar.left_pressed.connect(_on_h_box_container_left_pressed);
@@ -62,9 +42,9 @@ func _on_h_box_container_left_pressed() -> void:
 	#Get Current Caesar Shift Amount
 	var n = Caesar.get_shift();
 	#Substring to retain "[center]" format string
-	$Problem.text = Caesar.shift_left($Problem.text.substr(8, -1));
+	$Problem.text = Caesar.shift_left($Problem.text);
 	#Turn Text Cyan
-	$Message.text = "[center][color=00dcea]" + Message;
+	#$Message.text = "[center][color=00dcea]" + Message;
 
 
 
@@ -72,29 +52,31 @@ func _on_h_box_container_right_pressed() -> void:
 	#Get Current Caesar Shift Amount
 	var n = Caesar.get_shift();
 	#Substring to retain "[center]" format string
-	$Problem.text = Caesar.shift_right($Problem.text.substr(8, -1));
+	$Problem.text = Caesar.shift_right($Problem.text);
 	#Turn Text Cyan
-	$Message.text = "[center][color=00dcea]" + Message;
+	#$Message.text = "[center][color=00dcea]" + Message;
 
 
 func _on_child_order_changed() -> void:
 	if(get_node_or_null("Caesar")):
 		connect_caesar();
 
-
-func _on_h_box_container_button_pressed() -> void:
+func _on_submit_button_pressed() -> void:
+	print(guesses)
 	if($Problem.text == Solution):
-		#Turn Text Green
-		$Message.text = "[center][color=4BB543]Success!\n\n\n";
 		#Play Success Sound
 		Caesar.success();
 	else:
-		#Turn Text Red
-		$Message.text = "[center][color=ff0000]Incorrect\n\n\n";
 		#Play Incorrect Sound
 		Caesar.incorrect();
 		#Increment Guess Counter
 		guesses = guesses + 1;
 	
-	if(guesses == 2):
-		pass
+	if(guesses == 3):
+		$MessagePlayer.startMessage("This is a placeholder for the hint text.")
+		#put code here to make a button that replays the hint
+		
+func _on_message_complete() -> void:
+	if !windowsOpen:
+		$"../../AnimationPlayer".play("Open-windows")
+		windowsOpen = true

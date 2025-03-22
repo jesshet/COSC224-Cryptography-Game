@@ -1,59 +1,72 @@
-extends Control
+extends CanvasLayer
 
-var messages;
-var currentMessage;
-var label;
-var count;
+var messages: Array[String]
+var currentMessage: String
+var isArray: bool
+var waitingForInput: bool
+var isOpen: bool
 
-var waitingForInput;
-var isOpen
+var messageIndex: int
+var count: int
+
+var label
+signal message_complete
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	label = $Message;
-	label.text = "";
-	currentMessage = 0;
+	label = $Message
+	messageIndex = 0
 	count = 0
 	isOpen = false
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func startMessages() -> void:
+func startMessages(messages : Array[String]) -> void:
+	isArray  = true
+	self.messages = messages
+	messageIndex = 0
+	label.visible_characters = 0
+	$MessageAnimations.play("open-windows")
+	
+func startMessage(message : String) -> void:
+	isArray = false
+	messages.clear()
+	messageIndex = 1
+	currentMessage = message
+	label.visible_characters = 0
 	$MessageAnimations.play("open-windows")
 
-func printMessages(currentMessage) -> void:
-	label.text = messages[currentMessage];
+func printMessages(messageIndex) -> void:
+	if isArray:
+		currentMessage = messages[messageIndex]
 	count = 0
-	label.visible_characters = count;
+	label.visible_characters = count
+	label.text = currentMessage
+	print(messages.size())
 	#Loop To Print Text
-	while(label.visible_characters < messages[currentMessage].length()):
+	while(label.visible_characters < currentMessage.length()):
 		#$Clicks.play();
-		count = count + 1
+		count += 1
 		label.visible_characters = count
-		if(messages[currentMessage][count - 1] == "."):
+		if(currentMessage[count - 1] == "."):
 			await get_tree().create_timer(0.3).timeout
 		else:
 			await get_tree().create_timer(0.02).timeout
-	
-	print("Finished Message")		
-	count = 0
+			
 	waitingForInput = true;
 
 
 func _input(ev) -> void:
-	if ev is InputEventMouseButton && ev.is_pressed() && count < messages[currentMessage].length() - 1:
-		count = messages[currentMessage].length() - 1
+	if ev is InputEventMouseButton && ev.is_pressed() && count < currentMessage.length() - 1:
+		count = messages[messageIndex].length() - 1
 		return
 		
 	if ev is InputEventMouseButton && ev.is_pressed() && waitingForInput:
-		if currentMessage < messages.size() - 1:
-			currentMessage = currentMessage + 1
-			printMessages(currentMessage)
-		elif currentMessage >= messages.size() - 1 && isOpen:
+		
+		if messageIndex < messages.size() - 1:
+			messageIndex += 1
+			printMessages(messageIndex)
+			
+		elif messageIndex >= messages.size() - 1 && isOpen:
 			$MessageAnimations.play("close-windows")
 			isOpen = false
 
@@ -61,8 +74,8 @@ func _input(ev) -> void:
 func _on_message_animations_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "open-windows":
 		isOpen = true
-		printMessages(currentMessage)
+		printMessages(messageIndex)
+	
+	if anim_name == "close-windows":
+		message_complete.emit();
 		
-
-func setMessage(messageArray) -> void:
-	messages = messageArray

@@ -13,14 +13,22 @@ func _ready() -> void:
 func _on_left_pressed():
 	$click.play();
 	shift = (shift - 1) % 26;
-	$shift.text = "[center]" + str((26 + shift) % 26);
+	#code to display 0 if numberis less than 10
+	if((26 + shift) % 26 < 10):
+		$shift.text = "0" + str((26 + shift) % 26);
+	else:
+		$shift.text = str((26 + shift) % 26);
 	left_pressed.emit();
 	return shift;
 
 func _on_right_pressed():
 	$click.play();
 	shift = (shift + 1) % 26;
-	$shift.text = "[center]" + str((26 + shift) % 26);
+	#code to display 0 if numberis less than 10
+	if((26 + shift) % 26 < 10):
+		$shift.text = "0" + str((26 + shift) % 26);
+	else:
+		$shift.text = str((26 + shift) % 26);
 	right_pressed.emit();
 	return shift;
 	
@@ -42,7 +50,7 @@ func shift_left(text):
 	#Revert Back to string
 	text = letters.get_string_from_ascii();
 	#Add Center Alignment and return
-	return "[center]" + text;
+	return text;
 	
 func shift_right(text):
 	#Convert to ASCII array for shifting
@@ -56,13 +64,10 @@ func shift_right(text):
 	#Revert Back to string
 	text = letters.get_string_from_ascii();
 	#Add Center Alignment and return
-	return "[center]" + text;
+	return text;
 	
 func success() -> void:
 	$success.play();
 	
 func incorrect() -> void:
 	$incorrect.play();
-
-func _on_button_pressed() -> void:
-	submit.emit();

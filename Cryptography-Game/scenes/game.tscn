@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bogouexgrer3d"]
+[gd_scene load_steps=15 format=3 uid="uid://bogouexgrer3d"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_dd7so"]
 [ext_resource type="PackedScene" uid="uid://c8dmgsw6bxpjf" path="res://scenes/ui.tscn" id="2_f021h"]
+[ext_resource type="Shader" path="res://assets/shaders/stars.gdshader" id="3_2grx0"]
 [ext_resource type="PackedScene" uid="uid://c1t3i6r3nabp7" path="res://scenes/title_screen.tscn" id="3_kif3f"]
 [ext_resource type="PackedScene" uid="uid://claoha2q6d33k" path="res://scenes/sphere-bg.tscn" id="3_ujwc7"]
 [ext_resource type="Script" path="res://scripts/menu-bar.gd" id="4_55vpq"]
@@ -13,17 +14,48 @@
 [ext_resource type="Texture2D" uid="uid://cp7rofhg2fpi1" path="res://assets/sprites/buttons/ButtonMiddle.png" id="10_stmjc"]
 [ext_resource type="Texture2D" uid="uid://cyyxofxq5ux01" path="res://assets/sprites/buttons/ButtonMiddle(hover).png" id="11_w5j7u"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqvgs"]
+shader = ExtResource("3_2grx0")
+shader_parameter/bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+shader_parameter/offset = null
+shader_parameter/bigStarSlow = 2.0
+shader_parameter/mediumStarSlow = 6.0
+shader_parameter/smallStarSlow = 8.0
+shader_parameter/smallStarAmount = 0.002
+shader_parameter/mediumStarAmount = 0.01
+shader_parameter/bigStarAmount = 0.02
+
 [node name="game" type="Node2D"]
 script = ExtResource("1_dd7so")
 
 [node name="Ui" parent="." instance=ExtResource("2_f021h")]
 
-[node name="sphere-bg" type="SubViewportContainer" parent="."]
+[node name="Background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 0
+offset_right = 1150.0
+offset_bottom = 647.0
+color = Color(0.29219, 0.29219, 0.29219, 1)
+
+[node name="Stars" type="ColorRect" parent="Background"]
+material = SubResource("ShaderMaterial_uqvgs")
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 647.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="sphere-bg" type="SubViewportContainer" parent="Background"]
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="SubViewport" type="SubViewport" parent="sphere-bg"]
+[node name="SubViewport" type="SubViewport" parent="Background/sphere-bg"]
 own_world_3d = true
+transparent_bg = true
 handle_input_locally = false
 scaling_3d_scale = 0.5
 fsr_sharpness = 0.0
@@ -31,7 +63,7 @@ size = Vector2i(1152, 648)
 size_2d_override = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="sphere-bg" parent="sphere-bg/SubViewport" instance=ExtResource("3_ujwc7")]
+[node name="sphere-bg" parent="Background/sphere-bg/SubViewport" instance=ExtResource("3_ujwc7")]
 
 [node name="LevelContainer" type="Node2D" parent="."]
 position = Vector2(0, 32)
@@ -176,4 +208,4 @@ anchor_mode = 0
 [connection signal="pressed" from="MenuStack/MenuBar/Settings" to="MenuStack/MenuBar" method="_on_settings_pressed"]
 [connection signal="pressed" from="MenuStack/MenuBar/Exit" to="MenuStack/MenuBar" method="_on_exit_pressed"]
 
-[editable path="sphere-bg/SubViewport/sphere-bg"]
+[editable path="Background/sphere-bg/SubViewport/sphere-bg"]
