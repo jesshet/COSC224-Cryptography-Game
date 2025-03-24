@@ -61,7 +61,7 @@ func text_to_hex(input: String) -> String:
 	var bytes = input.to_utf8_buffer()
 	for byte in bytes:
 		hex += String("%02x" % byte)
-	return hex
+	return hex.replace(" ","").to_upper()
 
 func hex_to_text(input: String) -> String:
 	# Validate hexadecimal input
@@ -87,5 +87,10 @@ func xor(in1: String, in2: String) -> String:
 	result = regex.search(in2)
 	if not result:
 		print("Invalid key: Please provide a valid hexadecimal key.")
-	var xor = (in1.hex_to_int() ^ in2.hex_to_int())
-	return "%X" % xor
+	var xor_result = ""
+	for i in range(0, in1.length(), 2):
+		var byte_hex1 = in1.substr(i, 2).hex_to_int()
+		var byte_hex2 = in2.substr(i, 2).hex_to_int()
+		var xor_byte = byte_hex1 ^ byte_hex2
+		xor_result += String("%02x" % xor_byte)  # Keep it in recognizable hex
+	return xor_result.replace(" ","").to_upper()
