@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://de4kpg2m1tv2u"
+path="res://.godot/imported/ButtonSlant(Mask).png-f5d7c0bc90c65404a27bcce316933a27.res"
+
+[deps]
+
+source_file="res://assets/sprites/buttons/ButtonSlant(Mask).png"
+dest_files=["res://.godot/imported/ButtonSlant(Mask).png-f5d7c0bc90c65404a27bcce316933a27.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

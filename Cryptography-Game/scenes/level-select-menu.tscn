@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://qhppkbq1twcb"]
+[gd_scene load_steps=8 format=3 uid="uid://qhppkbq1twcb"]
 
 [ext_resource type="PackedScene" uid="uid://dfkh1qqtl3hce" path="res://scenes/level-select-button.tscn" id="1_righb"]
 [ext_resource type="Script" path="res://scripts/level-select-menu.gd" id="1_rl0j8"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_bsucj"]
 [ext_resource type="PackedScene" uid="uid://b38ramit5egv6" path="res://scenes/caesar-level.tscn" id="3_lg3ln"]
 [ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_777na"]
+[ext_resource type="PackedScene" uid="uid://bc1qye1cusarv" path="res://scenes/stream-level.tscn" id="5_81w6o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_osmia"]
 shader = ExtResource("2_bsucj")
@@ -52,7 +53,8 @@ _level = ExtResource("3_lg3ln")
 [node name="Level2" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
 layout_mode = 2
 _buttonText = "2"
-_boxText = "Block Cipher"
+_boxText = "Stream Cipher"
+_level = ExtResource("5_81w6o")
 
 [node name="Level3" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
 layout_mode = 2
