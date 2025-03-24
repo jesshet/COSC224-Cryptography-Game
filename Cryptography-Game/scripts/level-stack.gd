@@ -7,7 +7,7 @@ var Problem;
 var windowsOpen;
 
 @export_category("Level Messages")
-@export var levelMessages : Array[String];
+@export_multiline var levelMessages : Array[String];
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -72,7 +72,7 @@ func _on_submit_button_pressed() -> void:
 		#Increment Guess Counter
 		guesses = guesses + 1;
 	
-	if(guesses == 3):
+	if(guesses == 3 && $Problem.text != Solution):
 		$MessagePlayer.startMessage("This is a placeholder for the hint text.")
 		#put code here to make a button that replays the hint
 		

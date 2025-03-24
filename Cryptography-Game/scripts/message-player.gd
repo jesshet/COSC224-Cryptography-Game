@@ -57,7 +57,7 @@ func printMessages(messageIndex) -> void:
 
 func _input(ev) -> void:
 	if ev is InputEventMouseButton && ev.is_pressed() && count < currentMessage.length() - 1:
-		count = messages[messageIndex].length() - 1
+		count = currentMessage.length() - 1
 		return
 		
 	if ev is InputEventMouseButton && ev.is_pressed() && waitingForInput:
@@ -75,7 +75,6 @@ func _on_message_animations_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "open-windows":
 		isOpen = true
 		printMessages(messageIndex)
-	
 	if anim_name == "close-windows":
 		message_complete.emit();
 		

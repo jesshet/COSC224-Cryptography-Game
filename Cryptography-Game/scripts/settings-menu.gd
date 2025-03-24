@@ -8,6 +8,9 @@ extends Control
 @onready var music_bus = AudioServer.get_bus_index("Music")
 
 func _ready() -> void:
+	
+	$AnimationPlayer.play("open-window")
+	
 	if _music_slider == null or _sfx_slider == null or _mute_toggle == null:
 		print("One of the fields is null in the Settings Menu");
 		return;
@@ -32,4 +35,9 @@ func _on_mute_button_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(0, toggled_on)
 
 func _on_close_button_pressed() -> void:
-	queue_free()
+	$AnimationPlayer.play("close-window")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "close-window":
+		queue_free()

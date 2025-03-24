@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b38ramit5egv6"]
+[gd_scene load_steps=17 format=3 uid="uid://b38ramit5egv6"]
 
 [ext_resource type="Script" path="res://scripts/level-stack.gd" id="1_kj5v7"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_ebdnf"]
@@ -9,46 +9,7 @@
 [ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="4_l6swe"]
 [ext_resource type="PackedScene" uid="uid://dyb6n87cbrioh" path="res://scenes/caesar-shifter.tscn" id="4_ugpmg"]
 [ext_resource type="BitMap" uid="uid://fb5sbmos3njj" path="res://assets/sprites/buttons/SubmitMast.png" id="5_kndp5"]
-[ext_resource type="Texture2D" uid="uid://b3q7n3di1udb" path="res://assets/sprites/CaesarPanel.png" id="7_2p3q0"]
-
-[sub_resource type="Animation" id="Animation_swew1"]
-resource_name = "RESET"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Level/LevelStack/Panel:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Level/LevelStack/Problem:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Level/LevelStack/Caesar:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
+[ext_resource type="Texture2D" uid="uid://b3q7n3di1udb" path="res://assets/sprites/window-frames/CaesarPanel.png" id="7_2p3q0"]
 
 [sub_resource type="Animation" id="Animation_i4qw5"]
 resource_name = "Open-windows"
@@ -90,10 +51,53 @@ tracks/2/keys = {
 "values": [Vector2(0, 0), Vector2(0, 0.05), Vector2(0.6, 0.05), Vector2(1, 0.3), Vector2(0.6, 1), Vector2(0.7, 0.8), Vector2(0.8, 0.8)]
 }
 
+[sub_resource type="Animation" id="Animation_swew1"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level/LevelStack/Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Level/LevelStack/Problem:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Level/LevelStack/Caesar:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_himsa"]
+resource_name = "close-windows"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jyb5h"]
 _data = {
 "Open-windows": SubResource("Animation_i4qw5"),
-"RESET": SubResource("Animation_swew1")
+"RESET": SubResource("Animation_swew1"),
+"close-windows": SubResource("Animation_himsa")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_svsj4"]
@@ -129,7 +133,7 @@ offset_bottom = 575.0
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_kj5v7")
-levelMessages = Array[String](["I found this message on a piece of paper that the target left behind, but i can't figure out what it says. I think it might be a Caesar cipher.", "This is a second messag for testing purposes. please replace later."])
+levelMessages = Array[String](["I found this message on a piece of paper that the target left behind, but i can't figure out what it says. I think it might be a Caesar cipher.", "This is a second message for testing purposes. please replace later."])
 
 [node name="MessagePlayer" parent="Level/LevelStack" instance=ExtResource("3_dcoku")]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3q7n3di1udb"
-path="res://.godot/imported/CaesarPanel.png-e9243848e97a8b711a95b5cc840770ee.ctex"
+uid="uid://b4lnd2uwtjtfo"
+path="res://.godot/imported/CodexButton(selected).png-2580bb3260e4e2f58f1c82eb9f1b6b39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/CaesarPanel.png"
-dest_files=["res://.godot/imported/CaesarPanel.png-e9243848e97a8b711a95b5cc840770ee.ctex"]
+source_file="res://assets/sprites/buttons/CodexButton(selected).png"
+dest_files=["res://.godot/imported/CodexButton(selected).png-2580bb3260e4e2f58f1c82eb9f1b6b39.ctex"]
 
 [params]
 
