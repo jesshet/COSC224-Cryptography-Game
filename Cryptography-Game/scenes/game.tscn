@@ -13,8 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cp7rofhg2fpi1" path="res://assets/sprites/buttons/ButtonMiddle.png" id="10_stmjc"]
 [ext_resource type="Texture2D" uid="uid://cyyxofxq5ux01" path="res://assets/sprites/buttons/ButtonMiddle(hover).png" id="11_w5j7u"]
 
-[node name="game" type="Node2D"]
+[node name="game" type="Node2D" node_paths=PackedStringArray("_parentOfLevel")]
 script = ExtResource("1_dd7so")
+_parentOfLevel = NodePath("LevelContainer")
 
 [node name="Ui" parent="." instance=ExtResource("2_f021h")]
 

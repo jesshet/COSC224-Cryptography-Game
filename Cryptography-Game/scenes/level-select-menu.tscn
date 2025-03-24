@@ -26,6 +26,14 @@ script = ExtResource("1_rl0j8")
 material = SubResource("ShaderMaterial_osmia")
 layout_mode = 2
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_777na")
+theme_override_font_sizes/font_size = 48
+text = "Level Select"
+horizontal_alignment = 1
+
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 2
 
@@ -51,6 +59,7 @@ _level = ExtResource("5_81w6o")
 [node name="Level3" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
 layout_mode = 2
 _buttonText = "3"
+_boxText = "Stream Cipher"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
