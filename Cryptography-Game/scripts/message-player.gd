@@ -17,11 +17,6 @@ func _ready() -> void:
 	isOpen = false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
 func startMessages() -> void:
 	$MessageAnimations.play("open-windows")
 
