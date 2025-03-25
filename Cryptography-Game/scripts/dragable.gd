@@ -12,10 +12,9 @@ func  _ready() -> void:
 	regex = RegEx.new()
 	regex.compile("^[0-9a-fA-F]*$")
 	
-	if _rayCenter == null:
-		printerr(name + "'s raycast is null");
-	else:
-		_rayCenter.position = Vector2(position.x + size.x/2, position.y + size.y/2);
+	assert(_rayCenter != null, name + "'s raycast is null");
+	
+	_rayCenter.global_position = Vector2(global_position.x + size.x/2, global_position.y + size.y/2);
 	pass;
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,9 +35,11 @@ func _on_button_down() -> void:
 func _on_button_up() -> void:
 	var currentMousePos = get_viewport().get_mouse_position();
 	if _rayCenter.is_colliding(): #move to center of drop in box
-		var colliderParent = _rayCenter.get_collider().get_parent()
-		print(_rayCenter.get_collider().get_parent())
-		position = colliderParent.position + (colliderParent.size - size)/2;
+		var colliderParent = _rayCenter.get_collider().get_parent();
+		print(colliderParent);
+		global_position = colliderParent.global_position + (colliderParent.size - size)/2;
+		
+		
 		if(colliderParent.get_name() == "TexToHex"):
 			self.text = text_to_hex(self.text)
 		if(colliderParent.get_name() == "HexToTex"):
