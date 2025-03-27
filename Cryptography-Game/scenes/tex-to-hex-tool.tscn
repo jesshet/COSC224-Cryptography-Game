@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://smkv4posrhc8"]
+
+[ext_resource type="Script" path="res://scripts/tex_to_hex_tool.gd" id="1_1msrh"]
+[ext_resource type="Script" path="res://scripts/drag-and-drop-collider.gd" id="2_4lqud"]
+[ext_resource type="Texture2D" uid="uid://fltrwmdg16s0" path="res://assets/sprites/window-frames/TextBox.png" id="2_gqvui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jvu3"]
+size = Vector2(549.297, 19.1651)
+
+[node name="TextHexTool" type="Control"]
+custom_minimum_size = Vector2(300, 175)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 245.0
+offset_bottom = 148.0
+script = ExtResource("1_1msrh")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(138.5, 82.5)
+scale = Vector2(0.369334, 1.1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(21.8308, -13.9595)
+shape = SubResource("RectangleShape2D_3jvu3")
+script = ExtResource("2_4lqud")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(138.5, 82.5)
+scale = Vector2(0.369334, 1.1)
+texture = ExtResource("2_gqvui")
+
+[node name="TextToHexBTN" type="Button" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 101.0
+offset_right = 138.0
+offset_bottom = 133.0
+text = "Text to Hex"
+
+[node name="HexToTextBTN" type="Button" parent="."]
+offset_left = 154.0
+offset_top = 101.0
+offset_right = 250.0
+offset_bottom = 133.0
+text = "Hex to Text"
+
+[connection signal="pressed" from="TextToHexBTN" to="." method="_on_text_to_hex_btn_pressed"]
+[connection signal="pressed" from="HexToTextBTN" to="." method="_on_hex_to_text_btn_pressed"]

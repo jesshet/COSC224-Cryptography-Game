@@ -15,3 +15,8 @@ func _on_submitbox_submit() -> void:
 	var answer = $"submit-box/TextEdit".text
 	if(answer == solution):
 		print("you won")
+
+
+func _on_tex_to_hex_message_passer() -> void:
+	
+	pass # Replace with function body.
