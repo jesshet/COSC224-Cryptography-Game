@@ -1,31 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvkeat41yqqqk"]
+[gd_scene load_steps=5 format=3 uid="uid://bvkeat41yqqqk"]
 
-[ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="1_0260w"]
+[ext_resource type="Texture2D" uid="uid://s4vrloti4qxy" path="res://assets/sprites/buttons/CodexButton.png" id="1_athv8"]
 [ext_resource type="Script" path="res://scripts/codex-entry.gd" id="1_wjohr"]
+[ext_resource type="Texture2D" uid="uid://b4lnd2uwtjtfo" path="res://assets/sprites/buttons/CodexButton(selected).png" id="2_x0hkc"]
+[ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="4_vscae"]
 
-[node name="Control" type="VBoxContainer"]
+[node name="Control" type="TextureButton"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -590.0
+offset_right = -952.0
+offset_bottom = -581.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-
-[node name="CodexLabel" type="Button" parent="."]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_0260w")
-text = "Name of Cipher"
+texture_normal = ExtResource("1_athv8")
+texture_hover = ExtResource("2_x0hkc")
 script = ExtResource("1_wjohr")
 
-[node name="CodexEntry" type="RichTextLabel" parent="."]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_fonts/normal_font = ExtResource("1_0260w")
-bbcode_enabled = true
-text = "[center]The paragraph describing the cryptography concept goes here."
-fit_content = true
-
-[connection signal="pressed" from="CodexLabel" to="CodexLabel" method="_on_pressed"]
+[node name="Button-title" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 15.0
+offset_top = 7.0
+offset_right = 196.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("4_vscae")
+theme_override_font_sizes/font_size = 14
+text = "Temp Text"
+vertical_alignment = 1

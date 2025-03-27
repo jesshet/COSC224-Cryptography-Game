@@ -1,87 +1,187 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2kq4h07ybuq1"]
+[gd_scene load_steps=14 format=3 uid="uid://d2kq4h07ybuq1"]
 
 [ext_resource type="PackedScene" uid="uid://bvkeat41yqqqk" path="res://scenes/codex-entry.tscn" id="1_cfxri"]
 [ext_resource type="Script" path="res://scripts/codex.gd" id="1_dfrem"]
-[ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="2_h4hnd"]
+[ext_resource type="Animation" uid="uid://bo5lm4kv7nx3g" path="res://assets/Animations/open-window.res" id="2_ij5qs"]
+[ext_resource type="Animation" uid="uid://5itcm2oayjmc" path="res://assets/Animations/close-window.res" id="3_6he31"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="3_lerh8"]
+[ext_resource type="Texture2D" uid="uid://bgv57t8o8p0jc" path="res://assets/sprites/window-frames/codexWinodw.png" id="5_bdweb"]
+[ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="6_hv0ts"]
+[ext_resource type="Texture2D" uid="uid://bb77jobsltjme" path="res://assets/sprites/buttons/X.png" id="8_4bcma"]
+[ext_resource type="Texture2D" uid="uid://c2kja5qykhblv" path="res://assets/sprites/buttons/X(Selected).png" id="9_exwwp"]
+[ext_resource type="BitMap" uid="uid://dggeyftvnygtu" path="res://assets/sprites/buttons/X.bmp" id="10_7a0ra"]
+
+[sub_resource type="Animation" id="Animation_he8jr"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blur:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hpqwp"]
+_data = {
+"RESET": SubResource("Animation_he8jr"),
+"close-window": ExtResource("3_6he31"),
+"open-window": ExtResource("2_ij5qs")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rliaw"]
 shader = ExtResource("3_lerh8")
-shader_parameter/lod = 5.0
+shader_parameter/lod = 3.0
 
 [node name="Control" type="Control"]
-z_index = 10
+z_index = 5
 layout_mode = 3
 anchors_preset = 0
+pivot_offset = Vector2(585, 358)
 script = ExtResource("1_dfrem")
 
-[node name="Background Panel" type="Panel" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hpqwp")
+}
+speed_scale = 1.5
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+position = Vector2(578, 329)
+scale = Vector2(5.74, 3.23)
+copy_mode = 2
+
+[node name="Blur" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_rliaw")
 layout_mode = 0
 offset_right = 1297.0
 offset_bottom = 803.0
+pivot_offset = Vector2(0, 13.2)
+
+[node name="Fade" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 653.0
+color = Color(0.0475577, 0.0475576, 0.0475576, 0.611765)
+
+[node name="Codex-Panel" type="Sprite2D" parent="."]
+position = Vector2(583, 324)
+texture = ExtResource("5_bdweb")
 
 [node name="Codex Label" type="Label" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 534.0
-offset_top = 36.0
-offset_right = 613.0
-offset_bottom = 72.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_h4hnd")
-theme_override_font_sizes/font_size = 36
+offset_left = 189.0
+offset_top = 75.0
+offset_right = 483.0
+offset_bottom = 127.0
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("6_hv0ts")
+theme_override_font_sizes/font_size = 24
 text = "Codex"
-horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Codex Entries VBox" type="VBoxContainer" parent="."]
+[node name="Scroll-title" type="RichTextLabel" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_top = 95.0
-offset_right = 1149.0
-offset_bottom = 640.0
+offset_left = 175.0
+offset_top = 150.0
+offset_right = 307.0
+offset_bottom = 173.0
+theme_override_colors/default_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/normal_font = ExtResource("6_hv0ts")
+bbcode_enabled = true
+text = "[u]Concepts"
 
-[node name="Entry A" parent="Codex Entries VBox" instance=ExtResource("1_cfxri")]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 187.0
+offset_right = 388.0
+offset_bottom = 543.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="CodexLabel" parent="Codex Entries VBox/Entry A" index="0"]
-text = "Caesar Cipher"
-
-[node name="CodexEntry" parent="Codex Entries VBox/Entry A" index="1"]
-text = "[center]The Caesar Cipher is one of the simplest and most well-known encryption techniques. Named after Julius Caesar, who reportedly used it to secure his military communications, this cipher involves shifting the letters of the alphabet by a fixed number of places. It is a substitution cipher, where each letter in the plaintext is replaced by a letter some fixed positions down or up the alphabet."
-
-[node name="Entry B" parent="Codex Entries VBox" instance=ExtResource("1_cfxri")]
+[node name="Caesar-entry" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_cfxri")]
 layout_mode = 2
+title = "Caesar Cipher"
+body = "The Caesar Cipher is one of the simplest and most well-known encryption techniques. Named after Julius Caesar, who reportedly used it to secure his military communications, this cipher involves shifting the letters of the alphabet by a fixed number of places. It is a substitution cipher, where each letter in the plaintext is replaced by a letter some fixed positions down or up the alphabet."
 
-[node name="CodexLabel" parent="Codex Entries VBox/Entry B" index="0"]
-text = "Stream Cipher"
-
-[node name="CodexEntry" parent="Codex Entries VBox/Entry B" index="1"]
-text = "[center]A stream cipher is a type of encryption method where plaintext is encrypted one bit or byte at a time, using a pseudorandom key stream. Unlike block ciphers, which operate on fixed-size chunks of data, stream ciphers work on a continuous stream of data, making them well-suited for real-time applications where data arrives in a flow, such as video streaming or wireless communication.
+[node name="Stream-entry" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_cfxri")]
+layout_mode = 2
+title = "Stream Cipher"
+body = "A stream cipher is a type of encryption method where plaintext is encrypted one bit or byte at a time, using a pseudorandom key stream. Unlike block ciphers, which operate on fixed-size chunks of data, stream ciphers work on a continuous stream of data, making them well-suited for real-time applications where data arrives in a flow, such as video streaming or wireless communication.
 
 Stream ciphers are based on the principle of bitwise or byte-wise operations, and the strength of the encryption relies heavily on the quality and unpredictability of the key stream."
 
-[node name="Entry C" parent="Codex Entries VBox" instance=ExtResource("1_cfxri")]
+[node name="Block-Entry" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_cfxri")]
 layout_mode = 2
-
-[node name="CodexLabel" parent="Codex Entries VBox/Entry C" index="0"]
-text = "Block Cipher"
-
-[node name="CodexEntry" parent="Codex Entries VBox/Entry C" index="1"]
-text = "[center]A block cipher is a method of encryption that divides plaintext data into fixed-size blocks and encrypts each block individually. Unlike stream ciphers, which work on continuous streams of data, block ciphers process data in discrete chunks, making them well-suited for applications where data is naturally segmented, such as file encryption.
+title = "Block Cipher"
+body = "A block cipher is a method of encryption that divides plaintext data into fixed-size blocks and encrypts each block individually. Unlike stream ciphers, which work on continuous streams of data, block ciphers process data in discrete chunks, making them well-suited for applications where data is naturally segmented, such as file encryption.
 
 A block cipher operates in two phases: encryption and decryption. It uses a symmetric key, meaning the same key is used for both processes. Popular examples of block cipher algorithms include AES (Advanced Encryption Standard) and DES (Data Encryption Standard)."
 
-[node name="CloseButton" type="Button" parent="."]
+[node name="Text-title" type="RichTextLabel" parent="."]
+texture_filter = 1
 layout_mode = 0
-offset_left = 522.0
-offset_top = 542.0
-offset_right = 626.0
-offset_bottom = 574.0
-theme_override_fonts/font = ExtResource("2_h4hnd")
-theme_override_font_sizes/font_size = 24
-text = "Close Menu"
+offset_left = 404.0
+offset_top = 175.0
+offset_right = 627.0
+offset_bottom = 199.0
+theme_override_colors/default_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/normal_font = ExtResource("6_hv0ts")
+theme_override_font_sizes/normal_font_size = 18
 
+[node name="Text-body" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 405.0
+offset_top = 229.0
+offset_right = 970.0
+offset_bottom = 534.0
+theme_override_colors/default_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/normal_font = ExtResource("6_hv0ts")
+theme_override_font_sizes/normal_font_size = 14
+
+[node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 901.0
+offset_top = 130.0
+offset_right = 1101.0
+offset_bottom = 210.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("8_4bcma")
+texture_hover = ExtResource("9_exwwp")
+texture_click_mask = ExtResource("10_7a0ra")
+
+[node name="Label" type="Label" parent="CloseButton"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -6.0
+offset_right = 142.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 36
+text = "X"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
-
-[editable path="Codex Entries VBox/Entry A"]
-[editable path="Codex Entries VBox/Entry B"]
-[editable path="Codex Entries VBox/Entry C"]

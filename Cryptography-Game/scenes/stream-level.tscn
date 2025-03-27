@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bc1qye1cusarv"]
+[gd_scene load_steps=7 format=3 uid="uid://bpt12i20n7flr"]
 
-[ext_resource type="PackedScene" uid="uid://d0kvlxf7acn71" path="res://scenes/dragable.tscn" id="2_elg2b"]
+[ext_resource type="PackedScene" path="res://scenes/dragable.tscn" id="2_elg2b"]
 [ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="2_if2pn"]
 [ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="3_0cfaf"]
 [ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_vag4t"]
-[ext_resource type="PackedScene" uid="uid://c8dmgsw6bxpjf" path="res://scenes/ui.tscn" id="5_1rsqq"]
-[ext_resource type="PackedScene" uid="uid://smkv4posrhc8" path="res://scenes/toolbox.tscn" id="5_6pwsx"]
+[ext_resource type="PackedScene" path="res://scenes/toolbox.tscn" id="5_6pwsx"]
 [ext_resource type="Texture2D" uid="uid://clkcsg4583q5t" path="res://assets/sprites/window-frames/LevelPanel.png" id="6_881pq"]
 
 [node name="StreamLevel" type="Control"]
@@ -25,8 +24,6 @@ offset_top = 70.0
 offset_right = 1102.0
 offset_bottom = 658.0
 
-[node name="Ui" parent="Level" instance=ExtResource("5_1rsqq")]
-
 [node name="LevelStack" type="Control" parent="Level"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -36,10 +33,6 @@ stream = ExtResource("2_if2pn")
 volume_db = -15.0
 
 [node name="MessagePlayer" parent="Level/LevelStack" instance=ExtResource("3_0cfaf")]
-offset_left = -9.0
-offset_top = -62.0
-offset_right = 1132.0
-offset_bottom = 579.0
 script = null
 
 [node name="Problem" type="RichTextLabel" parent="Level/LevelStack"]

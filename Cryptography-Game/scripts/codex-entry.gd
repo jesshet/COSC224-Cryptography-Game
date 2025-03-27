@@ -1,9 +1,12 @@
-extends Button
+extends TextureButton
 
-@onready var textBox: RichTextLabel = $"../CodexEntry"
+@export var title : String 
+@export_multiline var body : String
 
 func _ready() -> void:
-	pass
+	$"Button-title".text = title
 
-func _on_pressed() -> void:
-	textBox.visible = !textBox.visible
+func _pressed() -> void:
+	var codex = get_parent().get_parent().get_parent()
+	codex.setTitle(title)
+	codex.setBody(body)

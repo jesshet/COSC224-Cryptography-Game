@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://fb5sbmos3njj"
+path="res://.godot/imported/SubmitMast.png-7b0de28bfa3306b1146a1548383933d2.res"
+
+[deps]
+
+source_file="res://assets/sprites/buttons/SubmitMast.png"
+dest_files=["res://.godot/imported/SubmitMast.png-7b0de28bfa3306b1146a1548383933d2.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

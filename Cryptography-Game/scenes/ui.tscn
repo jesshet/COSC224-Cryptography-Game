@@ -1,11 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8dmgsw6bxpjf"]
 
-[ext_resource type="Texture2D" uid="uid://djv5gn6mji4nv" path="res://assets/sprites/window-frames/GameFrame.png" id="1_nwfpn"]
+[ext_resource type="Texture2D" uid="uid://3vh4lgv8j7cw" path="res://assets/sprites/window-frames/GameFrame.png" id="1_nwfpn"]
 [ext_resource type="FontFile" uid="uid://bkkjavn3utrot" path="res://assets/fonts/alarm clock.ttf" id="2_6k623"]
 
-[node name="Ui" type="CanvasLayer"]
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="Frame" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(576, 324)
 texture = ExtResource("1_nwfpn")
 
