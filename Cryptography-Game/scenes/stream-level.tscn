@@ -81,6 +81,7 @@ offset_left = 274.0
 offset_top = 217.0
 offset_right = 308.0
 offset_bottom = 240.0
+text = "è~X9"
 _inputTBX = NodePath("../KeyInput")
 
 [node name="KeyInput" type="TextEdit" parent="."]
