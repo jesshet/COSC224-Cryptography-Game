@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://qhppkbq1twcb"]
+[gd_scene load_steps=8 format=3 uid="uid://qhppkbq1twcb"]
 
 [ext_resource type="PackedScene" uid="uid://dfkh1qqtl3hce" path="res://scenes/level-select-button.tscn" id="1_righb"]
 [ext_resource type="Script" path="res://scripts/level-select-menu.gd" id="1_rl0j8"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_bsucj"]
 [ext_resource type="PackedScene" uid="uid://b38ramit5egv6" path="res://scenes/caesar-level.tscn" id="3_lg3ln"]
 [ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_777na"]
+[ext_resource type="PackedScene" uid="uid://bc1qye1cusarv" path="res://scenes/stream-level.tscn" id="5_81w6o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_osmia"]
 shader = ExtResource("2_bsucj")
@@ -25,6 +26,14 @@ script = ExtResource("1_rl0j8")
 material = SubResource("ShaderMaterial_osmia")
 layout_mode = 2
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("4_777na")
+theme_override_font_sizes/font_size = 48
+text = "Level Select"
+horizontal_alignment = 1
+
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 layout_mode = 2
 
@@ -44,10 +53,13 @@ _level = ExtResource("3_lg3ln")
 [node name="Level2" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
 layout_mode = 2
 _buttonText = "2"
+_boxText = "Stream Cipher"
+_level = ExtResource("5_81w6o")
 
 [node name="Level3" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
 layout_mode = 2
 _buttonText = "3"
+_boxText = "Stream Cipher"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

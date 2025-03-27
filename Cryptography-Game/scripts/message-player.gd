@@ -20,6 +20,7 @@ func _ready() -> void:
 	count = 0
 	isOpen = false
 
+
 func startMessages(messages : Array[String]) -> void:
 	isArray  = true
 	self.messages = messages
@@ -33,6 +34,7 @@ func startMessage(message : String) -> void:
 	messageIndex = 1
 	currentMessage = message
 	label.visible_characters = 0
+
 	$MessageAnimations.play("open-windows")
 
 func printMessages(messageIndex) -> void:
