@@ -46,10 +46,12 @@ z_index = -1
 layout_mode = 0
 offset_right = 289.0
 offset_bottom = 133.0
+mouse_filter = 2
 color = Color(0.145367, 0.26998, 0.302826, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 z_index = -1
+layout_mode = 0
 offset_left = 45.0
 offset_top = 56.0
 offset_right = 249.0

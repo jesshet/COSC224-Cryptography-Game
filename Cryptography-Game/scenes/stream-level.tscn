@@ -71,10 +71,10 @@ text = "è~X9"
 
 [node name="Draggable2" parent="." instance=ExtResource("2_elg2b")]
 layout_mode = 0
-offset_left = 337.0
-offset_top = 244.0
-offset_right = 375.0
-offset_bottom = 267.0
-text = "è~X9"
+offset_left = 267.0
+offset_top = 353.0
+offset_right = 365.0
+offset_bottom = 376.0
+text = "ABCD123456"
 
 [connection signal="child_order_changed" from="LevelStack" to="LevelStack" method="_on_child_order_changed"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://wnffxev8gth2"]
 
-[ext_resource type="Script" path="res://scripts/tex_to_hex_tool.gd" id="1_fa7ro"]
+[ext_resource type="Script" path="res://scripts/xor_decrypt_tool.gd" id="1_vu2ho"]
 [ext_resource type="Script" path="res://scripts/drag-and-drop-collider.gd" id="2_cjb71"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3jvu3"]
@@ -14,7 +14,7 @@ offset_top = 301.0
 offset_right = 1041.0
 offset_bottom = 434.0
 pivot_offset = Vector2(141, 67)
-script = ExtResource("1_fa7ro")
+script = ExtResource("1_vu2ho")
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
@@ -46,17 +46,7 @@ script = ExtResource("2_cjb71")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Control2/LowerBox"]
 shape = SubResource("RectangleShape2D_3jvu3")
 
-[node name="TextToHexBTN" type="Button" parent="."]
-layout_mode = 0
-offset_left = 153.0
-offset_top = 91.0
-offset_right = 249.0
-offset_bottom = 123.0
-pivot_offset = Vector2(47, 17)
-text = "Decrypt
-"
-
-[node name="HexToTextBTN" type="Button" parent="."]
+[node name="XORBTN" type="Button" parent="."]
 layout_mode = 0
 offset_left = 37.0
 offset_top = 91.0
@@ -66,15 +56,27 @@ pivot_offset = Vector2(45, 17)
 text = "Xor
 "
 
+[node name="DecryptBTN" type="Button" parent="."]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 91.0
+offset_right = 249.0
+offset_bottom = 123.0
+pivot_offset = Vector2(47, 17)
+text = "Decrypt
+"
+
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
 layout_mode = 0
 offset_right = 289.0
 offset_bottom = 133.0
+mouse_filter = 2
 color = Color(0.145367, 0.26998, 0.302826, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 z_index = -1
+layout_mode = 0
 offset_left = 45.0
 offset_top = 19.0
 offset_right = 249.0
@@ -90,5 +92,4 @@ offset_right = 249.0
 offset_bottom = 78.0
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
-[connection signal="pressed" from="TextToHexBTN" to="." method="_on_text_to_hex_btn_pressed"]
-[connection signal="pressed" from="HexToTextBTN" to="." method="_on_hex_to_text_btn_pressed"]
+[connection signal="pressed" from="XORBTN" to="." method="_on_xorbtn_pressed"]

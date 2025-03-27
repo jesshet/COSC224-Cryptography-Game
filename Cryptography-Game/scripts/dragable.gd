@@ -29,6 +29,7 @@ func _on_button_down() -> void:
 
 
 func _on_button_up() -> void:
+	_isDragging = false;
 	var collide = false
 	var currentMousePos = get_viewport().get_mouse_position();
 	if _rayCenter.is_colliding(): #move to center of drop in box
