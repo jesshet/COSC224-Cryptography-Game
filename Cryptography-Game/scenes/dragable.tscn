@@ -45,6 +45,7 @@ texture = ExtResource("2_erq8i")
 expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=3 uid="uid://wnffxev8gth2"]
+
+[ext_resource type="Script" path="res://scripts/tex_to_hex_tool.gd" id="1_fa7ro"]
+[ext_resource type="Script" path="res://scripts/drag-and-drop-collider.gd" id="2_cjb71"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jvu3"]
+size = Vector2(549.297, 19.1651)
+
+[node name="xor-decrypt-tool" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 752.0
+offset_top = 301.0
+offset_right = 1041.0
+offset_bottom = 434.0
+pivot_offset = Vector2(141, 67)
+script = ExtResource("1_fa7ro")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 44.0
+offset_top = 19.0
+offset_right = 252.0
+offset_bottom = 40.0
+
+[node name="UpperBox" type="Area2D" parent="Control"]
+position = Vector2(104, 10)
+scale = Vector2(0.369334, 1.1)
+script = ExtResource("2_cjb71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/UpperBox"]
+shape = SubResource("RectangleShape2D_3jvu3")
+
+[node name="Control2" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 46.0
+offset_top = 55.0
+offset_right = 249.0
+offset_bottom = 78.0
+
+[node name="LowerBox" type="Area2D" parent="Control2"]
+position = Vector2(101, 12)
+scale = Vector2(0.369334, 1.1)
+script = ExtResource("2_cjb71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control2/LowerBox"]
+shape = SubResource("RectangleShape2D_3jvu3")
+
+[node name="TextToHexBTN" type="Button" parent="."]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 91.0
+offset_right = 249.0
+offset_bottom = 123.0
+pivot_offset = Vector2(47, 17)
+text = "Decrypt
+"
+
+[node name="HexToTextBTN" type="Button" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 91.0
+offset_right = 133.0
+offset_bottom = 123.0
+pivot_offset = Vector2(45, 17)
+text = "Xor
+"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 289.0
+offset_bottom = 133.0
+color = Color(0.145367, 0.26998, 0.302826, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+z_index = -1
+offset_left = 45.0
+offset_top = 19.0
+offset_right = 249.0
+offset_bottom = 41.0
+color = Color(0.103744, 0.103744, 0.103744, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_left = 45.0
+offset_top = 56.0
+offset_right = 249.0
+offset_bottom = 78.0
+color = Color(0.103744, 0.103744, 0.103744, 1)
+
+[connection signal="pressed" from="TextToHexBTN" to="." method="_on_text_to_hex_btn_pressed"]
+[connection signal="pressed" from="HexToTextBTN" to="." method="_on_hex_to_text_btn_pressed"]

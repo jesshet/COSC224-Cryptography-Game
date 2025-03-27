@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpt12i20n7flr"]
+[gd_scene load_steps=8 format=3 uid="uid://bpt12i20n7flr"]
 
 [ext_resource type="Script" path="res://scripts/stream_level.gd" id="1_k7rco"]
 [ext_resource type="PackedScene" uid="uid://d0kvlxf7acn71" path="res://scenes/dragable.tscn" id="2_elg2b"]
@@ -6,9 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="3_0cfaf"]
 [ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_vag4t"]
 [ext_resource type="PackedScene" uid="uid://smkv4posrhc8" path="res://scenes/tex-to-hex-tool.tscn" id="5_6pwsx"]
-[ext_resource type="Texture2D" uid="uid://clkcsg4583q5t" path="res://assets/sprites/window-frames/LevelPanel.png" id="6_881pq"]
-[ext_resource type="PackedScene" uid="uid://je041xea8f23" path="res://scenes/xor-decrypt-tool.tscn" id="7_3nkww"]
-[ext_resource type="PackedScene" uid="uid://c5d68u6kugplo" path="res://scenes/submit-box.tscn" id="7_iwepp"]
+[ext_resource type="PackedScene" uid="uid://wnffxev8gth2" path="res://scenes/xor_decrypt_tool.tscn" id="6_qllvq"]
 
 [node name="StreamLevel" type="Control"]
 custom_minimum_size = Vector2(320, 180)
@@ -21,25 +19,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_k7rco")
 
-[node name="Level" type="HBoxContainer" parent="."]
+[node name="LevelStack" type="Control" parent="."]
 layout_mode = 2
-offset_left = 20.0
-offset_top = 70.0
-offset_right = 1102.0
-offset_bottom = 658.0
-
-[node name="LevelStack" type="Control" parent="Level"]
-layout_mode = 2
+anchors_preset = 0
+offset_top = -2.0
+offset_right = 1151.0
+offset_bottom = 647.0
 size_flags_horizontal = 3
 
-[node name="Clicks" type="AudioStreamPlayer" parent="Level/LevelStack"]
+[node name="Clicks" type="AudioStreamPlayer" parent="LevelStack"]
 stream = ExtResource("2_if2pn")
 volume_db = -15.0
 
-[node name="MessagePlayer" parent="Level/LevelStack" instance=ExtResource("3_0cfaf")]
+[node name="MessagePlayer" parent="LevelStack" instance=ExtResource("3_0cfaf")]
 script = null
 
-[node name="Problem" type="RichTextLabel" parent="Level/LevelStack"]
+[node name="Problem" type="RichTextLabel" parent="LevelStack"]
 visible = false
 layout_mode = 2
 offset_top = 265.0
@@ -54,52 +49,32 @@ text = "[center]TLLA TL HA AOL YPCLY HA MPCL WT ZOHYW"
 fit_content = true
 scroll_active = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Level/LevelStack"]
-position = Vector2(412.5, 193)
-scale = Vector2(1.13932, 0.955358)
-texture = ExtResource("6_881pq")
+[node name="TextHexTool" parent="LevelStack" instance=ExtResource("5_6pwsx")]
+offset_left = 673.0
+offset_top = 107.0
+offset_right = 962.0
+offset_bottom = 240.0
 
-[node name="ToolVBox" type="VBoxContainer" parent="Level"]
-custom_minimum_size = Vector2(300, 500)
-layout_mode = 2
-
-[node name="TexToHex" parent="Level/ToolVBox" instance=ExtResource("5_6pwsx")]
-layout_mode = 2
-
-[node name="HexToTextBTN" parent="Level/ToolVBox/TexToHex" index="3"]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 96.0
-offset_bottom = 32.0
-
-[node name="XORDecryptTool" parent="Level/ToolVBox" instance=ExtResource("7_3nkww")]
-layout_mode = 2
+[node name="xor-decrypt-tool" parent="LevelStack" instance=ExtResource("6_qllvq")]
+offset_left = 673.0
+offset_top = 354.0
+offset_right = 962.0
+offset_bottom = 487.0
 
 [node name="Draggable" parent="." instance=ExtResource("2_elg2b")]
 layout_mode = 1
-offset_left = 274.0
-offset_top = 217.0
-offset_right = 308.0
-offset_bottom = 240.0
+offset_left = 219.0
+offset_top = 244.0
+offset_right = 257.0
+offset_bottom = 267.0
 text = "è~X9"
 
 [node name="Draggable2" parent="." instance=ExtResource("2_elg2b")]
-offset_left = 330.0
-offset_top = 218.0
-offset_right = 368.0
-offset_bottom = 241.0
+layout_mode = 0
+offset_left = 337.0
+offset_top = 244.0
+offset_right = 375.0
+offset_bottom = 267.0
 text = "è~X9"
 
-[node name="submit-box" parent="." instance=ExtResource("7_iwepp")]
-layout_mode = 0
-offset_left = 170.0
-offset_top = 460.0
-offset_right = 670.0
-offset_bottom = 581.0
-
-[connection signal="child_order_changed" from="Level/LevelStack" to="Level/LevelStack" method="_on_child_order_changed"]
-[connection signal="submit" from="submit-box" to="." method="_on_submitbox_submit"]
-
-[editable path="Level/ToolVBox/TexToHex"]
-[editable path="submit-box"]
+[connection signal="child_order_changed" from="LevelStack" to="LevelStack" method="_on_child_order_changed"]

@@ -1,4 +1,4 @@
-extends CollisionShape2D
+extends Area2D
 
 var filled
 var node
