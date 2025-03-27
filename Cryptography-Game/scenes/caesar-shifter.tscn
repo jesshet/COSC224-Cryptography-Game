@@ -1,12 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyb6n87cbrioh"]
+[gd_scene load_steps=13 format=3 uid="uid://dyb6n87cbrioh"]
 
+[ext_resource type="Texture2D" uid="uid://ct1xsm8krvcs2" path="res://assets/sprites/window-frames/Shifter.png" id="1_j5jkb"]
 [ext_resource type="Script" path="res://scripts/caesar-shift.gd" id="2_5vfg3"]
+[ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="2_anvn0"]
 [ext_resource type="Shader" path="res://assets/shaders/vapor.gdshader" id="3_l3bhd"]
+[ext_resource type="FontFile" uid="uid://bkkjavn3utrot" path="res://assets/fonts/alarm clock.ttf" id="4_2bcbh"]
 [ext_resource type="Texture2D" uid="uid://bs435ew2ufawy" path="res://assets/sprites/arrow.png" id="4_crxs7"]
-[ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_o284c"]
 [ext_resource type="AudioStream" uid="uid://dupff68qtndrn" path="res://assets/sounds/caesar-click.mp3" id="5_6s655"]
 [ext_resource type="AudioStream" uid="uid://dgiwxcpoppd6f" path="res://assets/sounds/incorrect.wav" id="6_sjde0"]
 [ext_resource type="AudioStream" uid="uid://gconcr16wu11" path="res://assets/sounds/success.wav" id="7_dfqf3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0e87u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h04c1"]
 shader = ExtResource("3_l3bhd")
@@ -17,16 +21,6 @@ shader_parameter/speed = 0.04
 shader_parameter/alpha = 1.0
 shader_parameter/noise_amount = 0.45
 shader_parameter/effect_factor = 0.4
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0e87u"]
-shader = ExtResource("3_l3bhd")
-shader_parameter/lines = 100
-shader_parameter/color1 = Color(0.14902, 1, 1, 1)
-shader_parameter/color2 = Color(0.0705882, 1, 1, 1)
-shader_parameter/speed = 0.03
-shader_parameter/alpha = 1.0
-shader_parameter/noise_amount = 0.0
-shader_parameter/effect_factor = 0.21
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iwf0r"]
 shader = ExtResource("3_l3bhd")
@@ -39,21 +33,74 @@ shader_parameter/noise_amount = 0.4
 shader_parameter/effect_factor = 0.4
 
 [node name="Caesar" type="Control"]
-custom_minimum_size = Vector2(403, 172)
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -201.5
-offset_top = -172.0
-offset_right = 201.5
+offset_left = -576.0
+offset_top = -648.0
+offset_right = -234.0
+offset_bottom = -460.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
+
+[node name="ShifterPanel" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(170, 93.75)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_j5jkb")
+
+[node name="Title" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 160.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("2_anvn0")
+theme_override_font_sizes/font_size = 14
+text = "Caesar Shifter"
+
+[node name="subTitle" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 110.0
+offset_top = 164.0
+offset_right = 232.0
+offset_bottom = 190.0
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("2_anvn0")
+theme_override_font_sizes/font_size = 12
+text = "Current Shift"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(1.5, -1)
+polygon = PackedVector2Array(129.5, 121, 132.5, 124, 137.5, 125, 248.5, 125, 255.5, 124, 259.5, 120, 261.5, 114, 261.5, 52, 259.5, 46, 257.5, 44, 252.5, 42, 136.5, 42, 132.5, 44, 130.5, 46, 128.5, 50, 128.5, 116)
+
+[node name="shift-facade" type="Label" parent="."]
+material = SubResource("ShaderMaterial_0e87u")
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+offset_left = 98.0
+offset_top = 46.75
+offset_right = 248.0
+offset_bottom = 151.75
+theme_override_colors/font_color = Color(4.81308e-08, 0.111104, 0.172676, 0.501961)
+theme_override_fonts/font = ExtResource("4_2bcbh")
+theme_override_font_sizes/font_size = 92
+text = "88
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -62,12 +109,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -202.0
-offset_top = -66.5
-offset_right = 202.0
-offset_bottom = 66.5
+offset_left = -200.0
+offset_top = -62.0
+offset_right = 204.0
+offset_bottom = 71.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = -30
 alignment = 1
 script = ExtResource("2_5vfg3")
 
@@ -77,17 +125,16 @@ layout_mode = 2
 texture_normal = ExtResource("4_crxs7")
 flip_h = true
 
-[node name="shift" type="RichTextLabel" parent="HBoxContainer"]
+[node name="shift" type="Label" parent="HBoxContainer"]
 material = SubResource("ShaderMaterial_0e87u")
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_fonts/normal_font = ExtResource("4_o284c")
-theme_override_font_sizes/bold_italics_font_size = 1
-theme_override_font_sizes/normal_font_size = 48
-bbcode_enabled = true
-text = "[center]0"
-fit_content = true
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("4_2bcbh")
+theme_override_font_sizes/font_size = 92
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="right" type="TextureButton" parent="HBoxContainer"]
 material = SubResource("ShaderMaterial_iwf0r")
@@ -105,28 +152,8 @@ stream = ExtResource("6_sjde0")
 [node name="success" type="AudioStreamPlayer" parent="HBoxContainer"]
 stream = ExtResource("7_dfqf3")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -45.0
-offset_top = -31.0
-offset_right = 45.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(0.231373, 0.882353, 1, 1)
-theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_o284c")
-theme_override_font_sizes/font_size = 32
-text = "Enter Shift"
-
 [connection signal="button_down" from="HBoxContainer/left" to="HBoxContainer" method="_on_left_button_down"]
 [connection signal="pressed" from="HBoxContainer/left" to="HBoxContainer" method="_on_left_pressed"]
 [connection signal="pressed" from="HBoxContainer/left" to="HBoxContainer/left" method="_on_pressed"]
 [connection signal="pressed" from="HBoxContainer/right" to="HBoxContainer" method="_on_right_pressed"]
 [connection signal="pressed" from="HBoxContainer/right" to="HBoxContainer/right" method="_on_pressed"]
-[connection signal="pressed" from="Button" to="HBoxContainer" method="_on_button_pressed"]
