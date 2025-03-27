@@ -32,6 +32,8 @@ func _on_button_down() -> void:
 	pass # Replace with function body.
 
 
+
+
 func _on_button_up() -> void:
 	var currentMousePos = get_viewport().get_mouse_position();
 	if _rayCenter.is_colliding(): #move to center of drop in box
@@ -44,9 +46,6 @@ func _on_button_up() -> void:
 			self.text = text_to_hex(self.text)
 		if(colliderParent.get_name() == "HexToTex"):
 			self.text = hex_to_text(self.text)
-		if(colliderParent.get_name() == "XOR"):
-			var key = _inputTBX.text #key length checked in xor method
-			self.text = xor(self.text, key)
 	_isDragging = false;
 	pass # Replace with function body.
 
@@ -95,3 +94,8 @@ func xor(in1: String, in2: String) -> String:
 		var xor_byte = byte_hex1 ^ byte_hex2
 		xor_result += String("%02x" % xor_byte)  # Keep it in recognizable hex
 	return xor_result.replace(" ","").to_upper()
+
+
+func _on_xorbox_submit_xor() -> void:
+	var key = _inputTBX.text #key length checked in xor method
+	self.text = xor(self.text, key)

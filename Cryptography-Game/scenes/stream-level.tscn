@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpt12i20n7flr"]
+[gd_scene load_steps=10 format=3 uid="uid://bpt12i20n7flr"]
 
-[ext_resource type="PackedScene" path="res://scenes/dragable.tscn" id="2_elg2b"]
+[ext_resource type="Script" path="res://scripts/stream_level.gd" id="1_k7rco"]
+[ext_resource type="PackedScene" uid="uid://d0kvlxf7acn71" path="res://scenes/dragable.tscn" id="2_elg2b"]
 [ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="2_if2pn"]
 [ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="3_0cfaf"]
 [ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_vag4t"]
 [ext_resource type="PackedScene" path="res://scenes/toolbox.tscn" id="5_6pwsx"]
 [ext_resource type="Texture2D" uid="uid://clkcsg4583q5t" path="res://assets/sprites/window-frames/LevelPanel.png" id="6_881pq"]
+[ext_resource type="PackedScene" uid="uid://c5d68u6kugplo" path="res://scenes/submit-box.tscn" id="7_iwepp"]
+[ext_resource type="Script" path="res://scripts/xor-box.gd" id="9_a1brr"]
 
 [node name="StreamLevel" type="Control"]
 custom_minimum_size = Vector2(320, 180)
@@ -16,6 +19,7 @@ offset_right = 1158.0
 offset_bottom = 654.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_k7rco")
 
 [node name="Level" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -51,8 +55,8 @@ fit_content = true
 scroll_active = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/LevelStack"]
-position = Vector2(412.5, 272.5)
-scale = Vector2(1.13932, 1.31027)
+position = Vector2(412.5, 193)
+scale = Vector2(1.13932, 0.955358)
 texture = ExtResource("6_881pq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Level"]
@@ -75,17 +79,33 @@ offset_top = 217.0
 offset_right = 308.0
 offset_bottom = 240.0
 text = "è~X9"
-_inputTBX = NodePath("../KeyInput")
+_inputTBX = NodePath("../xor-box/TextEdit")
 
-[node name="KeyInput" type="TextEdit" parent="."]
-layout_mode = 2
-offset_left = 819.0
-offset_top = 528.0
-offset_right = 1082.0
-offset_bottom = 566.0
-placeholder_text = "[Enter Key - ABCD123456]"
+[node name="submit-box" parent="." instance=ExtResource("7_iwepp")]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 460.0
+offset_right = 670.0
+offset_bottom = 581.0
+
+[node name="xor-box" parent="." instance=ExtResource("7_iwepp")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 0
+offset_left = 835.0
+offset_top = 541.0
+offset_right = 1075.0
+offset_bottom = 662.0
+script = ExtResource("9_a1brr")
+
+[node name="TextEdit" parent="xor-box" index="0"]
+custom_minimum_size = Vector2(200, 25)
+theme_override_font_sizes/font_size = 11
 
 [connection signal="child_order_changed" from="Level/LevelStack" to="Level/LevelStack" method="_on_child_order_changed"]
+[connection signal="submit" from="submit-box" to="." method="_on_submitbox_submit"]
+[connection signal="submit_xor" from="xor-box" to="Control" method="_on_xorbox_submit_xor"]
 
 [editable path="Level/VBoxContainer/TexToHex"]
 [editable path="Level/VBoxContainer/XOR"]
+[editable path="submit-box"]
+[editable path="xor-box"]
