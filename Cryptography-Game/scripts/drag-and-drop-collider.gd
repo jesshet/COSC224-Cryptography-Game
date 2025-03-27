@@ -16,6 +16,7 @@ func checkAndFill(s):
 	else:
 		print("collider already filled")
 		return false
+		
 func depopulate():
 	print("depopulating the collider")
 	filled = false

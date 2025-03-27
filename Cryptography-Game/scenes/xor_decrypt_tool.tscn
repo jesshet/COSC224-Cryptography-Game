@@ -46,7 +46,19 @@ script = ExtResource("2_cjb71")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Control2/LowerBox"]
 shape = SubResource("RectangleShape2D_3jvu3")
 
+
 [node name="XORBTN" type="Button" parent="."]
+
+[node name="Decrypt" type="Button" parent="."]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 91.0
+offset_right = 249.0
+offset_bottom = 123.0
+pivot_offset = Vector2(47, 17)
+text = "Decrypt
+"
+
 layout_mode = 0
 offset_left = 37.0
 offset_top = 91.0
@@ -93,3 +105,4 @@ offset_bottom = 78.0
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
 [connection signal="pressed" from="XORBTN" to="." method="_on_xorbtn_pressed"]
+

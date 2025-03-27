@@ -43,7 +43,7 @@ func _on_button_up() -> void:
 	if not collide:
 		resetPosition()
 
-
+	_isDragging = false;
+	
 func resetPosition():
 	self.global_position = startPos
-	pass
