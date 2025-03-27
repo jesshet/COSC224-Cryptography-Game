@@ -1,28 +1,55 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0kvlxf7acn71"]
+[gd_scene load_steps=5 format=3 uid="uid://d0kvlxf7acn71"]
 
 [ext_resource type="Script" path="res://scripts/dragable.gd" id="1_3pqcd"]
+[ext_resource type="Texture2D" uid="uid://cp7rofhg2fpi1" path="res://assets/sprites/buttons/ButtonMiddle.png" id="2_544y6"]
+[ext_resource type="Texture2D" uid="uid://bvrnfjkcmpr8s" path="res://addons/gut/images/green.png" id="2_erq8i"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yqyfs"]
 
-[node name="Dragable" type="Button" parent="." node_paths=PackedStringArray("_rayCenter")]
+[node name="Dragable" type="Button" node_paths=PackedStringArray("_rayCenter")]
 z_index = 12
-layout_mode = 0
 offset_right = 42.0
 offset_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_yqyfs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_yqyfs")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_yqyfs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_yqyfs")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_yqyfs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yqyfs")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_yqyfs")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yqyfs")
 text = "Sam"
 script = ExtResource("1_3pqcd")
 _rayCenter = NodePath("Ray")
 
-[node name="Ray" type="RayCast2D" parent="Dragable"]
+[node name="Ray" type="RayCast2D" parent="."]
 target_position = Vector2(0, 0)
 hit_from_inside = true
 collide_with_areas = true
 
-[connection signal="button_down" from="Dragable" to="Dragable" method="_on_button_down"]
-[connection signal="button_up" from="Dragable" to="Dragable" method="_on_button_up"]
+[node name="TextureRect" type="TextureRect" parent="Ray"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_erq8i")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_544y6")
+expand_mode = 1
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
