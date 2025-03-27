@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpt12i20n7flr"]
+[gd_scene load_steps=8 format=3 uid="uid://bpt12i20n7flr"]
 
 [ext_resource type="Script" path="res://scripts/stream_level.gd" id="1_k7rco"]
 [ext_resource type="PackedScene" uid="uid://d0kvlxf7acn71" path="res://scenes/dragable.tscn" id="2_elg2b"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="3_0cfaf"]
 [ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_vag4t"]
 [ext_resource type="PackedScene" uid="uid://smkv4posrhc8" path="res://scenes/tex-to-hex-tool.tscn" id="5_6pwsx"]
+[ext_resource type="PackedScene" uid="uid://wnffxev8gth2" path="res://scenes/xor_decrypt_tool.tscn" id="7_glbvk"]
 
 [node name="StreamLevel" type="Control"]
 custom_minimum_size = Vector2(320, 180)
@@ -69,5 +70,11 @@ offset_top = 353.0
 offset_right = 365.0
 offset_bottom = 376.0
 text = "ABCD123456"
+
+[node name="xor-decrypt-tool" parent="." instance=ExtResource("7_glbvk")]
+offset_left = 670.0
+offset_top = 268.0
+offset_right = 959.0
+offset_bottom = 401.0
 
 [connection signal="child_order_changed" from="LevelStack" to="LevelStack" method="_on_child_order_changed"]

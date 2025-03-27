@@ -11,7 +11,7 @@ func _ready() -> void:
 	regex = RegEx.new()
 	regex.compile("^[0-9a-fA-F]*$")
 	upperCollider = $Control/UpperBox
-	lowerCollider = $Control/LowerBox
+	lowerCollider = $Control2/LowerBox
 	nodeUpper = null
 	nodeLower = null
 	_inputUpper = ""
@@ -19,14 +19,15 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _on_xorbtn_pressed() -> void:
+	print("works here")
 	if not (upperCollider.filled and lowerCollider.filled):
 		print("You need to supply two inputs")
 		return
+	print("works here")
 	nodeUpper = upperCollider.node
 	nodeLower = lowerCollider.node
 	_inputUpper = nodeUpper.text
 	_inputLower = nodeLower.text
-	
 	var result = regex.search(_inputUpper)
 	if not result:
 		print("Invalid input: Please provide a valid hexadecimal string.")
