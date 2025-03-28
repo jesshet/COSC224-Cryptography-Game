@@ -29,6 +29,9 @@ func _on_xorbtn_pressed() -> void:
 	nodeLower = lowerCollider.node
 	_inputUpper = nodeUpper.text
 	_inputLower = nodeLower.text
+	if _inputUpper.length() != _inputLower.length():
+		$"../MessagePlayer".startMessage("Invalid input: make sure that the two strings are the same length.")
+		return
 	var result = regex.search(_inputUpper)
 	if not result:
 		$"../MessagePlayer".startMessage("Invalid input: Please provide a valid hexadecimal string.")
@@ -41,4 +44,27 @@ func _on_xorbtn_pressed() -> void:
 		var byte_hex2 = _inputLower.substr(i, 2).hex_to_int()
 		var xor_byte = byte_hex1 ^ byte_hex2
 		xor_result += String("%02x" % xor_byte)
-	nodeUpper.text = xor_result.replace(" ","").to_upper()
+	animateChange(nodeUpper.text, xor_result.replace(" ","").to_upper())
+	
+
+func animateChange(currentWord, targetWord):
+	var loop = 0
+	var count = 0
+	while(loop < 4):
+		while(count < targetWord.length()):
+			
+			if(loop < 3):
+				currentWord[count] = get_random_char()
+			else:
+				currentWord[count] = targetWord[count]
+			count += 1
+			await get_tree().create_timer(0.005).timeout
+			nodeUpper.text = currentWord
+		count = 0
+		loop += 1
+	#setInfo(currentWord)
+		
+func get_random_char():
+	var random_number = randi() % 26
+	var characters = 'abcdefghijklmnopqrstuvwxyz'
+	return characters[random_number]

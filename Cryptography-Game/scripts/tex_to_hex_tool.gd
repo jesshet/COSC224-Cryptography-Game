@@ -74,7 +74,6 @@ func infoClear():
 	$Info.text = ""
 
 func animateChange(currentWord, targetWord):
-	var loop = 0
 	var count = 0
 	while(currentWord != targetWord):
 		while(count < targetWord.length()):
@@ -84,7 +83,7 @@ func animateChange(currentWord, targetWord):
 			
 			if count >= currentWord.length():
 				currentWord += get_random_char()
-				break
+				
 				
 			if count == targetWord.length() - 1 && currentWord.length() > targetWord.length():
 				currentWord = currentWord.left(currentWord.length() - 1)
@@ -95,12 +94,11 @@ func animateChange(currentWord, targetWord):
 				
 			count += 1
 			if currentWord.length() > targetWord.length():
-				await get_tree().create_timer(0.02).timeout
+				await get_tree().create_timer(0.01).timeout
 			else:
-				await get_tree().create_timer(0.005).timeout
+				await get_tree().create_timer(0.001).timeout
 			textBox.node.text = currentWord
 		count = 0
-		loop += 1
 	setInfo(currentWord)
 		
 func get_random_char():
