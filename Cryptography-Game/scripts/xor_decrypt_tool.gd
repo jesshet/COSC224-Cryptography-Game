@@ -6,6 +6,7 @@ var nodeLower
 var upperCollider
 var lowerCollider
 var regex
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	regex = RegEx.new()
@@ -21,7 +22,7 @@ func _ready() -> void:
 func _on_xorbtn_pressed() -> void:
 	print("works here")
 	if not (upperCollider.filled and lowerCollider.filled):
-		print("You need to supply two inputs")
+		$"../MessagePlayer".startMessage("You need to supply two inputs")
 		return
 	print("works here")
 	nodeUpper = upperCollider.node
@@ -30,10 +31,10 @@ func _on_xorbtn_pressed() -> void:
 	_inputLower = nodeLower.text
 	var result = regex.search(_inputUpper)
 	if not result:
-		print("Invalid input: Please provide a valid hexadecimal string.")
+		$"../MessagePlayer".startMessage("Invalid input: Please provide a valid hexadecimal string.")
 	result = regex.search(_inputLower)
 	if not result:
-		print("Invalid key: Please provide a valid hexadecimal key.")
+		$"../MessagePlayer".startMessage("Invalid key: Please provide a valid hexadecimal key.")
 	var xor_result = ""
 	for i in range(0, _inputUpper.length(), 2):
 		var byte_hex1 = _inputUpper.substr(i, 2).hex_to_int()

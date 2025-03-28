@@ -424,23 +424,20 @@ scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("6_uvyhx")
 offset = Vector2(-319, -1)
 
-[node name="Message" type="RichTextLabel" parent="."]
+[node name="Message" type="Label" parent="."]
 visible = false
 z_index = 3
-texture_filter = 1
-offset_left = 319.0
-offset_top = 141.0
-offset_right = 884.0
-offset_bottom = 230.0
+offset_left = 325.0
+offset_top = 130.0
+offset_right = 887.0
+offset_bottom = 224.0
 pivot_offset = Vector2(1237, 288)
-theme_override_colors/default_color = Color(0.560784, 0.866667, 1, 1)
-theme_override_fonts/normal_font = ExtResource("5_5gil0")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = " I FOUND THIS MESSAGE ON A PIECE OF PAPER THE TARGET LEFT BEHIND BUT I CANT READ IT. I THINK IT MIGHT BE A CAESAR CIPHER.
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("5_5gil0")
+theme_override_font_sizes/font_size = 14
+text = "We recovered this stream of cipher text and we think we've found part of the key on the targets old hard drive. Based on what we've gathered we believe it to be a stream cipher. You know what to do.
 "
-fit_content = true
-scroll_active = false
+autowrap_mode = 3
 visible_characters = 0
 visible_ratio = 0.0
 

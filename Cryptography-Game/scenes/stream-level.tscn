@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpt12i20n7flr"]
+[gd_scene load_steps=8 format=3 uid="uid://bpt12i20n7flr"]
 
 [ext_resource type="Script" path="res://scripts/stream_level.gd" id="1_k7rco"]
+[ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="2_6qlsh"]
 [ext_resource type="PackedScene" uid="uid://d0kvlxf7acn71" path="res://scenes/dragable.tscn" id="2_elg2b"]
 [ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="2_if2pn"]
 [ext_resource type="PackedScene" uid="uid://smkv4posrhc8" path="res://scenes/tex-to-hex-tool.tscn" id="5_6pwsx"]
@@ -8,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://wnffxev8gth2" path="res://scenes/xor_decrypt_tool.tscn" id="7_glbvk"]
 
 [node name="StreamLevel" type="Control"]
+z_index = 2
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0
@@ -17,6 +19,10 @@ offset_bottom = 654.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_k7rco")
+levelMessages = Array[String](["We recovered this stream of cipher text and we think we've 
+found part of the key on the targets old hard drive. Based 
+on what we've gathered we believe it to be a stream cipher.
+You know what to do."])
 
 [node name="LevelStack" type="Control" parent="."]
 layout_mode = 2
@@ -26,21 +32,23 @@ offset_right = 1151.0
 offset_bottom = 647.0
 size_flags_horizontal = 3
 
-[node name="Clicks" type="AudioStreamPlayer" parent="LevelStack"]
-stream = ExtResource("2_if2pn")
-volume_db = -15.0
-
-[node name="TextHexTool" parent="LevelStack" instance=ExtResource("5_6pwsx")]
-offset_left = 673.0
-offset_top = 107.0
-offset_right = 962.0
-offset_bottom = 240.0
+[node name="MessagePlayer" parent="LevelStack" instance=ExtResource("2_6qlsh")]
 
 [node name="xor-decrypt-tool" parent="LevelStack" instance=ExtResource("7_glbvk")]
 offset_left = 669.0
 offset_top = 259.0
 offset_right = 958.0
 offset_bottom = 392.0
+
+[node name="TextHexTool" parent="LevelStack" instance=ExtResource("5_6pwsx")]
+offset_left = 562.0
+offset_top = 93.0
+offset_right = 1091.0
+offset_bottom = 226.0
+
+[node name="Clicks" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_if2pn")
+volume_db = -15.0
 
 [node name="Draggable" parent="." instance=ExtResource("2_elg2b")]
 layout_mode = 1
@@ -66,3 +74,4 @@ offset_right = 620.0
 offset_bottom = 605.0
 
 [connection signal="child_order_changed" from="LevelStack" to="LevelStack" method="_on_child_order_changed"]
+[connection signal="submit" from="submit-box" to="." method="_on_submitbox_submit"]
