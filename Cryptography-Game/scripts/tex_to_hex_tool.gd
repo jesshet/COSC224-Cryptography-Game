@@ -74,6 +74,7 @@ func infoClear():
 	$Info.text = ""
 
 func animateChange(currentWord, targetWord):
+	textBox.node.mouse_filter = MOUSE_FILTER_IGNORE
 	var count = 0
 	while(currentWord != targetWord):
 		while(count < targetWord.length()):
@@ -96,10 +97,11 @@ func animateChange(currentWord, targetWord):
 			if currentWord.length() > targetWord.length():
 				await get_tree().create_timer(0.01).timeout
 			else:
-				await get_tree().create_timer(0.001).timeout
+				await get_tree().create_timer(0.005).timeout
 			textBox.node.text = currentWord
 		count = 0
 	setInfo(currentWord)
+	textBox.node.mouse_filter = MOUSE_FILTER_STOP
 		
 func get_random_char():
 	var random_number = randi() % 26

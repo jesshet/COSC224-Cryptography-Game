@@ -48,6 +48,7 @@ func _on_xorbtn_pressed() -> void:
 	
 
 func animateChange(currentWord, targetWord):
+	nodeUpper.mouse_filter = MOUSE_FILTER_IGNORE
 	var loop = 0
 	var count = 0
 	while(loop < 4):
@@ -58,11 +59,12 @@ func animateChange(currentWord, targetWord):
 			else:
 				currentWord[count] = targetWord[count]
 			count += 1
-			await get_tree().create_timer(0.005).timeout
+			await get_tree().create_timer(0.001).timeout
 			nodeUpper.text = currentWord
 		count = 0
 		loop += 1
 	#setInfo(currentWord)
+	nodeUpper.mouse_filter = MOUSE_FILTER_STOP
 		
 func get_random_char():
 	var random_number = randi() % 26
