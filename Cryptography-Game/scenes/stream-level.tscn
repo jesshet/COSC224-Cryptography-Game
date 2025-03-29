@@ -113,7 +113,7 @@ offset_left = 135.0
 offset_top = 124.0
 offset_right = 335.0
 offset_bottom = 149.0
-text = "è~X9"
+text = "\"26_0"
 
 [node name="Dragable" parent="." instance=ExtResource("2_elg2b")]
 layout_mode = 0
@@ -121,7 +121,7 @@ offset_left = 135.0
 offset_top = 167.0
 offset_right = 335.0
 offset_bottom = 192.0
-text = "ABCD123456"
+text = "4A575A335F"
 
 [node name="submit-box" parent="." instance=ExtResource("6_vb680")]
 layout_mode = 0
