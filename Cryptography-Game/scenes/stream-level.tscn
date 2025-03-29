@@ -1,12 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpt12i20n7flr"]
+[gd_scene load_steps=14 format=3 uid="uid://bpt12i20n7flr"]
 
 [ext_resource type="Script" path="res://scripts/stream_level.gd" id="1_k7rco"]
 [ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="2_6qlsh"]
 [ext_resource type="PackedScene" uid="uid://d0kvlxf7acn71" path="res://scenes/dragable.tscn" id="2_elg2b"]
 [ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="2_if2pn"]
+[ext_resource type="Texture2D" uid="uid://ck8ji715s7ub5" path="res://assets/sprites/toolSprites/ToolButton.png" id="3_c7wv3"]
+[ext_resource type="Texture2D" uid="uid://kvd4w5bigwky" path="res://assets/sprites/toolSprites/ToolButton(selected).png" id="4_dy4lj"]
+[ext_resource type="Texture2D" uid="uid://b86jpd0w3mbne" path="res://assets/sprites/toolSprites/ToolButton(pressed).png" id="5_4gcrt"]
 [ext_resource type="PackedScene" uid="uid://smkv4posrhc8" path="res://scenes/tex-to-hex-tool.tscn" id="5_6pwsx"]
+[ext_resource type="BitMap" uid="uid://cnjmm1n2fwnsx" path="res://assets/sprites/toolSprites/ToolButton(mask).png" id="6_e02rr"]
 [ext_resource type="PackedScene" uid="uid://c5d68u6kugplo" path="res://scenes/submit-box.tscn" id="6_vb680"]
+[ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="7_85c0k"]
 [ext_resource type="PackedScene" uid="uid://wnffxev8gth2" path="res://scenes/xor_decrypt_tool.tscn" id="7_glbvk"]
+[ext_resource type="Texture2D" uid="uid://blw52q31ete6q" path="res://assets/sprites/window-frames/DraggableList.png" id="11_66qtc"]
 
 [node name="StreamLevel" type="Control"]
 z_index = 2
@@ -33,53 +39,96 @@ offset_bottom = 647.0
 size_flags_horizontal = 3
 
 [node name="MessagePlayer" parent="LevelStack" instance=ExtResource("2_6qlsh")]
+offset_left = 3.0
+offset_top = -29.0
+offset_right = 3.0
+offset_bottom = -29.0
+
+[node name="RepeatText" type="TextureButton" parent="LevelStack"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 867.0
+offset_top = 88.0
+offset_right = 914.0
+offset_bottom = 103.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_c7wv3")
+texture_hover = ExtResource("4_dy4lj")
+texture_disabled = ExtResource("5_4gcrt")
+texture_click_mask = ExtResource("6_e02rr")
+
+[node name="Label" type="Label" parent="LevelStack/RepeatText"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 118.0
+offset_bottom = 35.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("7_85c0k")
+text = "Call"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="xor-decrypt-tool" parent="LevelStack" instance=ExtResource("7_glbvk")]
-offset_left = 560.0
-offset_top = 268.0
-offset_right = 849.0
-offset_bottom = 401.0
+offset_left = 553.0
+offset_top = 333.0
+offset_right = 842.0
+offset_bottom = 466.0
 
 [node name="TextHexTool" parent="LevelStack" instance=ExtResource("5_6pwsx")]
-offset_left = 562.0
-offset_top = 93.0
-offset_right = 1091.0
-offset_bottom = 226.0
-
-[node name="RepeatText" type="Button" parent="LevelStack"]
-layout_mode = 0
-offset_left = 985.0
-offset_top = 28.0
-offset_right = 1119.0
-offset_bottom = 59.0
-text = "Repeat Message"
+offset_left = 557.0
+offset_top = 164.0
+offset_right = 1086.0
+offset_bottom = 297.0
 
 [node name="Clicks" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_if2pn")
 volume_db = -15.0
 
+[node name="DraggableContainerFrame" type="Control" parent="."]
+anchors_preset = 0
+offset_top = -41.0
+offset_right = 40.0
+offset_bottom = -1.0
+mouse_filter = 2
+
+[node name="DraggableContainer" type="Sprite2D" parent="DraggableContainerFrame"]
+position = Vector2(271, 336)
+texture = ExtResource("11_66qtc")
+
+[node name="Label" type="Label" parent="DraggableContainerFrame"]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 84.0
+offset_right = 252.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("7_85c0k")
+theme_override_font_sizes/font_size = 26
+text = "Clues"
+
 [node name="Draggable" parent="." instance=ExtResource("2_elg2b")]
 layout_mode = 1
-offset_left = 219.0
-offset_top = 244.0
-offset_right = 257.0
-offset_bottom = 267.0
+offset_left = 135.0
+offset_top = 124.0
+offset_right = 335.0
+offset_bottom = 149.0
 text = "è~X9"
 
 [node name="Dragable" parent="." instance=ExtResource("2_elg2b")]
 layout_mode = 0
-offset_left = 267.0
-offset_top = 353.0
-offset_right = 365.0
-offset_bottom = 376.0
+offset_left = 135.0
+offset_top = 167.0
+offset_right = 335.0
+offset_bottom = 192.0
 text = "ABCD123456"
 
 [node name="submit-box" parent="." instance=ExtResource("6_vb680")]
 layout_mode = 0
-offset_left = 66.0
-offset_top = 484.0
-offset_right = 620.0
-offset_bottom = 605.0
+offset_left = 563.0
+offset_top = 488.0
+offset_right = 1117.0
+offset_bottom = 609.0
 
 [connection signal="child_order_changed" from="LevelStack" to="LevelStack" method="_on_child_order_changed"]
 [connection signal="pressed" from="LevelStack/RepeatText" to="." method="_on_repeat_text_pressed"]

@@ -49,12 +49,14 @@ alignment = 1
 _buttonText = "1"
 _boxText = "Caesar Cipher"
 _level = ExtResource("3_lg3ln")
+_animName = "Caesar-level"
 
 [node name="Level2" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
 layout_mode = 2
 _buttonText = "2"
 _boxText = "Stream Cipher"
 _level = ExtResource("5_81w6o")
+_animName = "Stream-level"
 
 [node name="Level3" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
 layout_mode = 2

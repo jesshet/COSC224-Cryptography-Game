@@ -9,7 +9,7 @@ var startPos: Vector2
 func  _ready() -> void:
 	assert(_rayCenter != null, name + "'s raycast is null");
 	
-	startPos = Vector2(global_position.x + size.x/2, global_position.y + size.y/2);
+	startPos = $DefaultPosition.global_position + ($DefaultPosition.size - size)/2;
 	_rayCenter.global_position = Vector2(global_position.x + size.x/2, global_position.y + size.y/2);
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

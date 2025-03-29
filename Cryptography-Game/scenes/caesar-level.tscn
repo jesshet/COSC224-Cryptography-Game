@@ -1,15 +1,23 @@
-[gd_scene load_steps=17 format=3 uid="uid://b38ramit5egv6"]
+[gd_scene load_steps=26 format=3 uid="uid://b38ramit5egv6"]
 
 [ext_resource type="Script" path="res://scripts/level-stack.gd" id="1_kj5v7"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_ebdnf"]
 [ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="2_hb6dt"]
 [ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="3_dcoku"]
+[ext_resource type="Texture2D" uid="uid://ck8ji715s7ub5" path="res://assets/sprites/toolSprites/ToolButton.png" id="3_jb0qi"]
 [ext_resource type="Texture2D" uid="uid://bn6fm2g4j7dw4" path="res://assets/sprites/buttons/submit.png" id="3_niomo"]
 [ext_resource type="Texture2D" uid="uid://ctpir2bd4j6o1" path="res://assets/sprites/buttons/submit(hover).png" id="4_kpgy3"]
 [ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="4_l6swe"]
+[ext_resource type="Texture2D" uid="uid://b86jpd0w3mbne" path="res://assets/sprites/toolSprites/ToolButton(pressed).png" id="4_mi0rm"]
 [ext_resource type="PackedScene" uid="uid://dyb6n87cbrioh" path="res://scenes/caesar-shifter.tscn" id="4_ugpmg"]
+[ext_resource type="Texture2D" uid="uid://kvd4w5bigwky" path="res://assets/sprites/toolSprites/ToolButton(selected).png" id="5_3t0wq"]
 [ext_resource type="BitMap" uid="uid://fb5sbmos3njj" path="res://assets/sprites/buttons/SubmitMast.png" id="5_kndp5"]
+[ext_resource type="BitMap" uid="uid://cnjmm1n2fwnsx" path="res://assets/sprites/toolSprites/ToolButton(mask).png" id="6_r5jy4"]
 [ext_resource type="Texture2D" uid="uid://b3q7n3di1udb" path="res://assets/sprites/window-frames/CaesarPanel.png" id="7_2p3q0"]
+[ext_resource type="Script" path="res://scripts/level_complete.gd" id="11_6lvct"]
+[ext_resource type="Texture2D" uid="uid://dcovabmbyqt77" path="res://assets/sprites/window-frames/SettingsFrame.png" id="11_d2x54"]
+[ext_resource type="Texture2D" uid="uid://s4vrloti4qxy" path="res://assets/sprites/buttons/CodexButton.png" id="12_mwyaj"]
+[ext_resource type="Texture2D" uid="uid://b4lnd2uwtjtfo" path="res://assets/sprites/buttons/CodexButton(selected).png" id="13_1peny"]
 
 [sub_resource type="Animation" id="Animation_i4qw5"]
 resource_name = "Open-windows"
@@ -108,6 +116,10 @@ shader_parameter/lod = 3.0
 shader = ExtResource("2_ebdnf")
 shader_parameter/lod = 3.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tvjci"]
+shader = ExtResource("2_ebdnf")
+shader_parameter/lod = 3.0
+
 [node name="CaesarLevel" type="Control"]
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
@@ -136,6 +148,42 @@ script = ExtResource("1_kj5v7")
 levelMessages = Array[String](["I found this message on a piece of paper that the target left behind, but i can't figure out what it says. I think it might be a Caesar cipher.", "This is a second message for testing purposes. please replace later."])
 
 [node name="MessagePlayer" parent="Level/LevelStack" instance=ExtResource("3_dcoku")]
+offset_left = 1.0
+offset_top = -33.0
+offset_right = 1.0
+offset_bottom = -33.0
+
+[node name="Replay" type="TextureButton" parent="Level/LevelStack"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 410.5
+offset_top = -126.5
+offset_right = 457.5
+offset_bottom = -112.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_jb0qi")
+texture_pressed = ExtResource("4_mi0rm")
+texture_hover = ExtResource("5_3t0wq")
+texture_click_mask = ExtResource("6_r5jy4")
+
+[node name="Label" type="Label" parent="Level/LevelStack/Replay"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 116.0
+offset_bottom = 36.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("4_l6swe")
+text = "Call"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="Control" parent="Level/LevelStack"]
 anchors_preset = 0
@@ -234,5 +282,131 @@ offset_bottom = -116.0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(173, 96)
 
+[node name="LevelComplete" type="Control" parent="Level/LevelStack"]
+visible = false
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -148.5
+offset_right = 240.0
+offset_bottom = 148.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_6lvct")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Level/LevelStack/LevelComplete"]
+position = Vector2(248.5, 159)
+scale = Vector2(6.9425, 4.15)
+copy_mode = 2
+
+[node name="Blur" type="ColorRect" parent="Level/LevelStack/LevelComplete"]
+material = SubResource("ShaderMaterial_tvjci")
+layout_mode = 0
+offset_left = -360.0
+offset_top = -172.0
+offset_right = 844.0
+offset_bottom = 532.0
+
+[node name="Fade" type="ColorRect" parent="Level/LevelStack/LevelComplete"]
+layout_mode = 0
+offset_left = -364.0
+offset_top = -170.0
+offset_right = 846.0
+offset_bottom = 535.0
+color = Color(0, 0, 0, 0.619608)
+
+[node name="Panel" type="Sprite2D" parent="Level/LevelStack/LevelComplete"]
+position = Vector2(240, 153)
+scale = Vector2(0.5, 0.4)
+texture = ExtResource("11_d2x54")
+
+[node name="Title" type="Label" parent="Level/LevelStack/LevelComplete"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -64.5
+offset_right = 67.0
+offset_bottom = -34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("4_l6swe")
+theme_override_font_sizes/font_size = 24
+text = "You Win!"
+
+[node name="Time" type="Label" parent="Level/LevelStack/LevelComplete"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -30.5
+offset_right = 188.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("4_l6swe")
+theme_override_font_sizes/font_size = 32
+text = "Time:  0:00"
+
+[node name="CodexBTN" type="TextureButton" parent="Level/LevelStack/LevelComplete"]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 190.0
+offset_right = 263.0
+offset_bottom = 257.0
+scale = Vector2(0.65, 0.65)
+texture_normal = ExtResource("12_mwyaj")
+texture_hover = ExtResource("13_1peny")
+
+[node name="Label" type="Label" parent="Level/LevelStack/LevelComplete/CodexBTN"]
+layout_mode = 0
+offset_left = 33.0
+offset_right = 200.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("4_l6swe")
+text = "Codex"
+vertical_alignment = 1
+
+[node name="LevelSelectBTN" type="TextureButton" parent="Level/LevelStack/LevelComplete"]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 190.0
+offset_right = 484.0
+offset_bottom = 257.0
+scale = Vector2(0.65, 0.65)
+texture_normal = ExtResource("12_mwyaj")
+texture_hover = ExtResource("13_1peny")
+flip_h = true
+
+[node name="Label" type="Label" parent="Level/LevelStack/LevelComplete/LevelSelectBTN"]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 174.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("4_l6swe")
+text = "Level Select
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [connection signal="child_order_changed" from="Level/LevelStack" to="Level/LevelStack" method="_on_child_order_changed"]
+[connection signal="pressed" from="Level/LevelStack/Replay" to="Level/LevelStack" method="_on_replay_pressed"]
 [connection signal="pressed" from="Level/LevelStack/Panel/SubmitButton" to="Level/LevelStack" method="_on_submit_button_pressed"]
+[connection signal="pressed" from="Level/LevelStack/LevelComplete/CodexBTN" to="Level/LevelStack/LevelComplete" method="_on_codex_btn_pressed"]
+[connection signal="pressed" from="Level/LevelStack/LevelComplete/LevelSelectBTN" to="Level/LevelStack/LevelComplete" method="_on_level_select_btn_pressed"]
