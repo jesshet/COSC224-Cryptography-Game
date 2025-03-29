@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://smkv4posrhc8"]
+[gd_scene load_steps=20 format=3 uid="uid://smkv4posrhc8"]
 
 [ext_resource type="Script" path="res://scripts/tex_to_hex_tool.gd" id="1_1msrh"]
 [ext_resource type="Script" path="res://scripts/drag-and-drop-collider.gd" id="2_4lqud"]
 [ext_resource type="Texture2D" uid="uid://b5ecbxms842jg" path="res://assets/sprites/toolSprites/Hex Converter.png" id="2_shvys"]
+[ext_resource type="Animation" uid="uid://bo5lm4kv7nx3g" path="res://assets/Animations/open-window.res" id="2_uefdw"]
 [ext_resource type="Shader" path="res://assets/shaders/vapor.gdshader" id="3_xtrt8"]
 [ext_resource type="Texture2D" uid="uid://ck8ji715s7ub5" path="res://assets/sprites/toolSprites/ToolButton.png" id="4_ulp66"]
 [ext_resource type="Texture2D" uid="uid://b86jpd0w3mbne" path="res://assets/sprites/toolSprites/ToolButton(pressed).png" id="5_g6b8p"]
@@ -11,6 +12,27 @@
 [ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="8_4aiwx"]
 [ext_resource type="Texture2D" uid="uid://blfxngevniao3" path="res://assets/sprites/toolSprites/Circle Outer.png" id="10_wxw6u"]
 [ext_resource type="Texture2D" uid="uid://v1piutxhuj4s" path="res://assets/sprites/toolSprites/Circle Inner.png" id="11_5vlwx"]
+
+[sub_resource type="Animation" id="Animation_lpain"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oin8t"]
+_data = {
+"RESET": SubResource("Animation_lpain"),
+"open-window": ExtResource("2_uefdw")
+}
 
 [sub_resource type="Animation" id="Animation_age0k"]
 length = 0.001
@@ -92,10 +114,17 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 529.0
 offset_bottom = 133.0
-pivot_offset = Vector2(141, 67)
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(282, 80)
 script = ExtResource("1_1msrh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oin8t")
+}
+speed_scale = 1.7
+
+[node name="Spinner" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_86y54")
 }
@@ -108,6 +137,7 @@ scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_shvys")
 
 [node name="Info" type="Label" parent="."]
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_km1x3")
 layout_mode = 0

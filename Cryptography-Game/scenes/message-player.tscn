@@ -1,12 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://veyd8sbjwnbv"]
+[gd_scene load_steps=11 format=3 uid="uid://veyd8sbjwnbv"]
 
 [ext_resource type="Script" path="res://scripts/message-player.gd" id="1_grydc"]
-[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_rkqw0"]
 [ext_resource type="Texture2D" uid="uid://ckwargn05xa4e" path="res://assets/sprites/profile/ProfileWindow.png" id="2_s7qdp"]
 [ext_resource type="Texture2D" uid="uid://cq45uoavwg8ry" path="res://assets/sprites/profile/ProfilePic.png" id="3_0nnb7"]
 [ext_resource type="Texture2D" uid="uid://b2e0wcqouls4y" path="res://assets/sprites/profile/Ping.png" id="4_5t0j2"]
 [ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="5_5gil0"]
-[ext_resource type="Shader" path="res://assets/shaders/crt.gdshader" id="6_bw6b1"]
 [ext_resource type="Texture2D" uid="uid://fltrwmdg16s0" path="res://assets/sprites/window-frames/TextBox.png" id="6_uvyhx"]
 
 [sub_resource type="Animation" id="Animation_p6y4h"]
@@ -14,7 +12,7 @@ resource_name = "RESET"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ProfileWindow/ProfilePic:scale")
+tracks/0/path = NodePath("ProfileWindow/ProfileWindow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,31 +24,31 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ProfileWindow/Title:visible")
+tracks/1/path = NodePath("ProfileWindow/ProfilePic:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ProfileWindow/Ping:scale")
+tracks/2/path = NodePath("ProfileWindow/Title:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("TextBox:scale")
+tracks/3/path = NodePath("ProfileWindow/Ping:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -62,19 +60,19 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Message:visible")
+tracks/4/path = NodePath("TextBox:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Connector:visible")
+tracks/5/path = NodePath("Message:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -86,22 +84,34 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Fade:modulate")
+tracks/6/path = NodePath("Connector:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Fade:visible")
+tracks/7/path = NodePath("Fade:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Fade:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -161,7 +171,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ProfileWindow/ProfilePic:scale")
+tracks/4/path = NodePath("ProfileWindow/ProfileWindow:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -173,34 +183,46 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("ProfileWindow/Title:visible")
+tracks/5/path = NodePath("ProfileWindow/ProfilePic:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.566667, 0.666667, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.7, 1.1), Vector2(1.1, 0.1), Vector2(0, 0.1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ProfileWindow/Title:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.466667, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, true, false]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Fade:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Fade:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.733333, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Fade:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Fade:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -212,71 +234,71 @@ resource_name = "open-windows"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ProfileWindow/ProfilePic:scale")
+tracks/0/path = NodePath("ProfileWindow/ProfileWindow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.133333, 0.2, 0.266667, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"transitions": PackedFloat32Array(1.8025, 2.82843, 1, 0.482968, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0.1), Vector2(0.8, 0.1), Vector2(1.2, 0.4), Vector2(0.8, 1.2), Vector2(0.9, 1), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ProfileWindow/Title:visible")
+tracks/1/path = NodePath("ProfileWindow/ProfilePic:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.133333, 0.2, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0.1), Vector2(0.8, 0.1), Vector2(1.2, 0.4), Vector2(0.8, 1.2), Vector2(0.9, 1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProfileWindow/Title:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.266667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ProfileWindow/Ping:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ProfileWindow/Ping:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(0.3, 0.3)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TextBox:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextBox:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.466667, 0.533333, 0.566667, 0.633333, 0.7),
 "transitions": PackedFloat32Array(1, 2, 1.46409, 1, 0.554785, 1),
 "update": 0,
 "values": [Vector2(0, 0.1), Vector2(0, 0.1), Vector2(0.8, 0.1), Vector2(1.1, 0.1), Vector2(0.8, 1.2), Vector2(1, 1)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Message:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.766667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Connector:visible")
+tracks/5/path = NodePath("Message:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.566667),
+"times": PackedFloat32Array(0, 0.766667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -284,22 +306,34 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Fade:modulate")
+tracks/6/path = NodePath("Connector:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Fade:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.133333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Fade:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Fade:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -313,31 +347,7 @@ _data = {
 "open-windows": SubResource("Animation_ftxf0")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3o3gn"]
-shader = ExtResource("2_rkqw0")
-shader_parameter/lod = 2.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3sdrq"]
-shader = ExtResource("6_bw6b1")
-shader_parameter/resolution = Vector2(640, 360)
-shader_parameter/scan_line_amount = 1.0
-shader_parameter/warp_amount = 0.1
-shader_parameter/noise_amount = 0.03
-shader_parameter/interference_amount = 0.2
-shader_parameter/grille_amount = 0.1
-shader_parameter/grille_size = 1.0
-shader_parameter/vignette_amount = 0.6
-shader_parameter/vignette_intensity = 0.4
-shader_parameter/aberation_amount = 0.5
-shader_parameter/roll_line_amount = 0.3
-shader_parameter/roll_speed = 0.5
-shader_parameter/scan_line_strength = -8.0
-shader_parameter/pixel_strength = -2.0
-
-[node name="MessagePlayer" type="Control"]
-z_index = 10
-layout_mode = 3
-anchors_preset = 0
+[node name="MessagePlayer" type="CanvasLayer"]
 script = ExtResource("1_grydc")
 
 [node name="MessageAnimations" type="AnimationPlayer" parent="."]
@@ -367,13 +377,10 @@ offset_right = 1102.0
 offset_bottom = 190.0
 mouse_filter = 2
 
-[node name="Polygon2D" type="Polygon2D" parent="ProfileWindow"]
-material = SubResource("ShaderMaterial_3o3gn")
-polygon = PackedVector2Array(8, 112, 8, 104, 12, 100, 12, 58, 8, 54, 8, 29, 17, 20, 120, 20, 120, 116, 117, 119, 15, 119)
-
 [node name="ProfileWindow" type="Sprite2D" parent="ProfileWindow"]
 texture_filter = 1
 position = Vector2(65, 68)
+scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("2_s7qdp")
 offset = Vector2(-1, -5)
 
@@ -384,7 +391,6 @@ texture = ExtResource("3_0nnb7")
 offset = Vector2(1, 3)
 
 [node name="Ping" type="Sprite2D" parent="ProfileWindow"]
-z_index = 1
 position = Vector2(23, 107)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("4_5t0j2")
@@ -401,15 +407,6 @@ theme_override_fonts/font = ExtResource("5_5gil0")
 theme_override_font_sizes/font_size = 8
 text = "Incoming Call
 "
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="ProfileWindow"]
-position = Vector2(63.5, 71.5)
-scale = Vector2(0.565, 0.525)
-copy_mode = 2
-
-[node name="CRT" type="Polygon2D" parent="ProfileWindow"]
-material = SubResource("ShaderMaterial_3sdrq")
-polygon = PackedVector2Array(8, 54, 8, 29, 17, 20, 120, 20, 120, 116, 117, 119, 15, 119, 8, 112, 8, 104, 12, 100, 12, 58)
 
 [node name="Connector" type="Line2D" parent="."]
 visible = false
