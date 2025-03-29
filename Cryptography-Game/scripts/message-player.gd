@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 var messages: Array[String]
 var currentMessage: String
@@ -23,14 +23,17 @@ func _ready() -> void:
 
 func startMessages(messages : Array[String]) -> void:
 	isArray  = true
-	self.messages = messages
+	self.messages.clear()
+	self.messages.resize(messages.size())
+	for n in messages.size():
+		self.messages[n] = messages[n]
 	messageIndex = 0
 	label.visible_characters = 0
 	$MessageAnimations.play("open-windows")
 	
 func startMessage(message : String) -> void:
 	isArray = false
-	messages.clear()
+	self.messages.clear()
 	messageIndex = 1
 	currentMessage = message
 	label.visible_characters = 0

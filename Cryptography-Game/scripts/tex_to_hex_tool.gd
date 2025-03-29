@@ -13,6 +13,7 @@ func _ready() -> void:
 	_inputText = ""
 	regex = RegEx.new()
 	regex.compile("^[0-9a-fA-F]*$")
+	$AnimationPlayer.play("open-window")
 
 func _process(delta: float) -> void:
 	if textBox.filled && !infoSet:

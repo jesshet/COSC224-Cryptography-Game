@@ -10,6 +10,8 @@ func _ready() -> void:
 
 
 func _on_settings_pressed() -> void:
+	if Global.bg.isPlaying():
+		return
 	var settings = preload("res://scenes/settings-menu.tscn").instantiate()
 	print("settings clicked")
 	game.add_child(settings)
@@ -17,6 +19,8 @@ func _on_settings_pressed() -> void:
 
 
 func _on_codex_pressed() -> void:
+	if Global.bg.isPlaying():
+		return
 	var codex = preload("res://scenes/codex.tscn").instantiate()
 	print("codex clicked")
 	game.add_child(codex)
@@ -28,6 +32,8 @@ func _on_exit_pressed() -> void:
 
 
 func _on_level_selector_pressed() -> void:
+	if Global.bg.isPlaying():
+		return
 	print("level select clicked");
 	var codex = preload("res://scenes/level-select-menu.tscn").instantiate();
 	game.add_child(codex);

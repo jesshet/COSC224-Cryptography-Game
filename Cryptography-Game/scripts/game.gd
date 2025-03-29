@@ -25,7 +25,11 @@ func _load_new_level(level: PackedScene, anim: String) -> void:
 		_currentLevel.queue_free();
 	
 	Global.bg.playAnimation(anim)
-	await get_tree().create_timer(1.0).timeout
+	
+	if Global.bg.prevAnim == anim:
+		await get_tree().create_timer(1.0).timeout
+	else:
+		await get_tree().create_timer(2.0).timeout
 	
 	_currentLevel = level.instantiate();
 	_parentOfLevel.add_child(_currentLevel);

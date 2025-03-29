@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpt12i20n7flr"]
+[gd_scene load_steps=21 format=3 uid="uid://bpt12i20n7flr"]
 
 [ext_resource type="Script" path="res://scripts/stream_level.gd" id="1_k7rco"]
 [ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="2_6qlsh"]
@@ -13,9 +13,67 @@
 [ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="7_85c0k"]
 [ext_resource type="PackedScene" uid="uid://wnffxev8gth2" path="res://scenes/xor_decrypt_tool.tscn" id="7_glbvk"]
 [ext_resource type="Texture2D" uid="uid://blw52q31ete6q" path="res://assets/sprites/window-frames/DraggableList.png" id="11_66qtc"]
+[ext_resource type="Animation" uid="uid://bo5lm4kv7nx3g" path="res://assets/Animations/open-window.res" id="11_kkxwi"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="11_mu3gg"]
+
+[sub_resource type="Animation" id="Animation_25c0a"]
+resource_name = "Temp"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k6oyn"]
+_data = {
+"Temp": SubResource("Animation_25c0a")
+}
+
+[sub_resource type="Animation" id="Animation_gq6ja"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Draggable:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Dragable:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pjs0n"]
+_data = {
+"RESET": SubResource("Animation_gq6ja"),
+"open-window": ExtResource("11_kkxwi")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bd52l"]
+shader = ExtResource("11_mu3gg")
+shader_parameter/lod = 2.5
 
 [node name="StreamLevel" type="Control"]
-z_index = 2
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0
@@ -30,6 +88,11 @@ found part of the key on the targets old hard drive. Based
 on what we've gathered we believe it to be a stream cipher.
 You know what to do."])
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k6oyn")
+}
+
 [node name="LevelStack" type="Control" parent="."]
 layout_mode = 2
 anchors_preset = 0
@@ -39,18 +102,14 @@ offset_bottom = 647.0
 size_flags_horizontal = 3
 
 [node name="MessagePlayer" parent="LevelStack" instance=ExtResource("2_6qlsh")]
-offset_left = 3.0
-offset_top = -29.0
-offset_right = 3.0
-offset_bottom = -29.0
 
 [node name="RepeatText" type="TextureButton" parent="LevelStack"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 867.0
-offset_top = 88.0
-offset_right = 914.0
-offset_bottom = 103.0
+offset_left = 972.0
+offset_top = 40.0
+offset_right = 1019.0
+offset_bottom = 55.0
 scale = Vector2(2, 2)
 texture_normal = ExtResource("3_c7wv3")
 texture_hover = ExtResource("4_dy4lj")
@@ -70,27 +129,42 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="xor-decrypt-tool" parent="LevelStack" instance=ExtResource("7_glbvk")]
-offset_left = 553.0
-offset_top = 333.0
-offset_right = 842.0
-offset_bottom = 466.0
+offset_left = 534.0
+offset_top = 276.0
+offset_right = 823.0
+offset_bottom = 409.0
 
 [node name="TextHexTool" parent="LevelStack" instance=ExtResource("5_6pwsx")]
-offset_left = 557.0
-offset_top = 164.0
-offset_right = 1086.0
-offset_bottom = 297.0
+offset_left = 538.0
+offset_top = 107.0
+offset_right = 1067.0
+offset_bottom = 240.0
 
 [node name="Clicks" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_if2pn")
 volume_db = -15.0
 
 [node name="DraggableContainerFrame" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 0
-offset_top = -41.0
-offset_right = 40.0
-offset_bottom = -1.0
+offset_left = -21.0
+offset_top = -25.0
+offset_right = 19.0
+offset_bottom = 15.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(258, 362)
 mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DraggableContainerFrame"]
+libraries = {
+"": SubResource("AnimationLibrary_pjs0n")
+}
+speed_scale = 1.7
+
+[node name="Blur" type="Polygon2D" parent="DraggableContainerFrame"]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_bd52l")
+polygon = PackedVector2Array(141, 128, 395, 128, 416, 148, 416, 263, 400, 278, 402, 468, 417, 484, 417, 533, 368, 582, 349, 582, 333, 600, 142, 599, 125, 580, 125, 141, 128, 134, 131, 130, 136, 128)
 
 [node name="DraggableContainer" type="Sprite2D" parent="DraggableContainerFrame"]
 position = Vector2(271, 336)
@@ -108,27 +182,31 @@ theme_override_font_sizes/font_size = 26
 text = "Clues"
 
 [node name="Draggable" parent="." instance=ExtResource("2_elg2b")]
+visible = false
+z_index = 2
 layout_mode = 1
-offset_left = 135.0
-offset_top = 124.0
-offset_right = 335.0
-offset_bottom = 149.0
+offset_left = 114.0
+offset_top = 140.0
+offset_right = 314.0
+offset_bottom = 165.0
 text = "è~X9"
 
 [node name="Dragable" parent="." instance=ExtResource("2_elg2b")]
+visible = false
+z_index = 2
 layout_mode = 0
-offset_left = 135.0
-offset_top = 167.0
-offset_right = 335.0
-offset_bottom = 192.0
+offset_left = 114.0
+offset_top = 183.0
+offset_right = 314.0
+offset_bottom = 208.0
 text = "ABCD123456"
 
 [node name="submit-box" parent="." instance=ExtResource("6_vb680")]
 layout_mode = 0
-offset_left = 563.0
-offset_top = 488.0
-offset_right = 1117.0
-offset_bottom = 609.0
+offset_left = 453.0
+offset_top = 448.0
+offset_right = 1007.0
+offset_bottom = 569.0
 
 [connection signal="child_order_changed" from="LevelStack" to="LevelStack" method="_on_child_order_changed"]
 [connection signal="pressed" from="LevelStack/RepeatText" to="." method="_on_repeat_text_pressed"]

@@ -17,7 +17,9 @@ func _ready() -> void:
 	nodeLower = null
 	_inputUpper = ""
 	_inputLower = ""
-	pass # Replace with function body.
+	
+	$AnimationPlayer.play("open-window")
+	
 
 func _on_xorbtn_pressed() -> void:
 	print("works here")
