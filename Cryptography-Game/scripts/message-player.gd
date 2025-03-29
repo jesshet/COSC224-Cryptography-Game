@@ -43,7 +43,6 @@ func printMessages(messageIndex) -> void:
 	count = 0
 	label.visible_characters = count
 	label.text = currentMessage
-	print(messages.size())
 	#Loop To Print Text
 	while(label.visible_characters < currentMessage.length()):
 		#$Clicks.play();
@@ -59,6 +58,7 @@ func printMessages(messageIndex) -> void:
 
 func _input(ev) -> void:
 	if ev is InputEventMouseButton && ev.is_pressed() && count < currentMessage.length() - 1:
+		print("skipping text")
 		count = currentMessage.length() - 1
 		return
 		

@@ -35,10 +35,10 @@ size_flags_horizontal = 3
 [node name="MessagePlayer" parent="LevelStack" instance=ExtResource("2_6qlsh")]
 
 [node name="xor-decrypt-tool" parent="LevelStack" instance=ExtResource("7_glbvk")]
-offset_left = 669.0
-offset_top = 259.0
-offset_right = 958.0
-offset_bottom = 392.0
+offset_left = 560.0
+offset_top = 268.0
+offset_right = 849.0
+offset_bottom = 401.0
 
 [node name="TextHexTool" parent="LevelStack" instance=ExtResource("5_6pwsx")]
 offset_left = 562.0

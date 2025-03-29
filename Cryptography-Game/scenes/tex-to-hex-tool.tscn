@@ -231,14 +231,14 @@ color = Color(0.103744, 0.103744, 0.103744, 1)
 
 [node name="OuterCircle" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(67, 68)
+position = Vector2(64, 69)
 scale = Vector2(2, 2)
 texture = ExtResource("10_wxw6u")
 offset = Vector2(0, -0.5)
 
 [node name="InnerCircle" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(67, 66)
+position = Vector2(64, 67)
 scale = Vector2(2, 2)
 texture = ExtResource("11_5vlwx")
 offset = Vector2(0.5, -0.5)
