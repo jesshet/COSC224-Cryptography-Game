@@ -22,11 +22,9 @@ func _ready() -> void:
 	
 
 func _on_xorbtn_pressed() -> void:
-	print("works here")
 	if not (upperCollider.filled and lowerCollider.filled):
 		$"../MessagePlayer".startMessage("You need to supply two inputs")
 		return
-	print("works here")
 	nodeUpper = upperCollider.node
 	nodeLower = lowerCollider.node
 	_inputUpper = nodeUpper.text
@@ -46,7 +44,14 @@ func _on_xorbtn_pressed() -> void:
 		var byte_hex2 = _inputLower.substr(i, 2).hex_to_int()
 		var xor_byte = byte_hex1 ^ byte_hex2
 		xor_result += String("%02x" % xor_byte)
-	animateChange(nodeUpper.text, xor_result.replace(" ","").to_upper())
+		xor_result = xor_result.replace(" ","").to_upper()
+	#XOR Result is Hex Unit Test:
+	result = regex.search(xor_result)
+	if(result):
+		print("Test case XOR result is in Hexadecimal: Success")
+	else:
+		print("Test case XOR result is in Hexadecimal: Failure")
+	animateChange(nodeUpper.text, xor_result)
 	
 
 func animateChange(currentWord, targetWord):
