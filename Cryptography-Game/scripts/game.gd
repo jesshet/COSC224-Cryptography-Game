@@ -10,15 +10,14 @@ func _ready() -> void:
 	else:
 		queue_free()
 		pass;
-	if _parentOfLevel == null:
-		printerr("Level Select Parent is null");
+	assert(_parentOfLevel != null, "game.gd parent of level is null");
 	
 func _load_new_level(level: PackedScene) -> void:
 	if level == null:
 		return;
 	if _currentLevel != null:
 		var list: PackedStringArray = level._bundled.get("names");
-		print(list[0] + "," + _currentLevel.name);
+		#print(list[0] + "," + _currentLevel.name);
 		if list[0] == _currentLevel.name:
 			return;
 		_currentLevel.queue_free();
