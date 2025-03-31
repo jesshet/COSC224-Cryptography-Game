@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+
 [application]
 
 config/name="CryptoGame"
@@ -25,7 +29,7 @@ Global="*res://scripts/global.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
 
 [dotnet]

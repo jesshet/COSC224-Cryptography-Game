@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cnjmm1n2fwnsx"
+path="res://.godot/imported/ToolButton(mask).png-6f33ed1b1ea6ea6f39595cd8f44772ed.res"
+
+[deps]
+
+source_file="res://assets/sprites/toolSprites/ToolButton(mask).png"
+dest_files=["res://.godot/imported/ToolButton(mask).png-6f33ed1b1ea6ea6f39595cd8f44772ed.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

@@ -1,23 +1,75 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5d68u6kugplo"]
+[gd_scene load_steps=11 format=3 uid="uid://c5d68u6kugplo"]
 
 [ext_resource type="Script" path="res://scripts/submit-box.gd" id="1_0lfxi"]
 [ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="1_lahtw"]
+[ext_resource type="Texture2D" uid="uid://fltrwmdg16s0" path="res://assets/sprites/window-frames/TextBox.png" id="2_6vf1f"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_maqhm"]
 [ext_resource type="Texture2D" uid="uid://b4lnd2uwtjtfo" path="res://assets/sprites/buttons/CodexButton(selected).png" id="2_qnv7i"]
+[ext_resource type="Animation" uid="uid://bo5lm4kv7nx3g" path="res://assets/Animations/open-window.res" id="2_vn1mj"]
 [ext_resource type="Texture2D" uid="uid://s4vrloti4qxy" path="res://assets/sprites/buttons/CodexButton.png" id="3_rawnu"]
 
-[node name="submit-box" type="VBoxContainer"]
+[sub_resource type="Animation" id="Animation_xugrm"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gp347"]
+_data = {
+"RESET": SubResource("Animation_xugrm"),
+"open-window": ExtResource("2_vn1mj")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0w0eo"]
+shader = ExtResource("2_maqhm")
+shader_parameter/lod = 2.5
+
+[node name="submit-box" type="Control"]
 custom_minimum_size = Vector2(100, 50)
-offset_right = 554.0
-offset_bottom = 121.0
+layout_mode = 3
+anchors_preset = 0
+offset_right = 627.0
+offset_bottom = 114.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(278, 59)
 script = ExtResource("1_0lfxi")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gp347")
+}
+speed_scale = 1.7
+
+[node name="Blur" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_0w0eo")
+position = Vector2(-78, -22)
+polygon = PackedVector2Array(89, 132, 89, 67, 80, 58, 80, 33, 90, 23, 684, 23, 693, 31, 693, 116, 676, 133)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(297, 55)
+texture = ExtResource("2_6vf1f")
+
 [node name="TextEdit" type="TextEdit" parent="."]
-custom_minimum_size = Vector2(500, 50)
+custom_minimum_size = Vector2(300, 25)
 layout_mode = 2
+offset_left = 49.0
+offset_top = 36.0
+offset_right = 429.0
+offset_bottom = 74.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_lahtw")
-theme_override_font_sizes/font_size = 21
+theme_override_font_sizes/font_size = 20
 placeholder_text = "Enter Message Here
 "
 wrap_mode = 1
@@ -25,6 +77,11 @@ wrap_mode = 1
 [node name="TextureButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+offset_left = 440.0
+offset_top = 29.0
+offset_right = 640.0
+offset_bottom = 96.0
+scale = Vector2(0.75, 0.75)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("2_qnv7i")

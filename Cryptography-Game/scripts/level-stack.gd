@@ -21,7 +21,7 @@ func _ready() -> void:
 	Solution = "MEET ME AT THE RIVER AT FIVE PM SHARP";
 
 	#Send the Levels messages to the messagePlayer
-	$MessagePlayer.startMessages(levelMessages);
+	playMessage()
 	
 	#Connect Caesar Scene Signals
 	connect_caesar();
@@ -66,6 +66,8 @@ func _on_submit_button_pressed() -> void:
 	if($Problem.text == Solution):
 		#Play Success Sound
 		Caesar.success();
+		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
+		add_child(winScreen)
 	else:
 		#Play Incorrect Sound
 		Caesar.incorrect();
@@ -80,3 +82,10 @@ func _on_message_complete() -> void:
 	if !windowsOpen:
 		$"../../AnimationPlayer".play("Open-windows")
 		windowsOpen = true
+
+func playMessage():
+	$MessagePlayer.startMessages(levelMessages);
+
+func _on_replay_pressed() -> void:
+	$MessagePlayer.messageIndex = 0
+	playMessage()

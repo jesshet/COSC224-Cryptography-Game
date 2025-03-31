@@ -5,6 +5,7 @@ signal load_level(level);
 @export var _buttonText = "";
 @export var _boxText = "";
 @export var _level:PackedScene;
+@export var _animName = ""
 
 var _button: Button;
 var _textBox: RichTextLabel;
@@ -25,4 +26,4 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
-	load_level.emit(_level);
+	load_level.emit(_level, _animName);

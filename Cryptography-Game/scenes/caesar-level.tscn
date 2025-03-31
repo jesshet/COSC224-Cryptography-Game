@@ -1,14 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://b38ramit5egv6"]
+[gd_scene load_steps=21 format=3 uid="uid://b38ramit5egv6"]
 
 [ext_resource type="Script" path="res://scripts/level-stack.gd" id="1_kj5v7"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_ebdnf"]
 [ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="2_hb6dt"]
 [ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="3_dcoku"]
+[ext_resource type="Texture2D" uid="uid://ck8ji715s7ub5" path="res://assets/sprites/toolSprites/ToolButton.png" id="3_jb0qi"]
 [ext_resource type="Texture2D" uid="uid://bn6fm2g4j7dw4" path="res://assets/sprites/buttons/submit.png" id="3_niomo"]
 [ext_resource type="Texture2D" uid="uid://ctpir2bd4j6o1" path="res://assets/sprites/buttons/submit(hover).png" id="4_kpgy3"]
 [ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="4_l6swe"]
+[ext_resource type="Texture2D" uid="uid://b86jpd0w3mbne" path="res://assets/sprites/toolSprites/ToolButton(pressed).png" id="4_mi0rm"]
 [ext_resource type="PackedScene" uid="uid://dyb6n87cbrioh" path="res://scenes/caesar-shifter.tscn" id="4_ugpmg"]
+[ext_resource type="Texture2D" uid="uid://kvd4w5bigwky" path="res://assets/sprites/toolSprites/ToolButton(selected).png" id="5_3t0wq"]
 [ext_resource type="BitMap" uid="uid://fb5sbmos3njj" path="res://assets/sprites/buttons/SubmitMast.png" id="5_kndp5"]
+[ext_resource type="BitMap" uid="uid://cnjmm1n2fwnsx" path="res://assets/sprites/toolSprites/ToolButton(mask).png" id="6_r5jy4"]
 [ext_resource type="Texture2D" uid="uid://b3q7n3di1udb" path="res://assets/sprites/window-frames/CaesarPanel.png" id="7_2p3q0"]
 
 [sub_resource type="Animation" id="Animation_i4qw5"]
@@ -137,6 +141,38 @@ levelMessages = Array[String](["I found this message on a piece of paper that th
 
 [node name="MessagePlayer" parent="Level/LevelStack" instance=ExtResource("3_dcoku")]
 
+[node name="Replay" type="TextureButton" parent="Level/LevelStack"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 423.5
+offset_top = -226.5
+offset_right = 470.5
+offset_bottom = -212.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_jb0qi")
+texture_pressed = ExtResource("4_mi0rm")
+texture_hover = ExtResource("5_3t0wq")
+texture_click_mask = ExtResource("6_r5jy4")
+
+[node name="Label" type="Label" parent="Level/LevelStack/Replay"]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 116.0
+offset_bottom = 36.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("4_l6swe")
+text = "Call"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Panel" type="Control" parent="Level/LevelStack"]
 anchors_preset = 0
 offset_left = 81.0
@@ -235,4 +271,5 @@ scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(173, 96)
 
 [connection signal="child_order_changed" from="Level/LevelStack" to="Level/LevelStack" method="_on_child_order_changed"]
+[connection signal="pressed" from="Level/LevelStack/Replay" to="Level/LevelStack" method="_on_replay_pressed"]
 [connection signal="pressed" from="Level/LevelStack/Panel/SubmitButton" to="Level/LevelStack" method="_on_submit_button_pressed"]

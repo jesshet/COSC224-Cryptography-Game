@@ -1,21 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://claoha2q6d33k"]
+[gd_scene load_steps=10 format=3 uid="uid://claoha2q6d33k"]
 
+[ext_resource type="Script" path="res://scripts/sphere_bg.gd" id="1_2fsap"]
 [ext_resource type="PackedScene" uid="uid://p88wru5dhjey" path="res://scenes/wire_frame_sphere.tscn" id="1_l5dx5"]
-
-[sub_resource type="Animation" id="Animation_6ie1h"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("WireFrameSphere:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_6ie1h"]
 length = 0.001
@@ -55,7 +41,96 @@ _data = {
 "Spin": SubResource("Animation_iphmx")
 }
 
+[sub_resource type="Animation" id="Animation_k6viu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.504, -1.45, 3.532)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.395076, 0.168205, -0.443029)]
+}
+
+[sub_resource type="Animation" id="Animation_r7du7"]
+resource_name = "Stream-level"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.504, -1.45, 3.532), Vector3(1.2, 1.6, 1.521)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.394444, 0.167552, -0.443314), Vector3(-0.263545, -0.34383, -0.172788)]
+}
+
+[sub_resource type="Animation" id="Animation_28hqn"]
+resource_name = "Caesar-level"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.504, -1.45, 3.532), Vector3(-2.017, -1.95, 0.299)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.394444, 0.167552, -0.443314), Vector3(0.177239, -0.927456, 0.353302)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7t1m"]
+_data = {
+"Caesar-level": SubResource("Animation_28hqn"),
+"RESET": SubResource("Animation_k6viu"),
+"Stream-level": SubResource("Animation_r7du7")
+}
+
 [node name="sphere-bg" type="Node3D"]
+script = ExtResource("1_2fsap")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -64,8 +139,13 @@ libraries = {
 autoplay = "Spin"
 speed_scale = 0.1
 
+[node name="Camera_Animations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y7t1m")
+}
+
 [node name="WireFrameSphere" parent="." instance=ExtResource("1_l5dx5")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.863085, 0.480841, 0.154517, -0.395656, 0.833861, -0.384879, -0.313911, 0.271047, 0.909941, 0.414959, -1.09021, 2.46248)
-fov = 90.0
+transform = Transform3D(0.863085, 0.480841, 0.154517, -0.395656, 0.833861, -0.384878, -0.313911, 0.271047, 0.909941, 0.504, -1.45, 3.532)
+fov = 71.6387
