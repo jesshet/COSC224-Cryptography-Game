@@ -68,9 +68,7 @@ render_target_update_mode = 4
 [node name="sphere-bg" parent="Background/sphere-bg/SubViewport" instance=ExtResource("3_ujwc7")]
 
 [node name="Camera3D" parent="Background/sphere-bg/SubViewport/sphere-bg" index="3"]
-
-transform = Transform3D(0.863084, 0.480841, 0.154517, -0.395655, 0.833861, -0.384878, -0.313911, 0.271047, 0.909941, 0.504, -1.45, 3.532)
-
+transform = Transform3D(0.863084, 0.480841, 0.154517, -0.395655, 0.833861, -0.384878, -0.31391, 0.271047, 0.909941, 0.504, -1.45, 3.532)
 
 [node name="LevelContainer" type="Node2D" parent="."]
 position = Vector2(0, 32)
