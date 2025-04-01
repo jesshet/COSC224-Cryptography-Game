@@ -189,7 +189,7 @@ offset_left = 114.0
 offset_top = 140.0
 offset_right = 314.0
 offset_bottom = 165.0
-text = "PREPARE_FOR_DESCENT"
+text = "692b489f9b885b1d13c1"
 
 [node name="Dragable" parent="." instance=ExtResource("2_elg2b")]
 visible = false
@@ -199,7 +199,7 @@ offset_left = 114.0
 offset_top = 183.0
 offset_right = 314.0
 offset_bottom = 208.0
-text = "5072657061726520666F722044657363656E74"
+text = "59196DAFBABA7E1D35EE"
 
 [node name="submit-box" parent="." instance=ExtResource("6_vb680")]
 layout_mode = 0
