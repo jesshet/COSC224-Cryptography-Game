@@ -5,6 +5,14 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	self.add_child(GlobalSounds.music)
+	self.add_child(GlobalSounds.hover)
+	self.add_child(GlobalSounds.select)
+	self.add_child(GlobalSounds.load)
+	self.add_child(GlobalSounds.close)
+	self.add_child(GlobalSounds.click)
+	self.add_child(GlobalSounds.drop)
+	GlobalSounds.music.play()
 	Global.bg = $"Background/sphere-bg/SubViewport/sphere-bg"
 	if Global.game_scene == null:
 		Global.game_scene = self;

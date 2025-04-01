@@ -8,12 +8,13 @@ var shift = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-	
 
 func _on_left_pressed():
+	#Plat Click Sound Effect
 	$click.play();
+	#Calculate Current Shift Amount
 	shift = (shift - 1) % 26;
-	#code to display 0 if numberis less than 10
+	#Code to display 0 if number is less than 10
 	if((26 + shift) % 26 < 10):
 		$shift.text = "0" + str((26 + shift) % 26);
 	else:
@@ -23,8 +24,9 @@ func _on_left_pressed():
 
 func _on_right_pressed():
 	$click.play();
+	#Calculate Current Shift Amount
 	shift = (shift + 1) % 26;
-	#code to display 0 if numberis less than 10
+	#Code to display 0 if number is less than 10
 	if((26 + shift) % 26 < 10):
 		$shift.text = "0" + str((26 + shift) % 26);
 	else:
@@ -65,9 +67,6 @@ func shift_right(text):
 	text = letters.get_string_from_ascii();
 	#Add Center Alignment and return
 	return text;
-	
-func success() -> void:
-	$success.play();
 	
 func incorrect() -> void:
 	$incorrect.play();

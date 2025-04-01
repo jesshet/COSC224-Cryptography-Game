@@ -24,20 +24,31 @@ func _ready() -> void:
 	pass;
 
 func _on_sfx_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(sfx_bus, value)
+	if(value == -40):
+		AudioServer.set_bus_volume_db(sfx_bus, -200)
+	else:
+		AudioServer.set_bus_volume_db(sfx_bus, value)
 
 
 func _on_music_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(music_bus, value)
+	if(value == -40):
+		AudioServer.set_bus_volume_db(music_bus, -200)
+	else:
+		AudioServer.set_bus_volume_db(music_bus, value)
 
 
 func _on_mute_button_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(0, toggled_on)
 
 func _on_close_button_pressed() -> void:
+	GlobalSounds.close.play()
 	$AnimationPlayer.play("close-window")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "close-window":
 		queue_free()
+
+
+func _on_close_button_mouse_entered() -> void:
+	GlobalSounds.hover.play()

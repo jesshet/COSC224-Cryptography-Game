@@ -21,6 +21,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_down() -> void:
+	GlobalSounds.click.play()
 	_lastMousePos = get_viewport().get_mouse_position();
 	_isDragging = true;
 	if _rayCenter.is_colliding():
@@ -29,6 +30,7 @@ func _on_button_down() -> void:
 
 
 func _on_button_up() -> void:
+	GlobalSounds.drop.play()
 	_isDragging = false;
 	var collide = false
 	var currentMousePos = get_viewport().get_mouse_position();
