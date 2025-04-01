@@ -8,7 +8,6 @@ var shift = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-	
 
 func _on_left_pressed():
 	$click.play();
@@ -65,9 +64,6 @@ func shift_right(text):
 	text = letters.get_string_from_ascii();
 	#Add Center Alignment and return
 	return text;
-	
-func success() -> void:
-	$success.play();
 	
 func incorrect() -> void:
 	$incorrect.play();

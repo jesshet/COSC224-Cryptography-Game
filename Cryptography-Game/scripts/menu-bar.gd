@@ -10,6 +10,7 @@ func _ready() -> void:
 
 
 func _on_settings_pressed() -> void:
+	GlobalSounds.select.play()
 	if Global.bg.isPlaying():
 		return
 	var settings = preload("res://scenes/settings-menu.tscn").instantiate()
@@ -19,6 +20,7 @@ func _on_settings_pressed() -> void:
 
 
 func _on_codex_pressed() -> void:
+	GlobalSounds.select.play()
 	if Global.bg.isPlaying():
 		return
 	var codex = preload("res://scenes/codex.tscn").instantiate()
@@ -28,13 +30,31 @@ func _on_codex_pressed() -> void:
 
 
 func _on_exit_pressed() -> void:
+	GlobalSounds.close.play()
 	get_tree().quit()
 
 
 func _on_level_selector_pressed() -> void:
+	GlobalSounds.select.play()
 	if Global.bg.isPlaying():
 		return
 	print("level select clicked");
 	var codex = preload("res://scenes/level-select-menu.tscn").instantiate();
 	game.add_child(codex);
 	print("after level select node");
+
+
+func _on_level_selector_mouse_entered() -> void:
+	GlobalSounds.hover.play()
+
+
+func _on_codex_mouse_entered() -> void:
+	GlobalSounds.hover.play()
+
+
+func _on_settings_mouse_entered() -> void:
+	GlobalSounds.hover.play()
+
+
+func _on_exit_mouse_entered() -> void:
+	GlobalSounds.hover.play()

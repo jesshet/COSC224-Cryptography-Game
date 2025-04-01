@@ -98,8 +98,9 @@ func animateChange(currentWord, targetWord):
 			if currentWord.length() > targetWord.length():
 				await get_tree().create_timer(0.01).timeout
 			else:
-				await get_tree().create_timer(0.005).timeout
+				await get_tree().create_timer(0.01).timeout
 			textBox.node.text = currentWord
+			GlobalSounds.click.play()
 		count = 0
 	setInfo(currentWord)
 	textBox.node.mouse_filter = MOUSE_FILTER_STOP
@@ -109,3 +110,11 @@ func get_random_char():
 	var characters = 'abcdefghijklmnopqrstuvwxyz'
 	return characters[random_number]
 	
+
+
+func _on_text_to_hex_btn_mouse_entered() -> void:
+	GlobalSounds.hover.play()
+
+
+func _on_hex_to_text_btn_mouse_entered() -> void:
+	GlobalSounds.hover.play()

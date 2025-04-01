@@ -287,4 +287,6 @@ offset_bottom = 73.0
 mouse_filter = 2
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
+[connection signal="mouse_entered" from="XORBTN" to="." method="_on_xorbtn_mouse_entered"]
 [connection signal="pressed" from="XORBTN" to="." method="_on_xorbtn_pressed"]
+[connection signal="mouse_entered" from="DecryptBTN" to="." method="_on_decrypt_btn_mouse_entered"]

@@ -13,4 +13,9 @@ func _on_level_load_level(level: PackedScene, anim: String) -> void:
 	queue_free();
 
 func _on_close_button_pressed() -> void:
+	GlobalSounds.close.play()
 	queue_free();
+
+
+func _on_close_button_mouse_entered() -> void:
+	GlobalSounds.hover.play()

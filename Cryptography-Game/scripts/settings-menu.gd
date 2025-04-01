@@ -35,9 +35,14 @@ func _on_mute_button_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(0, toggled_on)
 
 func _on_close_button_pressed() -> void:
+	GlobalSounds.close.play()
 	$AnimationPlayer.play("close-window")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "close-window":
 		queue_free()
+
+
+func _on_close_button_mouse_entered() -> void:
+	GlobalSounds.hover.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://veyd8sbjwnbv"]
+[gd_scene load_steps=14 format=3 uid="uid://veyd8sbjwnbv"]
 
 [ext_resource type="Script" path="res://scripts/message-player.gd" id="1_grydc"]
 [ext_resource type="Texture2D" uid="uid://ckwargn05xa4e" path="res://assets/sprites/profile/ProfileWindow.png" id="2_s7qdp"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b2e0wcqouls4y" path="res://assets/sprites/profile/Ping.png" id="4_5t0j2"]
 [ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="5_5gil0"]
 [ext_resource type="Texture2D" uid="uid://fltrwmdg16s0" path="res://assets/sprites/window-frames/TextBox.png" id="6_uvyhx"]
+[ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="7_2rmui"]
+[ext_resource type="AudioStream" uid="uid://7nh7u0rijs00" path="res://assets/sounds/walkie-on.mp3" id="8_dylc4"]
+[ext_resource type="AudioStream" uid="uid://bv2g0lmpmesxg" path="res://assets/sounds/walkie-off.mp3" id="9_d7d11"]
 
 [sub_resource type="Animation" id="Animation_p6y4h"]
 resource_name = "RESET"
@@ -423,6 +426,24 @@ position = Vector2(894, 170)
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("6_uvyhx")
 offset = Vector2(-319, -1)
+
+[node name="Clicks" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(325, 130)
+stream = ExtResource("7_2rmui")
+volume_db = -15.0
+pitch_scale = 2.0
+
+[node name="Walkie-On" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(325, 130)
+stream = ExtResource("8_dylc4")
+volume_db = -20.0
+pitch_scale = 2.0
+
+[node name="Walkie-Off" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(325, 130)
+stream = ExtResource("9_d7d11")
+volume_db = -20.0
+pitch_scale = 2.0
 
 [node name="Message" type="Label" parent="."]
 visible = false

@@ -19,7 +19,7 @@ func _ready() -> void:
 	
 	#Answer Text
 	Solution = "MEET ME AT THE RIVER AT FIVE PM SHARP";
-
+	
 	#Send the Levels messages to the messagePlayer
 	playMessage()
 	
@@ -65,7 +65,6 @@ func _on_submit_button_pressed() -> void:
 	print(guesses)
 	if($Problem.text == Solution):
 		#Play Success Sound
-		Caesar.success();
 		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
 		add_child(winScreen)
 	else:
@@ -89,3 +88,7 @@ func playMessage():
 func _on_replay_pressed() -> void:
 	$MessagePlayer.messageIndex = 0
 	playMessage()
+
+
+func _on_submit_button_mouse_entered() -> void:
+	GlobalSounds.hover.play()

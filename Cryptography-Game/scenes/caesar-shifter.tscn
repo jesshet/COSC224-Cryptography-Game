@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyb6n87cbrioh"]
+[gd_scene load_steps=12 format=3 uid="uid://dyb6n87cbrioh"]
 
 [ext_resource type="Texture2D" uid="uid://ct1xsm8krvcs2" path="res://assets/sprites/window-frames/Shifter.png" id="1_j5jkb"]
 [ext_resource type="Script" path="res://scripts/caesar-shift.gd" id="2_5vfg3"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bs435ew2ufawy" path="res://assets/sprites/arrow.png" id="4_crxs7"]
 [ext_resource type="AudioStream" uid="uid://dupff68qtndrn" path="res://assets/sounds/caesar-click.mp3" id="5_6s655"]
 [ext_resource type="AudioStream" uid="uid://dgiwxcpoppd6f" path="res://assets/sounds/incorrect.wav" id="6_sjde0"]
-[ext_resource type="AudioStream" uid="uid://gconcr16wu11" path="res://assets/sounds/success.wav" id="7_dfqf3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0e87u"]
 
@@ -148,9 +147,6 @@ bus = &"SFX"
 
 [node name="incorrect" type="AudioStreamPlayer" parent="HBoxContainer"]
 stream = ExtResource("6_sjde0")
-
-[node name="success" type="AudioStreamPlayer" parent="HBoxContainer"]
-stream = ExtResource("7_dfqf3")
 
 [connection signal="button_down" from="HBoxContainer/left" to="HBoxContainer" method="_on_left_button_down"]
 [connection signal="pressed" from="HBoxContainer/left" to="HBoxContainer" method="_on_left_pressed"]
