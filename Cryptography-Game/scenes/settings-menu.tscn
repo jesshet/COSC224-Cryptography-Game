@@ -154,7 +154,8 @@ theme_override_icons/tick = ExtResource("5_em8te")
 theme_override_styles/slider = ExtResource("6_gb1hv")
 theme_override_styles/grabber_area = ExtResource("7_e7i6y")
 theme_override_styles/grabber_area_highlight = ExtResource("7_e7i6y")
-value = 100.0
+min_value = -40.0
+max_value = 40.0
 
 [node name="MusicLabel" type="RichTextLabel" parent="VBoxControls"]
 texture_filter = 1
@@ -174,7 +175,8 @@ theme_override_icons/tick = ExtResource("5_em8te")
 theme_override_styles/slider = ExtResource("6_gb1hv")
 theme_override_styles/grabber_area = ExtResource("7_e7i6y")
 theme_override_styles/grabber_area_highlight = ExtResource("7_e7i6y")
-value = 100.0
+min_value = -40.0
+max_value = 40.0
 
 [node name="CloseButton" type="TextureButton" parent="."]
 layout_mode = 0

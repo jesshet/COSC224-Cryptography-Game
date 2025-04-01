@@ -209,5 +209,6 @@ offset_right = 1007.0
 offset_bottom = 569.0
 
 [connection signal="child_order_changed" from="LevelStack" to="LevelStack" method="_on_child_order_changed"]
+[connection signal="mouse_entered" from="LevelStack/RepeatText" to="." method="_on_repeat_text_mouse_entered"]
 [connection signal="pressed" from="LevelStack/RepeatText" to="." method="_on_repeat_text_pressed"]
 [connection signal="submit" from="submit-box" to="." method="_on_submitbox_submit"]

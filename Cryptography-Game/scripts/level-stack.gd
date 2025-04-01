@@ -92,3 +92,7 @@ func _on_replay_pressed() -> void:
 
 func _on_submit_button_mouse_entered() -> void:
 	GlobalSounds.hover.play()
+
+
+func _on_replay_mouse_entered() -> void:
+	GlobalSounds.hover.play()

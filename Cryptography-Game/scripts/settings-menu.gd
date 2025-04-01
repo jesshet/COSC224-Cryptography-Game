@@ -24,11 +24,17 @@ func _ready() -> void:
 	pass;
 
 func _on_sfx_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(sfx_bus, value)
+	if(value == -40):
+		AudioServer.set_bus_volume_db(sfx_bus, -200)
+	else:
+		AudioServer.set_bus_volume_db(sfx_bus, value)
 
 
 func _on_music_slider_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(music_bus, value)
+	if(value == -40):
+		AudioServer.set_bus_volume_db(music_bus, -200)
+	else:
+		AudioServer.set_bus_volume_db(music_bus, value)
 
 
 func _on_mute_button_toggled(toggled_on: bool) -> void:

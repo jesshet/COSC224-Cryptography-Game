@@ -33,3 +33,7 @@ func _on_repeat_text_pressed() -> void:
 
 func _on_texture_button_mouse_entered() -> void:
 	GlobalSounds.hover.play()
+
+
+func _on_repeat_text_mouse_entered() -> void:
+	GlobalSounds.hover.play()

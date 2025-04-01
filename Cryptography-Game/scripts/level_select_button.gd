@@ -6,7 +6,6 @@ signal load_level(level);
 @export var _boxText = "";
 @export var _level:PackedScene;
 @export var _animName = ""
-@onready var music_bus = AudioServer.get_bus_index("Music")
 
 var _button: Button;
 var _textBox: RichTextLabel;

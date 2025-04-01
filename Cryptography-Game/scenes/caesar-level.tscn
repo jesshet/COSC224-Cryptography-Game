@@ -266,6 +266,7 @@ scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(173, 96)
 
 [connection signal="child_order_changed" from="Level/LevelStack" to="Level/LevelStack" method="_on_child_order_changed"]
+[connection signal="mouse_entered" from="Level/LevelStack/Replay" to="Level/LevelStack" method="_on_replay_mouse_entered"]
 [connection signal="pressed" from="Level/LevelStack/Replay" to="Level/LevelStack" method="_on_replay_pressed"]
 [connection signal="mouse_entered" from="Level/LevelStack/Panel/SubmitButton" to="Level/LevelStack" method="_on_submit_button_mouse_entered"]
 [connection signal="pressed" from="Level/LevelStack/Panel/SubmitButton" to="Level/LevelStack" method="_on_submit_button_pressed"]
