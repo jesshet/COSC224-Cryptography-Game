@@ -189,7 +189,7 @@ offset_left = 114.0
 offset_top = 140.0
 offset_right = 314.0
 offset_bottom = 165.0
-text = "\"26_0"
+text = "PREPARE FOR DESCENT"
 
 [node name="Dragable" parent="." instance=ExtResource("2_elg2b")]
 visible = false

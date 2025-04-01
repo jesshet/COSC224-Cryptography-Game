@@ -26,8 +26,7 @@ func _process(delta: float) -> void:
 func _on_text_to_hex_btn_pressed() -> void:
 	print("press text - to - hex")
 	if not textBox.filled: return
-	
-	_inputText = textBox.node.text
+	_inputText = textBox.node.text ##CHANGE THIS TO GET INSTANCE VARIABLE RATHER THAN DISPLAYED TEXT
 	var result = regex.search(_inputText)
 	if result: #This means if the result matches the hex regex
 		#CALL METHOD OR HINT DISPLAYING USER ERROR
@@ -46,7 +45,6 @@ func _on_text_to_hex_btn_pressed() -> void:
 func _on_hex_to_text_btn_pressed() -> void:
 	print("press hex - to - tex")
 	if not textBox.filled: return
-	
 	_inputText = textBox.node.text
 	# Validate hexadecimal input
 	var result = regex.search(_inputText)
@@ -55,13 +53,22 @@ func _on_hex_to_text_btn_pressed() -> void:
 		$"../MessagePlayer".startMessage("Invalid input: Please provide a valid hexadecimal string.")
 		#return unchanged input string
 		return
-		
+	var display_plaintext = ""
 	var bytes = PackedByteArray()
 	for i in range(0, _inputText.length(), 2):
 		var byte_hex = _inputText.substr(i, 2)
-		bytes.append(byte_hex.hex_to_int())
-	_inputText = bytes.get_string_from_utf8()
-	animateChange(textBox.node.text, _inputText)
+		byte_hex = byte_hex #make sure it starts at '!'
+		if byte_hex.hex_to_int() + 33 > 133 :
+			var b1 = byte_hex.substr(0,1).hex_to_int() + 33
+			var b2 = byte_hex.substr(1,2).hex_to_int() + 33
+			display_plaintext = display_plaintext + char(b1) + char(b2)
+		else:
+			display_plaintext += char(byte_hex.hex_to_int() + 33)
+		#bytes.append(byte_hex)
+	#_inputText = bytes.get_string_from_utf8()
+	print(display_plaintext)
+	#animateChange(textBox.node.text, _inputText)
+	animateChange(textBox.node.text, display_plaintext)
 
 
 func setInfo(s):
