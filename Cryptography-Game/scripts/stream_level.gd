@@ -24,9 +24,16 @@ func _on_submitbox_submit() -> void:
 
 
 func _on_tex_to_hex_message_passer() -> void:
-	
 	pass # Replace with function body.
 
 
 func _on_repeat_text_pressed() -> void:
 	playMessage()
+
+
+func _on_texture_button_mouse_entered() -> void:
+	GlobalSounds.hover.play()
+
+
+func _on_repeat_text_mouse_entered() -> void:
+	GlobalSounds.hover.play()

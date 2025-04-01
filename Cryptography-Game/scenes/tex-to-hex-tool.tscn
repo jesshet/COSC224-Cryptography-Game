@@ -273,5 +273,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("11_5vlwx")
 offset = Vector2(0.5, -0.5)
 
+[connection signal="mouse_entered" from="TextToHexBTN" to="." method="_on_text_to_hex_btn_mouse_entered"]
 [connection signal="pressed" from="TextToHexBTN" to="." method="_on_text_to_hex_btn_pressed"]
+[connection signal="mouse_entered" from="HexToTextBTN" to="." method="_on_hex_to_text_btn_mouse_entered"]
 [connection signal="pressed" from="HexToTextBTN" to="." method="_on_hex_to_text_btn_pressed"]

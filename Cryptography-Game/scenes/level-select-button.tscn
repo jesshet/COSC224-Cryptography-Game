@@ -36,4 +36,5 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

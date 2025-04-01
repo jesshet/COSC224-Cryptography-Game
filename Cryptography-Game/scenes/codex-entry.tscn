@@ -31,3 +31,5 @@ theme_override_fonts/font = ExtResource("4_vscae")
 theme_override_font_sizes/font_size = 14
 text = "Temp Text"
 vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

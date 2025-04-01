@@ -66,7 +66,8 @@ func animateChange(currentWord, targetWord):
 			else:
 				currentWord[count] = targetWord[count]
 			count += 1
-			await get_tree().create_timer(0.001).timeout
+			await get_tree().create_timer(0.01).timeout
+			GlobalSounds.click.play()
 			nodeUpper.text = currentWord
 		count = 0
 		loop += 1
@@ -77,3 +78,11 @@ func get_random_char():
 	var random_number = randi() % 26
 	var characters = 'abcdefghijklmnopqrstuvwxyz'
 	return characters[random_number]
+
+
+func _on_xorbtn_mouse_entered() -> void:
+	GlobalSounds.hover.play()
+
+
+func _on_decrypt_btn_mouse_entered() -> void:
+	GlobalSounds.hover.play()

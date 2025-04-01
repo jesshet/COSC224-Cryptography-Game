@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5bw5rgs8wiei"]
+[gd_scene load_steps=12 format=3 uid="uid://c5bw5rgs8wiei"]
 
 [ext_resource type="Script" path="res://scripts/level_complete.gd" id="1_f0a1f"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_8uq83"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="4_w7aep"]
 [ext_resource type="Texture2D" uid="uid://s4vrloti4qxy" path="res://assets/sprites/buttons/CodexButton.png" id="5_ourlc"]
 [ext_resource type="Texture2D" uid="uid://b4lnd2uwtjtfo" path="res://assets/sprites/buttons/CodexButton(selected).png" id="6_1nnh0"]
+[ext_resource type="AudioStream" uid="uid://cgvg4uyyqss3j" path="res://assets/sounds/correct.mp3" id="8_0pg5a"]
 
 [sub_resource type="Animation" id="Animation_bep70"]
 resource_name = "RESET"
@@ -166,6 +167,13 @@ theme_override_fonts/font = ExtResource("4_w7aep")
 text = "Codex"
 vertical_alignment = 1
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(284, 190)
+scale = Vector2(0.65, 0.65)
+stream = ExtResource("8_0pg5a")
+volume_db = -10.0
+autoplay = true
+
 [node name="LevelSelectBTN" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 284.0
@@ -189,5 +197,7 @@ text = "Level Select
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[connection signal="mouse_entered" from="CodexBTN" to="." method="_on_codex_btn_mouse_entered"]
 [connection signal="pressed" from="CodexBTN" to="." method="_on_codex_btn_pressed"]
+[connection signal="mouse_entered" from="LevelSelectBTN" to="." method="_on_level_select_btn_mouse_entered"]
 [connection signal="pressed" from="LevelSelectBTN" to="." method="_on_level_select_btn_pressed"]
