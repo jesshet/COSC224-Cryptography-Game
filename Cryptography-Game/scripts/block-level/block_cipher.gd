@@ -4,6 +4,12 @@ extends Control
 @export var _init: Area2D;
 @export var _key: Area2D;
 
+@export var _answer: String;
+@export var _keyStr: String;
+@export var _initStr: String;
+var _textStr: PackedByteArray;
+
+@export var _output: Label;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,33 +41,39 @@ func _computeOut() -> String:
 		pass;
 	return "";
 	
-func _computeIn(ans: String, init: String, key: String) -> PackedByteArray:
-	var keyBytes = key.to_utf8_buffer();
-	var ansBytes = ans.to_utf8_buffer();
+func _computeIn() -> PackedByteArray:
+	var keyBytes = _keyStr.to_utf8_buffer();
+	var ansBytes = _answer.to_utf8_buffer();
 	var encrypted = [];
 	for i in range(0, ansBytes.size()):
 		encrypted.append((ansBytes[i] + keyBytes[i]) % 256);
 		pass;
 	
 	#var	result = "";
-	var initBytes = init.to_utf8_buffer();
+	var initBytes = _initStr.to_utf8_buffer();
 	var xor_result:PackedByteArray = [];
 	for i in range(0, encrypted.size()):
 		xor_result.append(encrypted[i] ^ initBytes[i]);
 		#result += ("%c" % xor_result[i]);
 		pass;
-	
+	_textStr = xor_result;
 	return xor_result;
 
 func _toHex(str: String) -> String:
-	var hex = ""
-	var bytes = str.to_utf8_buffer()
+	var hex = "";
+	var bytes = str.to_utf8_buffer();
 	for byte in bytes:
-		hex += String("%02x" % byte)
+		hex += String("%02x" % byte);
 	return hex;
 
 func _toHexPBA(str: PackedByteArray) -> String:
-	var hex = ""
+	var hex = "";
 	for byte in str:
 		hex += String("%02x" % byte)
 	return hex;
+
+func _box_populated() -> void:
+	print("Pop");
+	var output = _computeOut();
+	_output.text = output;
+	pass;
