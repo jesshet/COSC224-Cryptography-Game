@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bpt12i20n7flr"]
+[gd_scene load_steps=20 format=3 uid="uid://bpt12i20n7flr"]
 
 [ext_resource type="Script" path="res://scripts/stream_level.gd" id="1_k7rco"]
 [ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="2_6qlsh"]
 [ext_resource type="PackedScene" uid="uid://d0kvlxf7acn71" path="res://scenes/dragable.tscn" id="2_elg2b"]
-[ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="2_if2pn"]
 [ext_resource type="Texture2D" uid="uid://ck8ji715s7ub5" path="res://assets/sprites/toolSprites/ToolButton.png" id="3_c7wv3"]
 [ext_resource type="Texture2D" uid="uid://kvd4w5bigwky" path="res://assets/sprites/toolSprites/ToolButton(selected).png" id="4_dy4lj"]
 [ext_resource type="Texture2D" uid="uid://b86jpd0w3mbne" path="res://assets/sprites/toolSprites/ToolButton(pressed).png" id="5_4gcrt"]
@@ -139,10 +138,6 @@ offset_left = 538.0
 offset_top = 107.0
 offset_right = 1067.0
 offset_bottom = 240.0
-
-[node name="Clicks" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_if2pn")
-volume_db = -15.0
 
 [node name="DraggableContainerFrame" type="Control" parent="."]
 layout_mode = 3

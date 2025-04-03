@@ -155,7 +155,8 @@ theme_override_styles/slider = ExtResource("6_gb1hv")
 theme_override_styles/grabber_area = ExtResource("7_e7i6y")
 theme_override_styles/grabber_area_highlight = ExtResource("7_e7i6y")
 min_value = -40.0
-max_value = 40.0
+max_value = 6.0
+value = 6.0
 
 [node name="MusicLabel" type="RichTextLabel" parent="VBoxControls"]
 texture_filter = 1
@@ -176,7 +177,7 @@ theme_override_styles/slider = ExtResource("6_gb1hv")
 theme_override_styles/grabber_area = ExtResource("7_e7i6y")
 theme_override_styles/grabber_area_highlight = ExtResource("7_e7i6y")
 min_value = -40.0
-max_value = 40.0
+max_value = 6.0
 
 [node name="CloseButton" type="TextureButton" parent="."]
 layout_mode = 0
@@ -203,5 +204,5 @@ vertical_alignment = 1
 [connection signal="value_changed" from="VBoxControls/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="VBoxControls/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="mouse_entered" from="CloseButton" to="." method="_on_close_button_mouse_entered"]
-[connection signal="pressed" from="CloseButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_button_pressed"]
