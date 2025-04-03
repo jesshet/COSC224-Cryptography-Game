@@ -28,6 +28,7 @@ func playMessage():
 func _on_submitbox_submit() -> void:
 	var answer = $"submit-box/TextEdit".text
 	if(answer == solution):
+		GlobalTimer._stop_timer();
 		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
 		$LevelStack.add_child(winScreen)
 	else:

@@ -11,6 +11,7 @@ var count: int
 
 var label
 signal message_complete
+signal _start_timer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -84,4 +85,5 @@ func _on_message_animations_animation_finished(anim_name: StringName) -> void:
 		printMessages(messageIndex)
 	if anim_name == "close-windows":
 		message_complete.emit();
-		
+	
+	GlobalTimer._start_timer();

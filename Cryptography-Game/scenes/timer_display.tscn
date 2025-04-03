@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://qaih8cnxrt3n"]
+
+[ext_resource type="Script" path="res://scripts/timer.gd" id="1_l6ajm"]
+
+[node name="TimerDisplay" type="Label"]
+offset_left = 944.0
+offset_top = 584.0
+offset_right = 1032.0
+offset_bottom = 607.0
+text = "00:00"
+script = ExtResource("1_l6ajm")
