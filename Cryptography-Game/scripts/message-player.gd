@@ -85,5 +85,4 @@ func _on_message_animations_animation_finished(anim_name: StringName) -> void:
 		printMessages(messageIndex)
 	if anim_name == "close-windows":
 		message_complete.emit();
-	
-	GlobalTimer._start_timer();
+		GlobalTimer._start_timer();

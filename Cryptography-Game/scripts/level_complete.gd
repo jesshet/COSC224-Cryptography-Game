@@ -3,7 +3,8 @@ extends Control
 func _ready() -> void:
 	$AnimationPlayer.play("open-window")
 	GlobalSounds.success.play()
-	
+	$Time.text = "Time: " + GlobalTimer._time_text()
+	GlobalTimer._stop_timer()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
