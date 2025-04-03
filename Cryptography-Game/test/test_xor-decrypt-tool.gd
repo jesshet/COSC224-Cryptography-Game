@@ -74,6 +74,7 @@ func _on_decrypt_btn_pressed() -> void:
 	
 	
 	
+	
 func _xor_testing(_inputUpper, _inputLower):
 	var result = regex.search(_inputUpper)
 	if not result:

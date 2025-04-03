@@ -28,14 +28,10 @@ func playMessage():
 func _on_submitbox_submit() -> void:
 	var answer = $"submit-box/TextEdit".text
 	if(answer == solution):
-		GlobalTimer._stop_timer();
 		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
 		$LevelStack.add_child(winScreen)
 	else:
 		GlobalSounds.incorrect.play()
-
-func _on_tex_to_hex_message_passer() -> void:
-	pass # Replace with function body.
 
 func _on_repeat_text_pressed() -> void:
 	playMessage()

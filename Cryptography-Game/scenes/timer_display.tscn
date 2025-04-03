@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://qaih8cnxrt3n"]
+[gd_scene load_steps=3 format=3 uid="uid://qaih8cnxrt3n"]
 
+[ext_resource type="FontFile" uid="uid://bkkjavn3utrot" path="res://assets/fonts/alarm clock.ttf" id="1_1xyh2"]
 [ext_resource type="Script" path="res://scripts/timer.gd" id="1_l6ajm"]
 
 [node name="TimerDisplay" type="Label"]
@@ -7,5 +8,8 @@ offset_left = 944.0
 offset_top = 584.0
 offset_right = 1032.0
 offset_bottom = 607.0
-text = "00:00"
+theme_override_colors/font_color = Color(0, 0.85098, 1, 1)
+theme_override_fonts/font = ExtResource("1_1xyh2")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
 script = ExtResource("1_l6ajm")
