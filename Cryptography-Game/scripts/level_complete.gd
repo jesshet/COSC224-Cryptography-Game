@@ -1,12 +1,9 @@
 extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GlobalSounds.success.play()
-	GlobalSounds.musicVol = GlobalSounds.music.get_volume_db();
-	GlobalSounds.music.set_volume_db(-200)
 	$AnimationPlayer.play("open-window")
-	await get_tree().create_timer(3).timeout
-	GlobalSounds._fade_music()
+	GlobalSounds.success.play()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

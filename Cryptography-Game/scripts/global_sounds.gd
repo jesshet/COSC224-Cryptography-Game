@@ -8,11 +8,63 @@ var close: AudioStreamPlayer = AudioStreamPlayer.new()
 var music: AudioStreamPlayer = AudioStreamPlayer.new()
 var drop: AudioStreamPlayer = AudioStreamPlayer.new()
 var success: AudioStreamPlayer = AudioStreamPlayer.new()
+var incorrect: AudioStreamPlayer = AudioStreamPlayer.new()
 var click: AudioStreamPlayer = AudioStreamPlayer.new()
+var walkieOn: AudioStreamPlayer = AudioStreamPlayer.new()
+var walkieOff: AudioStreamPlayer = AudioStreamPlayer.new()
+var caesarClick: AudioStreamPlayer = AudioStreamPlayer.new()
+var finishDec: AudioStreamPlayer = AudioStreamPlayer.new()
 
 var musicVol
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Audio Player for Decryption Completion Sound Effect
+	var finishDecStream: AudioStream = preload("res://assets/sounds/finish.wav")
+	finishDec.set_stream(finishDecStream)
+	#Change This Value to set Audio Bus
+	finishDec.set_bus("SFX")
+	#Change This Value to set Volume
+	finishDec.set_volume_db(-30)
+	
+	#Audio Player for Caesar Shifter Click Sound Effect
+	var caesarClickStream: AudioStream = preload("res://assets/sounds/caesar-click.mp3")
+	caesarClick.set_stream(caesarClickStream)
+	#Change This Value to set Audio Bus
+	caesarClick.set_bus("SFX")
+	#Change This Value to set Volume
+	caesarClick.set_volume_db(-25)
+	
+	#Audio Player for Incorrect Answer Sound Effect
+	var incorrectStream: AudioStream = preload("res://assets/sounds/incorrect.wav")
+	incorrect.set_stream(incorrectStream)
+	#Change This Value to set Audio Bus
+	incorrect.set_bus("SFX")
+	#Change This Value to set Volume
+	incorrect.set_volume_db(-15)
+	
+	#Audio Player for Correct Answer Sound Effect
+	var successStream: AudioStream = preload("res://assets/sounds/correct.mp3")
+	success.set_stream(successStream)
+	#Change This Value to set Audio Bus
+	success.set_bus("SFX")
+	#Change This Value to set Volume
+	success.set_volume_db(-10)
+	
+	#Audio Player for Walkie Talkie Click On Sound Effect
+	var walkieOnStream: AudioStream = preload("res://assets/sounds/walkie-on.mp3")
+	walkieOn.set_stream(walkieOnStream)
+	#Change This Value to set Audio Bus
+	walkieOn.set_bus("SFX")
+	#Change This Value to set Volume
+	walkieOn.set_volume_db(-15)
+	
+	#Audio Player for Walkie Talkie Click Off Sound Effect
+	var walkieOffStream: AudioStream = preload("res://assets/sounds/walkie-off.mp3")
+	walkieOff.set_stream(walkieOffStream)
+	#Change This Value to set Audio Bus
+	walkieOff.set_bus("SFX")
+	#Change This Value to set Volume
+	walkieOff.set_volume_db(-15)
 	
 	#Audio Player for Text Clicking Sound Effect
 	var clickStream: AudioStream = preload("res://assets/sounds/click.wav")
@@ -20,7 +72,7 @@ func _ready() -> void:
 	#Change This Value to set Audio Bus
 	click.set_bus("SFX")
 	#Change This Value to set Volume
-	click.set_volume_db(-15)
+	click.set_volume_db(-25)
 	
 	#Audio Player for Draggable Dropping Sound Effect
 	var dropStream: AudioStream = preload("res://assets/sounds/drop.wav")
@@ -77,6 +129,6 @@ func _fade_music() -> void:
 	#Fades Music Volume from -200db back to current volume setting
 	while(GlobalSounds.music.get_volume_db() < GlobalSounds.musicVol):
 		#Change this value to set fade speed
-		await get_tree().create_timer(.01).timeout
+		await get_tree().create_timer(.02).timeout
 		#Change this value to set volume step
 		GlobalSounds.music.set_volume_db(GlobalSounds.music.get_volume_db() + 1)

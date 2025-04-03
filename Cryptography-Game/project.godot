@@ -28,6 +28,7 @@ buses/default_bus_layout="res://assets/sounds/default_bus_layout.tres"
 Global="*res://scripts/global.gd"
 GlobalAlgorithms="*res://scripts/global_algorithms.gd"
 GlobalSounds="*res://scripts/global_sounds.gd"
+GlobalTimer="*res://scripts/global_timer.gd"
 
 [display]
 
@@ -46,4 +47,5 @@ enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.145098, 0.145098, 0.145098, 1)

@@ -53,15 +53,15 @@ func animateChange(currentWord, targetWord):
 				currentWord[count] = targetWord[count]
 			count += 1
 
-			await get_tree().create_timer(0.001).timeout
+			await get_tree().create_timer(0.035).timeout
 			upperCollider.node.text = currentWord
 			GlobalSounds.click.play()
-	  
 		count = 0
 		loop += 1
 	#setInfo(currentWord)
 	upperCollider.node.mouse_filter = MOUSE_FILTER_STOP
-		
+	GlobalSounds.finishDec.play()
+	
 func get_random_char():
 	var random_number = randi() % 26
 	var characters = 'abcdefghijklmnopqrstuvwxyz'

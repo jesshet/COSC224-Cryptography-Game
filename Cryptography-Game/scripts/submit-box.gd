@@ -8,3 +8,11 @@ func _ready() -> void:
 
 func _on_texture_button_pressed() -> void:
 	submit.emit();
+
+
+func _on_text_edit_text_changed() -> void:
+	GlobalSounds.click.play()
+
+
+func _on_texture_button_mouse_entered() -> void:
+	GlobalSounds.hover.play()
