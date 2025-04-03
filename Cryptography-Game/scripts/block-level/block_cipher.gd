@@ -11,6 +11,8 @@ var _textStr: PackedByteArray;
 
 @export var _output: Label;
 
+enum Type {NA, Init, Key, Text};
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -22,24 +24,26 @@ func _operation() -> void:
 
 
 func _computeOut() -> String:
-	if _text.filled and _init.filled and _key.filled:
-		var textBytes = _text._data.to_utf8_buffer();
-		var initBytes = _init._data.to_utf8_buffer();
-		var xor_result = "";
-		for i in range(0, textBytes.length()):
-			xor_result += char(textBytes.sub_string(i,1) ^ initBytes.sub_string(i,1));
+	if !_text.filled and !_init.filled and !_key.filled:
+		return "Error";
+	
+	if _text.node._type == Type.Text and _key.node._type == Type.Key and _init.node._type == Type.Init:
+		var textBytes = _textStr;
+		var initBytes = _initStr.to_utf8_buffer();
+		var xor_result:PackedByteArray = [];
+		for i in range(0, textBytes.size()):
+			xor_result.append(textBytes[i] ^ initBytes[i]);
+			pass;
+		print(xor_result);
+		var keyBytes = _keyStr.to_utf8_buffer();
+		var answer:PackedByteArray = [];
+		for i in range(0, textBytes.size()):
+			answer.append((xor_result[i] + keyBytes[i]) % 256);
 			pass;
 		
-		var keyBytes = _key._data.to_utf8_buffer();
-		var bytes = xor_result.to_utf8_buffer();
-		var answer = "";
-		for i in range(0, textBytes.length()):
-			answer += char((bytes.sub_string(i,1) + keyBytes.sub_string(i,1)) % 256);
-			pass;
-		
-		return answer;
+		return answer.hex_encode();
 		pass;
-	return "";
+	return "Miss Placed";
 	
 func _computeIn() -> PackedByteArray:
 	var keyBytes = _keyStr.to_utf8_buffer();
@@ -57,6 +61,7 @@ func _computeIn() -> PackedByteArray:
 		#result += ("%c" % xor_result[i]);
 		pass;
 	_textStr = xor_result;
+	print(xor_result);
 	return xor_result;
 
 func _toHex(str: String) -> String:

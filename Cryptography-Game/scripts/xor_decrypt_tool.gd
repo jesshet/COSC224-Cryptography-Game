@@ -56,7 +56,7 @@ func animateChange(currentWord, targetWord):
 			await get_tree().create_timer(0.001).timeout
 			upperCollider.node.text = currentWord
 			GlobalSounds.click.play()
-      
+	  
 		count = 0
 		loop += 1
 	#setInfo(currentWord)
