@@ -67,6 +67,7 @@ func _on_submit_button_pressed() -> void:
 		#Play Success Sound
 		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
 		add_child(winScreen)
+		GlobalTimer._stop_timer();
 	else:
 		#Play Incorrect Sound
 		Caesar.incorrect();

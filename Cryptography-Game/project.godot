@@ -28,6 +28,7 @@ buses/default_bus_layout="res://assets/sounds/default_bus_layout.tres"
 Global="*res://scripts/global.gd"
 GlobalAlgorithms="*res://scripts/global_algorithms.gd"
 GlobalSounds="*res://scripts/global_sounds.gd"
+GlobalTimer="*res://scripts/global_timer.gd"
 
 [display]
 
