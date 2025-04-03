@@ -1,81 +1,152 @@
-[gd_scene load_steps=8 format=3 uid="uid://qhppkbq1twcb"]
+[gd_scene load_steps=16 format=3 uid="uid://qhppkbq1twcb"]
 
 [ext_resource type="PackedScene" uid="uid://dfkh1qqtl3hce" path="res://scenes/level-select-button.tscn" id="1_righb"]
 [ext_resource type="Script" path="res://scripts/level-select-menu.gd" id="1_rl0j8"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_bsucj"]
+[ext_resource type="Animation" uid="uid://bo5lm4kv7nx3g" path="res://assets/Animations/open-window.res" id="2_ei7o3"]
+[ext_resource type="Animation" uid="uid://5itcm2oayjmc" path="res://assets/Animations/close-window.res" id="3_6xmmy"]
 [ext_resource type="PackedScene" uid="uid://b38ramit5egv6" path="res://scenes/caesar-level.tscn" id="3_lg3ln"]
-[ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_777na"]
+[ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="4_umwn5"]
+[ext_resource type="Texture2D" uid="uid://b24uomi2658im" path="res://assets/sprites/window-frames/LevelSelect.png" id="5_5rmn4"]
 [ext_resource type="PackedScene" uid="uid://bpt12i20n7flr" path="res://scenes/stream-level.tscn" id="5_81w6o"]
+[ext_resource type="Texture2D" uid="uid://bb77jobsltjme" path="res://assets/sprites/buttons/X.png" id="5_cwm60"]
+[ext_resource type="Texture2D" uid="uid://c2kja5qykhblv" path="res://assets/sprites/buttons/X(Selected).png" id="6_0nq27"]
+[ext_resource type="BitMap" uid="uid://dggeyftvnygtu" path="res://assets/sprites/buttons/X.bmp" id="7_l1s8k"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_osmia"]
+[sub_resource type="Animation" id="Animation_d1cja"]
+resource_name = "RESET"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_054nh"]
+_data = {
+"RESET": SubResource("Animation_d1cja"),
+"close-window": ExtResource("3_6xmmy"),
+"open-window": ExtResource("2_ei7o3")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dj05n"]
 shader = ExtResource("2_bsucj")
-shader_parameter/lod = 5.0
+shader_parameter/lod = 3.0
 
-[node name="Level-Select-Menu" type="MarginContainer"]
+[node name="Level-Select-Menu" type="Control"]
 z_index = 5
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 14.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(576, 320)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_rl0j8")
 
-[node name="Panel" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_osmia")
-layout_mode = 2
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+position = Vector2(-449426, -20.0005)
+scale = Vector2(611500, 69.8)
+copy_mode = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_054nh")
+}
+speed_scale = 1.7
+
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_dj05n")
+layout_mode = 0
+offset_left = -35.0
+offset_top = -59.0
+offset_right = 1217.0
+offset_bottom = 676.0
+mouse_filter = 2
+
+[node name="Fade" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -35.0
+offset_top = -62.0
+offset_right = 1221.0
+offset_bottom = 678.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.619608)
+
+[node name="BGFrame" type="Sprite2D" parent="."]
+position = Vector2(577, 314)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_5rmn4")
+
+[node name="Title" type="Label" parent="."]
 layout_mode = 2
+offset_top = 40.0
+offset_right = 1152.0
+offset_bottom = 79.0
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("4_777na")
-theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("4_umwn5")
+theme_override_font_sizes/font_size = 26
 text = "Level Select"
 horizontal_alignment = 1
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="CloseButton" type="TextureButton" parent="."]
+z_index = 1
 layout_mode = 2
+offset_left = 908.0
+offset_top = 89.0
+offset_right = 1108.0
+offset_bottom = 169.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("5_cwm60")
+texture_hover = ExtResource("6_0nq27")
+texture_click_mask = ExtResource("7_l1s8k")
 
-[node name="Level Select Menu" type="VBoxContainer" parent="AspectRatioContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme_override_constants/separation = 32
+[node name="Label" type="Label" parent="CloseButton"]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 198.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 40
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Level" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_top = 54.0
+offset_right = 1151.0
+offset_bottom = 633.0
+mouse_filter = 2
+
+[node name="Level Select Menu" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+theme_override_constants/separation = 50
+
+[node name="Level" parent="CenterContainer/Level Select Menu" instance=ExtResource("1_righb")]
+layout_mode = 2
 _buttonText = "1"
 _boxText = "Caesar Cipher"
 _level = ExtResource("3_lg3ln")
 _animName = "Caesar-level"
 
-[node name="Level2" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
+[node name="Level2" parent="CenterContainer/Level Select Menu" instance=ExtResource("1_righb")]
 layout_mode = 2
 _buttonText = "2"
 _boxText = "Stream Cipher"
 _level = ExtResource("5_81w6o")
 _animName = "Stream-level"
 
-[node name="Level3" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
+[node name="Level3" parent="CenterContainer/Level Select Menu" instance=ExtResource("1_righb")]
 layout_mode = 2
 _buttonText = "3"
 _boxText = "Stream Cipher"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_constants/margin_bottom = 64
-
-[node name="CloseButton" type="Button" parent="MarginContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_777na")
-theme_override_font_sizes/font_size = 32
-text = "Close Menu"
-
-[connection signal="load_level" from="AspectRatioContainer/Level Select Menu/Level" to="." method="_on_level_load_level"]
-[connection signal="load_level" from="AspectRatioContainer/Level Select Menu/Level2" to="." method="_on_level_load_level"]
-[connection signal="load_level" from="AspectRatioContainer/Level Select Menu/Level3" to="." method="_on_level_load_level"]
-[connection signal="pressed" from="MarginContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="load_level" from="CenterContainer/Level Select Menu/Level" to="." method="_on_level_load_level"]
+[connection signal="load_level" from="CenterContainer/Level Select Menu/Level2" to="." method="_on_level_load_level"]
+[connection signal="load_level" from="CenterContainer/Level Select Menu/Level3" to="." method="_on_level_load_level"]

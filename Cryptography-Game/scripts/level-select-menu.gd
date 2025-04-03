@@ -1,8 +1,8 @@
-extends Container
+extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$AnimationPlayer.play("open-window")
 
 
 func _on_level_load_level(level: PackedScene, anim: String) -> void:
@@ -10,7 +10,16 @@ func _on_level_load_level(level: PackedScene, anim: String) -> void:
 		print("Level was null");
 		return;
 	Global.game_scene._load_new_level(level, anim);
-	queue_free();
+	closeWindow()
 
 func _on_close_button_pressed() -> void:
-	queue_free();
+	closeWindow()
+	
+	
+func closeWindow():
+	$AnimationPlayer.play("close-window")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "close-window":
+		queue_free();

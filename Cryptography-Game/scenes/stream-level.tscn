@@ -162,7 +162,6 @@ libraries = {
 speed_scale = 1.7
 
 [node name="Blur" type="Polygon2D" parent="DraggableContainerFrame"]
-modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_bd52l")
 polygon = PackedVector2Array(141, 128, 395, 128, 416, 148, 416, 263, 400, 278, 402, 468, 417, 484, 417, 533, 368, 582, 349, 582, 333, 600, 142, 599, 125, 580, 125, 141, 128, 134, 131, 130, 136, 128)
 
@@ -208,6 +207,13 @@ offset_top = 448.0
 offset_right = 1007.0
 offset_bottom = 569.0
 
+[node name="Blur" parent="submit-box" index="1"]
+modulate = Color(1, 1, 1, 1)
+
 [connection signal="child_order_changed" from="LevelStack" to="LevelStack" method="_on_child_order_changed"]
 [connection signal="pressed" from="LevelStack/RepeatText" to="." method="_on_repeat_text_pressed"]
 [connection signal="submit" from="submit-box" to="." method="_on_submitbox_submit"]
+
+[editable path="LevelStack/xor-decrypt-tool"]
+[editable path="LevelStack/TextHexTool"]
+[editable path="submit-box"]
