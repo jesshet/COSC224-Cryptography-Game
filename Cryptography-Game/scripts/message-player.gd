@@ -30,7 +30,7 @@ func startMessages(messages : Array[String]) -> void:
 	messageIndex = 0
 	label.visible_characters = 0
 	$MessageAnimations.play("open-windows")
-	$"Walkie-On".play()
+	GlobalSounds.walkieOn.play()
 	
 func startMessage(message : String) -> void:
 	isArray = false
@@ -52,7 +52,7 @@ func printMessages(messageIndex) -> void:
 		#$Clicks.play();
 		count += 1
 		label.visible_characters = count
-		$Clicks.play()
+		GlobalSounds.click.play()
 		if(currentMessage[count - 1] == "."):
 			await get_tree().create_timer(0.3).timeout
 		else:
@@ -73,7 +73,7 @@ func _input(ev) -> void:
 			printMessages(messageIndex)
 			
 		elif messageIndex >= messages.size() - 1 && isOpen:
-			$"Walkie-Off".play()
+			GlobalSounds.walkieOff.play()
 			$MessageAnimations.play("close-windows")
 			isOpen = false
 

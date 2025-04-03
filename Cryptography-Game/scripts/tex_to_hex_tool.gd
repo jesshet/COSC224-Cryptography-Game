@@ -56,6 +56,7 @@ func infoClear():
 func animateChange(currentWord, targetWord):
 	textBox.node.mouse_filter = MOUSE_FILTER_IGNORE
 	var count = 0
+	var check = true
 	while(currentWord != targetWord):
 		while(count < targetWord.length()):
 			
@@ -75,11 +76,15 @@ func animateChange(currentWord, targetWord):
 				
 			count += 1
 			if currentWord.length() > targetWord.length():
-				await get_tree().create_timer(0.01).timeout
+				await get_tree().create_timer(0.035).timeout
+				GlobalSounds.click.play()
 			else:
-				await get_tree().create_timer(0.01).timeout
+				await get_tree().create_timer(0.02).timeout
+				if(check):
+					GlobalSounds.finishDec.play()
+					check = false
 			textBox.node.text = currentWord
-			GlobalSounds.click.play()
+		
 		count = 0
 	setInfo(currentWord)
 	textBox.node.mouse_filter = MOUSE_FILTER_STOP

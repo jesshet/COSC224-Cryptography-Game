@@ -99,4 +99,6 @@ theme_override_fonts/font = ExtResource("1_lahtw")
 theme_override_font_sizes/font_size = 16
 text = "Submit"
 
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
