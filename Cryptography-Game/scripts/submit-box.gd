@@ -1,8 +1,11 @@
 extends Control
 signal submit
 
+@export var _textBox: TextEdit;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	assert(_textBox != null, "The textBox for the submit button is null");
 	$AnimationPlayer.play("open-window")
 
 
@@ -11,6 +14,9 @@ func _on_texture_button_pressed() -> void:
 
 
 func _on_text_edit_text_changed() -> void:
+	var text = _textBox.text.to_upper();
+	_textBox.text = text;
+	_textBox.set_caret_column(text.length());
 	GlobalSounds.click.play()
 
 

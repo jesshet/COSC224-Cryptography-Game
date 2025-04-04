@@ -50,7 +50,7 @@ func playMessage():
 #win state
 func _on_submitbox_submit() -> void:
 	var text = $"submit-box/TextEdit".text.to_lower();
-	if(_answer.to_lower() == text):
+	if(_answer.to_upper() == text):
 		GlobalTimer._stop_timer();
 		var winScreen = _winScreen.instantiate();
 		$LevelStack.add_child(winScreen);
