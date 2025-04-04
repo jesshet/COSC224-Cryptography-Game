@@ -1,7 +1,6 @@
 extends Button
 
 @export var _rayCenter: RayCast2D;
-@export var _inputTBX: TextEdit;
 
 #Block Cipher
 enum Type {NA, Init, Key, Text};

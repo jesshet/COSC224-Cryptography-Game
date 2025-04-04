@@ -76,7 +76,7 @@ _data = {
 shader = ExtResource("10_17ic7")
 shader_parameter/lod = 2.5
 
-[node name="BlockLevel" type="Control" node_paths=PackedStringArray("_key", "_initialization", "_text", "_level")]
+[node name="BlockLevel" type="Control" node_paths=PackedStringArray("_key", "_initialization", "_text")]
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0
@@ -90,7 +90,8 @@ levelMessages = Array[String]([""])
 _key = NodePath("DragableKey")
 _initialization = NodePath("DragableInit")
 _text = NodePath("DragableText")
-_level = NodePath("LevelStack/Block_Cipher")
+_plainText = "Help"
+_initStr = "Next"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -132,7 +133,7 @@ text = "Call"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Block_Cipher" type="Control" parent="LevelStack" node_paths=PackedStringArray("_text", "_init", "_key", "_output")]
+[node name="Block_Cipher" type="Control" parent="LevelStack" node_paths=PackedStringArray("_text", "_init", "_key", "_output", "_level")]
 anchors_preset = 0
 offset_left = 586.0
 offset_top = 141.0
@@ -142,10 +143,8 @@ script = ExtResource("8_628b3")
 _text = NodePath("Text/UpperBox")
 _init = NodePath("Init/UpperBox")
 _key = NodePath("Key/UpperBox")
-_keyStr = "1234"
-_initStr = "next"
-_plainText = "help"
 _output = NodePath("Output")
+_level = NodePath("../..")
 
 [node name="Text" type="Control" parent="LevelStack/Block_Cipher"]
 z_index = 2
