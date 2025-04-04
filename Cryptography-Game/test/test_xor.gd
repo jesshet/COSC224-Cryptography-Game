@@ -1,6 +1,6 @@
 extends GutTest
 
-var XOR = preload("res://unit-testing/xor-decrypt-tool-test.gd");
+var XOR = preload("res://test/test_xor-decrypt-tool.gd");
 var xor;
 
 func before_each() -> void:

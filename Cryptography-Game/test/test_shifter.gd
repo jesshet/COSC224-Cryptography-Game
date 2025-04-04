@@ -1,6 +1,6 @@
 extends GutTest
 
-var Shifter = preload("res://unit-testing/caesar-shifter-test.gd");
+var Shifter = preload("res://test/test_caesar-shifter.gd");
 var shifter;
 
 func before_each() -> void:
