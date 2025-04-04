@@ -6,8 +6,6 @@ extends Control
 @export var _text: Button;
 
 @export var _level: Control;
-@export var _timer: Timer;
-
 
 var _winScreen = preload("res://scenes/level-complete.tscn");
 
@@ -18,19 +16,23 @@ func _ready() -> void:
 	assert(_initialization != null, "Initialization Dragable is null");
 	assert(_text != null, "Text Dragable is null");
 	
-	#var text = _level._computeIn(_answer, _initStr, _keyStr);
-	var text: PackedByteArray = _level._computeIn();
-	_text.text = _level._toHexPBA(text);
-	_key.text = _level._toHex(_level._keyStr);
-	_initialization.text = _level._toHex(_level._initStr);
 	display_dragables(false);
+	
+	#create answer
+	_text.text = _level._plainText;
+	var hexPlainText = GlobalAlgorithms.text_to_hex(_level._plainText);
+	var key = GlobalAlgorithms.generate_hex_key(hexPlainText);
+	_key.text = key;
+	var init = GlobalAlgorithms.text_to_hex(_level._initStr);
+	_initialization.text = init;
+	var xorafter = GlobalAlgorithms.xor(hexPlainText,init);
+	_level._answer = GlobalAlgorithms.xor(xorafter,key);
 	
 	playMessage()
 	$DraggableContainerFrame/AnimationPlayer.play("open-window")
 	await get_tree().create_timer(0.3).timeout
 	
 	display_dragables(true);
-	_timer.start();
 	pass;
 
 func display_dragables(state: bool) -> void:
@@ -45,7 +47,7 @@ func playMessage():
 #win state
 func _on_submitbox_submit() -> void:
 	var text = $"submit-box/TextEdit".text.to_lower();
-	if(_level._answer == text):
-		_timer.stop();
+	if(_level._answer.to_lower() == text):
+		GlobalTimer._stop_timer();
 		var winScreen = _winScreen.instantiate();
 		$LevelStack.add_child(winScreen);
