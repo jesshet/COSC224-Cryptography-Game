@@ -1,10 +1,17 @@
 extends Button
 
 @export var _rayCenter: RayCast2D;
-@export var _inputTBX: TextEdit;
+
+#Block Cipher
+enum Type {NA, Init, Key, Text};
+@export var _type: Type;
+
 var _lastMousePos: Vector2;
 var _isDragging: bool = false;
 var startPos: Vector2
+
+var _data: String;
+
 
 func  _ready() -> void:
 	assert(_rayCenter != null, name + "'s raycast is null");
