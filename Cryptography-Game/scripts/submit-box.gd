@@ -12,10 +12,19 @@ func _ready() -> void:
 func _on_texture_button_pressed() -> void:
 	submit.emit();
 
+func  _input(event: InputEvent) -> void:
+	if _textBox.has_focus() and event is InputEventKey and event.is_pressed():
+		if event.key_label == KEY_ENTER:
+			_on_texture_button_pressed();
+			get_viewport().set_input_as_handled();
+			pass;
+		pass;
+	pass;
 
 func _on_text_edit_text_changed() -> void:
 	var pos = _textBox.get_caret_column();
-	_textBox.text = _textBox.text.to_upper();
+	var text = _textBox.text.to_upper();
+	_textBox.text = text;
 	_textBox.set_caret_column(pos);
 	GlobalSounds.click.play()
 
