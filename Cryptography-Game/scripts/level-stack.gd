@@ -14,6 +14,7 @@ func _ready() -> void:
 	#Guess Tracker Variable
 	guesses = 0;
 	
+	Global.caesarOpen = true
 	#windows start closed
 	windowsOpen = false
 	
@@ -25,6 +26,7 @@ func _ready() -> void:
 	
 	#Connect Caesar Scene Signals
 	connect_caesar();
+	
 
 func connect_caesar() -> void:
 	#Connect Caesar Node
@@ -64,6 +66,7 @@ func _on_child_order_changed() -> void:
 func _on_submit_button_pressed() -> void:
 	print(guesses)
 	if($Problem.text == Solution):
+		Global.caesarComplete = true
 		#Play Success Sound
 		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
 		add_child(winScreen)

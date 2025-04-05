@@ -2,11 +2,17 @@ extends Node
 
 var _timer: float;
 var _running: bool;
+var _count: int;
 
-func _process(delta: float) -> void:
+		
+	
+#Using Physics Processing to keep the timer hardware independent
+func _physics_process(delta: float) -> void:
 	if _running:
 		_timer += delta;
-	pass;
+		_count += 1
+		if(_count % 60 == 0):
+			GlobalSounds.tick.play()
 
 func _reset_timer() -> void:
 	_running = false;
