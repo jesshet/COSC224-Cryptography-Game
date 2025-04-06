@@ -1,9 +1,10 @@
-extends HBoxContainer
+extends Control
 
 signal load_level(level);
 
-@export var _buttonText = "";
-@export var _boxText = "";
+@export var _titleText = "";
+@export var _subTitleText = "";
+@export_multiline var _descriptionText = "";
 @export var _level:PackedScene;
 @export var _animName = ""
 
@@ -13,9 +14,17 @@ var _parentNode: Node;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_button = get_node("Button");
+<<<<<<< Updated upstream
 	_textBox = get_node("RichTextLabel");
 	_button.text = _buttonText;
 	_button.text += ". " + _boxText;
+=======
+	
+	$Title.text = _titleText
+	$SubTitle.text = _subTitleText
+	$DescriptionText.text = _descriptionText
+	
+>>>>>>> Stashed changes
 	_parentNode = get_parent();
 	pass # Replace with function body.
 
@@ -31,7 +40,6 @@ func _on_button_pressed() -> void:
 	await get_tree().create_timer(1).timeout
 		
 	load_level.emit(_level, _animName);
-
 
 func _on_button_mouse_entered() -> void:
 	GlobalSounds.hover.play()

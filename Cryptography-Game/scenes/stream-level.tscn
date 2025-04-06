@@ -198,7 +198,11 @@ modulate = Color(1, 1, 1, 1)
 
 [editable path="LevelStack/xor-decrypt-tool"]
 [editable path="LevelStack/TextHexTool"]
+<<<<<<< Updated upstream
 
 [editable path="Draggable"]
 
+=======
+[editable path="Draggable"]
+>>>>>>> Stashed changes
 [editable path="submit-box"]
