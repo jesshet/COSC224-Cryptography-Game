@@ -166,15 +166,15 @@ text = "Hex Converter"
 [node name="CollisionContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 164.0
-offset_top = 64.0
-offset_right = 391.0
-offset_bottom = 94.0
+offset_left = 157.0
+offset_top = 40.0
+offset_right = 389.0
+offset_bottom = 114.0
 
 [node name="Area2D" type="Area2D" parent="CollisionContainer"]
 z_index = 2
-position = Vector2(113, 15)
-scale = Vector2(0.369334, 1.1)
+position = Vector2(116, 37)
+scale = Vector2(0.378639, 2.70448)
 script = ExtResource("2_4lqud")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionContainer/Area2D"]
@@ -184,9 +184,9 @@ shape = SubResource("RectangleShape2D_3jvu3")
 texture_filter = 1
 layout_mode = 0
 offset_left = 452.0
-offset_top = 60.0
+offset_top = 56.0
 offset_right = 499.0
-offset_bottom = 74.0
+offset_bottom = 70.0
 scale = Vector2(2, 2)
 pivot_offset = Vector2(47, 17)
 texture_normal = ExtResource("4_ulp66")
@@ -210,10 +210,10 @@ vertical_alignment = 1
 [node name="HexToTextBTN" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 449.0
-offset_top = 106.0
-offset_right = 496.0
-offset_bottom = 120.0
+offset_left = 451.0
+offset_top = 103.0
+offset_right = 498.0
+offset_bottom = 117.0
 scale = Vector2(2, 2)
 pivot_offset = Vector2(45, 17)
 texture_normal = ExtResource("4_ulp66")
@@ -236,27 +236,24 @@ vertical_alignment = 1
 [node name="DropBox" type="Control" parent="."]
 z_index = 1
 anchors_preset = 0
-offset_left = 162.0
-offset_top = 63.0
+offset_left = 157.0
+offset_top = 38.0
 offset_right = 389.0
-offset_bottom = 95.0
+offset_bottom = 113.0
 
 [node name="Shadow" type="ColorRect" parent="DropBox"]
 z_index = -1
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 227.0
-offset_bottom = 31.0
+offset_right = 232.0
+offset_bottom = 75.0
 color = Color(0.152941, 0.34902, 0.458824, 1)
 
 [node name="BG" type="ColorRect" parent="DropBox"]
 z_index = -1
 layout_mode = 0
-offset_left = 1.0
-offset_top = 3.0
-offset_right = 225.0
-offset_bottom = 31.0
+offset_top = 2.0
+offset_right = 230.0
+offset_bottom = 75.0
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
 [node name="OuterCircle" type="Sprite2D" parent="."]
@@ -273,5 +270,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("11_5vlwx")
 offset = Vector2(0.5, -0.5)
 
+[connection signal="mouse_entered" from="TextToHexBTN" to="." method="_on_text_to_hex_btn_mouse_entered"]
 [connection signal="pressed" from="TextToHexBTN" to="." method="_on_text_to_hex_btn_pressed"]
+[connection signal="mouse_entered" from="HexToTextBTN" to="." method="_on_hex_to_text_btn_mouse_entered"]
 [connection signal="pressed" from="HexToTextBTN" to="." method="_on_hex_to_text_btn_pressed"]

@@ -22,4 +22,10 @@ func closeWindow():
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "close-window":
+    GlobalSounds.close.play()
 		queue_free();
+
+
+func _on_close_button_mouse_entered() -> void:
+	GlobalSounds.hover.play()
+

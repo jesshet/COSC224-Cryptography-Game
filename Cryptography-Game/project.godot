@@ -26,10 +26,12 @@ buses/default_bus_layout="res://assets/sounds/default_bus_layout.tres"
 [autoload]
 
 Global="*res://scripts/global.gd"
+GlobalAlgorithms="*res://scripts/global_algorithms.gd"
+GlobalSounds="*res://scripts/global_sounds.gd"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
 
 [dotnet]
@@ -44,4 +46,5 @@ enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.145098, 0.145098, 0.145098, 1)

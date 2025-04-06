@@ -189,5 +189,7 @@ text = "Level Select
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[connection signal="mouse_entered" from="CodexBTN" to="." method="_on_codex_btn_mouse_entered"]
 [connection signal="pressed" from="CodexBTN" to="." method="_on_codex_btn_pressed"]
+[connection signal="mouse_entered" from="LevelSelectBTN" to="." method="_on_level_select_btn_mouse_entered"]
 [connection signal="pressed" from="LevelSelectBTN" to="." method="_on_level_select_btn_pressed"]

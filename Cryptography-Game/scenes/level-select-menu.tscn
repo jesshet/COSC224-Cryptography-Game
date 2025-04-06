@@ -145,8 +145,22 @@ layout_mode = 2
 _buttonText = "3"
 _boxText = "Stream Cipher"
 
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="load_level" from="CenterContainer/Level Select Menu/Level" to="." method="_on_level_load_level"]
 [connection signal="load_level" from="CenterContainer/Level Select Menu/Level2" to="." method="_on_level_load_level"]
 [connection signal="load_level" from="CenterContainer/Level Select Menu/Level3" to="." method="_on_level_load_level"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 64
+
+[node name="CloseButton" type="Button" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_777na")
+theme_override_font_sizes/font_size = 32
+text = "Close Menu"
+

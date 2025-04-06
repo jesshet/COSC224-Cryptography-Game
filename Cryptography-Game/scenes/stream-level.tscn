@@ -1,9 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://bpt12i20n7flr"]
+[gd_scene load_steps=20 format=3 uid="uid://bpt12i20n7flr"]
 
 [ext_resource type="Script" path="res://scripts/stream_level.gd" id="1_k7rco"]
 [ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="2_6qlsh"]
 [ext_resource type="PackedScene" uid="uid://d0kvlxf7acn71" path="res://scenes/dragable.tscn" id="2_elg2b"]
-[ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="2_if2pn"]
 [ext_resource type="Texture2D" uid="uid://ck8ji715s7ub5" path="res://assets/sprites/toolSprites/ToolButton.png" id="3_c7wv3"]
 [ext_resource type="Texture2D" uid="uid://kvd4w5bigwky" path="res://assets/sprites/toolSprites/ToolButton(selected).png" id="4_dy4lj"]
 [ext_resource type="Texture2D" uid="uid://b86jpd0w3mbne" path="res://assets/sprites/toolSprites/ToolButton(pressed).png" id="5_4gcrt"]
@@ -45,18 +44,6 @@ tracks/1/path = NodePath("../Draggable:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Dragable:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -140,10 +127,6 @@ offset_top = 107.0
 offset_right = 1067.0
 offset_bottom = 240.0
 
-[node name="Clicks" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_if2pn")
-volume_db = -15.0
-
 [node name="DraggableContainerFrame" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -186,19 +169,17 @@ z_index = 2
 layout_mode = 1
 offset_left = 114.0
 offset_top = 140.0
-offset_right = 314.0
-offset_bottom = 165.0
-text = "\"26_0"
+offset_right = 324.0
+offset_bottom = 172.0
 
 [node name="Dragable" parent="." instance=ExtResource("2_elg2b")]
 visible = false
 z_index = 2
 layout_mode = 0
-offset_left = 114.0
-offset_top = 183.0
-offset_right = 314.0
-offset_bottom = 208.0
-text = "4A575A335F"
+offset_left = 115.0
+offset_top = 221.0
+offset_right = 325.0
+offset_bottom = 253.0
 
 [node name="submit-box" parent="." instance=ExtResource("6_vb680")]
 layout_mode = 0
@@ -211,9 +192,13 @@ offset_bottom = 569.0
 modulate = Color(1, 1, 1, 1)
 
 [connection signal="child_order_changed" from="LevelStack" to="LevelStack" method="_on_child_order_changed"]
+[connection signal="mouse_entered" from="LevelStack/RepeatText" to="." method="_on_repeat_text_mouse_entered"]
 [connection signal="pressed" from="LevelStack/RepeatText" to="." method="_on_repeat_text_pressed"]
 [connection signal="submit" from="submit-box" to="." method="_on_submitbox_submit"]
 
 [editable path="LevelStack/xor-decrypt-tool"]
 [editable path="LevelStack/TextHexTool"]
+
+[editable path="Draggable"]
+
 [editable path="submit-box"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://claoha2q6d33k"]
 
 [ext_resource type="Script" path="res://scripts/sphere_bg.gd" id="1_2fsap"]
-[ext_resource type="PackedScene" uid="uid://p88wru5dhjey" path="res://scenes/wire_frame_sphere.tscn" id="1_l5dx5"]
+[ext_resource type="PackedScene" uid="uid://npkxl7sjx6ly" path="res://scenes/wire_frame_sphere.tscn" id="1_l5dx5"]
 
 [sub_resource type="Animation" id="Animation_6ie1h"]
 length = 0.001

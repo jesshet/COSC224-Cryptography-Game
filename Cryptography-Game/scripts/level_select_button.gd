@@ -19,10 +19,19 @@ func _ready() -> void:
 	_parentNode = get_parent();
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 
 func _on_button_pressed() -> void:
+	GlobalSounds.musicVol = GlobalSounds.music.get_volume_db()
+	GlobalSounds.music.set_volume_db(-200)
+	GlobalSounds.load.play()
+	GlobalSounds._fade_music()
+	await get_tree().create_timer(1).timeout
+		
 	load_level.emit(_level, _animName);
+
+
+func _on_button_mouse_entered() -> void:
+	GlobalSounds.hover.play()

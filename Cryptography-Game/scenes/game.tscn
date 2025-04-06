@@ -203,14 +203,17 @@ theme_override_font_sizes/font_size = 16
 text = "Exit"
 
 [node name="TitleScreen" parent="." instance=ExtResource("3_kif3f")]
-visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
+[connection signal="mouse_entered" from="MenuStack/MenuBar/LevelSelector" to="MenuStack/MenuBar" method="_on_level_selector_mouse_entered"]
 [connection signal="pressed" from="MenuStack/MenuBar/LevelSelector" to="MenuStack/MenuBar" method="_on_level_selector_pressed"]
+[connection signal="mouse_entered" from="MenuStack/MenuBar/Codex" to="MenuStack/MenuBar" method="_on_codex_mouse_entered"]
 [connection signal="pressed" from="MenuStack/MenuBar/Codex" to="MenuStack/MenuBar" method="_on_codex_pressed"]
+[connection signal="mouse_entered" from="MenuStack/MenuBar/Settings" to="MenuStack/MenuBar" method="_on_settings_mouse_entered"]
 [connection signal="pressed" from="MenuStack/MenuBar/Settings" to="MenuStack/MenuBar" method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="MenuStack/MenuBar/Exit" to="MenuStack/MenuBar" method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="MenuStack/MenuBar/Exit" to="MenuStack/MenuBar" method="_on_exit_pressed"]
 
 [editable path="Background/sphere-bg/SubViewport/sphere-bg"]
