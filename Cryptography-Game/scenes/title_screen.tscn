@@ -1,21 +1,61 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1t3i6r3nabp7"]
+[gd_scene load_steps=7 format=3 uid="uid://c1t3i6r3nabp7"]
 
 [ext_resource type="Script" path="res://scripts/title-screen.gd" id="1_jxj6m"]
+[ext_resource type="Shader" path="res://assets/shaders/vapor.gdshader" id="2_aox0n"]
+[ext_resource type="FontFile" uid="uid://bjk3l3p42fovn" path="res://assets/fonts/Xirod.otf" id="2_i4f6c"]
+[ext_resource type="Script" path="res://scripts/title.gd" id="4_ei4k5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6djsn"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tbfsn"]
+shader = ExtResource("2_aox0n")
+shader_parameter/lines = 100
+shader_parameter/color1 = Color(3.04186e-05, 0.77689, 0.998132, 1)
+shader_parameter/color2 = Color(0, 0.555773, 0.994491, 1)
+shader_parameter/speed = 0.09
+shader_parameter/alpha = 0.86
+shader_parameter/noise_amount = 0.13
+shader_parameter/effect_factor = 0.5
+
 [node name="TitleScreen" type="Node2D"]
+z_index = 5
 script = ExtResource("1_jxj6m")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-z_index = 20
 material = SubResource("ShaderMaterial_6djsn")
 offset_right = 1250.0
 offset_bottom = 720.0
-color = Color(0.227451, 1, 1, 1)
+color = Color(0, 0, 0, 0.298039)
 
-[node name="Button" type="Button" parent="."]
-offset_right = 1251.0
-offset_bottom = 722.0
+[node name="Button" type="TextureButton" parent="."]
+offset_right = 1302.0
+offset_bottom = 763.0
+
+[node name="Title" type="RichTextLabel" parent="."]
+material = SubResource("ShaderMaterial_tbfsn")
+offset_top = 111.0
+offset_right = 1153.0
+offset_bottom = 192.0
+theme_override_colors/default_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/normal_font = ExtResource("2_i4f6c")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Gamifying Encryption"
+script = ExtResource("4_ei4k5")
+
+[node name="SubTitle" type="RichTextLabel" parent="."]
+offset_left = -1.0
+offset_top = 516.0
+offset_right = 1152.0
+offset_bottom = 556.0
+theme_override_colors/default_color = Color(0.666569, 0.666569, 0.666569, 1)
+theme_override_fonts/normal_font = ExtResource("2_i4f6c")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Left click anywhere to begin"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
