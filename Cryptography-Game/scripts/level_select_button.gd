@@ -15,7 +15,7 @@ func _ready() -> void:
 	_button = get_node("Button");
 	_textBox = get_node("RichTextLabel");
 	_button.text = _buttonText;
-	_textBox.text = _boxText;
+	_button.text += ". " + _boxText;
 	_parentNode = get_parent();
 	pass # Replace with function body.
 

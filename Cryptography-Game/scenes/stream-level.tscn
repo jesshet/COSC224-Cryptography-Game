@@ -188,6 +188,9 @@ offset_top = 448.0
 offset_right = 1007.0
 offset_bottom = 569.0
 
+[node name="Blur" parent="submit-box" index="1"]
+modulate = Color(1, 1, 1, 1)
+
 [connection signal="child_order_changed" from="LevelStack" to="LevelStack" method="_on_child_order_changed"]
 [connection signal="mouse_entered" from="LevelStack/RepeatText" to="." method="_on_repeat_text_mouse_entered"]
 [connection signal="pressed" from="LevelStack/RepeatText" to="." method="_on_repeat_text_pressed"]
@@ -195,5 +198,7 @@ offset_bottom = 569.0
 
 [editable path="LevelStack/xor-decrypt-tool"]
 [editable path="LevelStack/TextHexTool"]
+
 [editable path="Draggable"]
+
 [editable path="submit-box"]
