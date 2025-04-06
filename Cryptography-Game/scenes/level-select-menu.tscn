@@ -1,82 +1,166 @@
-[gd_scene load_steps=8 format=3 uid="uid://qhppkbq1twcb"]
+[gd_scene load_steps=15 format=3 uid="uid://qhppkbq1twcb"]
 
 [ext_resource type="PackedScene" uid="uid://dfkh1qqtl3hce" path="res://scenes/level-select-button.tscn" id="1_righb"]
 [ext_resource type="Script" path="res://scripts/level-select-menu.gd" id="1_rl0j8"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="2_bsucj"]
+[ext_resource type="Animation" uid="uid://bo5lm4kv7nx3g" path="res://assets/Animations/open-window.res" id="2_riskf"]
+[ext_resource type="FontFile" uid="uid://c4o75dteiydg8" path="res://assets/fonts/Conthrax-SemiBold.otf" id="3_kvc4p"]
 [ext_resource type="PackedScene" uid="uid://b38ramit5egv6" path="res://scenes/caesar-level.tscn" id="3_lg3ln"]
-[ext_resource type="FontFile" uid="uid://bsg87625avwx2" path="res://assets/fonts/EquipmentPro.woff" id="4_777na"]
+[ext_resource type="Animation" uid="uid://5itcm2oayjmc" path="res://assets/Animations/close-window.res" id="3_otdny"]
+[ext_resource type="Texture2D" uid="uid://bb77jobsltjme" path="res://assets/sprites/buttons/X.png" id="4_whacf"]
 [ext_resource type="PackedScene" uid="uid://bpt12i20n7flr" path="res://scenes/stream-level.tscn" id="5_81w6o"]
+[ext_resource type="Texture2D" uid="uid://c2kja5qykhblv" path="res://assets/sprites/buttons/X(Selected).png" id="5_rtr4w"]
+[ext_resource type="BitMap" uid="uid://dggeyftvnygtu" path="res://assets/sprites/buttons/X.bmp" id="6_k4ep4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_osmia"]
+[sub_resource type="Animation" id="Animation_ubjlh"]
+resource_name = "RESET"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cye5l"]
+_data = {
+"RESET": SubResource("Animation_ubjlh"),
+"close-window": ExtResource("3_otdny"),
+"open-window": ExtResource("2_riskf")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vofp6"]
 shader = ExtResource("2_bsucj")
-shader_parameter/lod = 5.0
+shader_parameter/lod = 2.5
 
-[node name="Level-Select-Menu" type="MarginContainer"]
+[node name="Level-Select-Menu" type="Control"]
 z_index = 5
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(584, 331)
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 script = ExtResource("1_rl0j8")
 
-[node name="Panel" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_osmia")
-layout_mode = 2
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cye5l")
+}
+speed_scale = 1.7
 
-[node name="Label" type="Label" parent="."]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
+position = Vector2(579.5, 294)
+scale = Vector2(6.795, 3.94)
+copy_mode = 2
+
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_vofp6")
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 649.0
+mouse_filter = 2
+
+[node name="Fade" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 651.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.294118)
+
+[node name="Title" type="Label" parent="."]
 layout_mode = 2
+offset_top = 56.0
+offset_right = 1152.0
+offset_bottom = 104.0
 size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("4_777na")
-theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("3_kvc4p")
+theme_override_font_sizes/font_size = 28
 text = "Level Select"
 horizontal_alignment = 1
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+[node name="CloseButton" type="TextureButton" parent="."]
+z_index = 2
 layout_mode = 2
+offset_left = 1042.0
+offset_top = 9.0
+offset_right = 1242.0
+offset_bottom = 89.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("4_whacf")
+texture_hover = ExtResource("5_rtr4w")
+texture_click_mask = ExtResource("6_k4ep4")
 
-[node name="Level Select Menu" type="VBoxContainer" parent="AspectRatioContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme_override_constants/separation = 32
+[node name="Label" type="Label" parent="CloseButton"]
+layout_mode = 0
+offset_left = 38.0
+offset_right = 200.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 42
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Level" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 101.0
+offset_right = 1083.0
+offset_bottom = 541.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(1000, 440)
+layout_direction = 2
 layout_mode = 2
-alignment = 1
-_buttonText = "1"
-_boxText = "Caesar Cipher"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 325
+
+[node name="Level" parent="ScrollContainer/HBoxContainer" instance=ExtResource("1_righb")]
+layout_mode = 2
+_titleText = "Level - 01"
+_subTitleText = "CAESAR - 01"
+_descriptionText = "A basic introduction to ciphers in general through a Caesar cipher. Introducing a simple shifting mechanic.
+
+Difficulty: Beginner"
 _level = ExtResource("3_lg3ln")
 _animName = "Caesar-level"
 
-[node name="Level2" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
+[node name="Level2" parent="ScrollContainer/HBoxContainer" instance=ExtResource("1_righb")]
 layout_mode = 2
-_buttonText = "2"
-_boxText = "Stream Cipher"
+_titleText = "Level - 02"
+_subTitleText = "Stream - 03"
+_descriptionText = "A level that already assumes a decent knowledge of ciphers, as well as a pre-existing knowledge of stream ciphers. 
+
+Difficulty: Medium"
 _level = ExtResource("5_81w6o")
 _animName = "Stream-level"
 
-[node name="Level3" parent="AspectRatioContainer/Level Select Menu" instance=ExtResource("1_righb")]
+[node name="Level3" parent="ScrollContainer/HBoxContainer" instance=ExtResource("1_righb")]
 layout_mode = 2
-_buttonText = "3"
-_boxText = "Stream Cipher"
+_titleText = "Level - 03"
+_subTitleText = "Block - 01"
+_descriptionText = "An introducion to the block cipher, using a diagram to introduce users to the core concepts of the cipher.
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+Difficulty: Easy"
+
+[node name="HScrollBar" type="HScrollBar" parent="ScrollContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_constants/margin_bottom = 64
 
-[node name="CloseButton" type="Button" parent="MarginContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("4_777na")
-theme_override_font_sizes/font_size = 32
-text = "Close Menu"
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2(462, 2)
+points = PackedVector2Array(453, 80, 233, 80)
+width = 2.0
+default_color = Color(0.560784, 0.866667, 1, 1)
 
-[connection signal="load_level" from="AspectRatioContainer/Level Select Menu/Level" to="." method="_on_level_load_level"]
-[connection signal="load_level" from="AspectRatioContainer/Level Select Menu/Level2" to="." method="_on_level_load_level"]
-[connection signal="load_level" from="AspectRatioContainer/Level Select Menu/Level3" to="." method="_on_level_load_level"]
-[connection signal="mouse_entered" from="MarginContainer/CloseButton" to="." method="_on_close_button_mouse_entered"]
-[connection signal="pressed" from="MarginContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(7, 1)
+points = PackedVector2Array(453, 80, 233, 80)
+width = 2.0
+default_color = Color(0.560784, 0.866667, 1, 1)
+
+[connection signal="mouse_entered" from="CloseButton" to="." method="_on_close_button_mouse_entered"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="load_level" from="ScrollContainer/HBoxContainer/Level" to="." method="_on_level_load_level"]
+[connection signal="load_level" from="ScrollContainer/HBoxContainer/Level2" to="." method="_on_level_load_level"]
+[connection signal="load_level" from="ScrollContainer/HBoxContainer/Level3" to="." method="_on_level_load_level"]

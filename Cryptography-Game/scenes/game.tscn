@@ -203,7 +203,6 @@ theme_override_font_sizes/font_size = 16
 text = "Exit"
 
 [node name="TitleScreen" parent="." instance=ExtResource("3_kif3f")]
-visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
