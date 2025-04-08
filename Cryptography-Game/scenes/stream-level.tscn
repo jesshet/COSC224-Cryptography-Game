@@ -49,6 +49,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Dragable:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pjs0n"]
 _data = {
@@ -145,6 +157,7 @@ libraries = {
 speed_scale = 1.7
 
 [node name="Blur" type="Polygon2D" parent="DraggableContainerFrame"]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_bd52l")
 polygon = PackedVector2Array(141, 128, 395, 128, 416, 148, 416, 263, 400, 278, 402, 468, 417, 484, 417, 533, 368, 582, 349, 582, 333, 600, 142, 599, 125, 580, 125, 141, 128, 134, 131, 130, 136, 128)
 
@@ -169,17 +182,19 @@ z_index = 2
 layout_mode = 1
 offset_left = 114.0
 offset_top = 140.0
-offset_right = 324.0
-offset_bottom = 172.0
+offset_right = 314.0
+offset_bottom = 165.0
+text = "692b489f9b885b1d13c1"
 
 [node name="Dragable" parent="." instance=ExtResource("2_elg2b")]
 visible = false
 z_index = 2
 layout_mode = 0
-offset_left = 115.0
-offset_top = 221.0
-offset_right = 325.0
-offset_bottom = 253.0
+offset_left = 114.0
+offset_top = 183.0
+offset_right = 314.0
+offset_bottom = 208.0
+text = "59196DAFBABA7E1D35EE"
 
 [node name="submit-box" parent="." instance=ExtResource("6_vb680")]
 layout_mode = 0
@@ -192,8 +207,3 @@ offset_bottom = 569.0
 [connection signal="mouse_entered" from="LevelStack/RepeatText" to="." method="_on_repeat_text_mouse_entered"]
 [connection signal="pressed" from="LevelStack/RepeatText" to="." method="_on_repeat_text_pressed"]
 [connection signal="submit" from="submit-box" to="." method="_on_submitbox_submit"]
-
-[editable path="LevelStack/xor-decrypt-tool"]
-[editable path="LevelStack/TextHexTool"]
-[editable path="Draggable"]
-[editable path="submit-box"]

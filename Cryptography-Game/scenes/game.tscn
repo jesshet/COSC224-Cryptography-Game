@@ -207,6 +207,7 @@ theme_override_font_sizes/font_size = 16
 text = "Exit"
 
 [node name="TitleScreen" parent="." instance=ExtResource("3_kif3f")]
+visible = false
 
 [node name="TimerDisplay" parent="." instance=ExtResource("14_tj7ho")]
 offset_left = 962.0

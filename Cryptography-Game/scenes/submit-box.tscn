@@ -42,7 +42,7 @@ offset_bottom = 114.0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(278, 59)
 script = ExtResource("1_0lfxi")
-_textBox = NodePath("LineEdit")
+_textBox = NodePath("TextEdit")
 _submitButton = NodePath("TextureButton")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -52,6 +52,7 @@ libraries = {
 speed_scale = 1.7
 
 [node name="Blur" type="Polygon2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_0w0eo")
 position = Vector2(-78, -22)
 polygon = PackedVector2Array(89, 132, 89, 67, 80, 58, 80, 33, 90, 23, 684, 23, 693, 31, 693, 116, 676, 133)
@@ -60,14 +61,20 @@ polygon = PackedVector2Array(89, 132, 89, 67, 80, 58, 80, 33, 90, 23, 684, 23, 6
 position = Vector2(297, 55)
 texture = ExtResource("2_6vf1f")
 
-[node name="LineEdit" type="LineEdit" parent="."]
-layout_mode = 0
-offset_left = 52.0
-offset_top = 35.0
-offset_right = 426.0
-offset_bottom = 77.0
+[node name="TextEdit" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(300, 25)
+layout_mode = 2
+offset_left = 49.0
+offset_top = 36.0
+offset_right = 429.0
+offset_bottom = 74.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_lahtw")
-placeholder_text = "Enter Message Here"
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Enter Message Here
+"
+wrap_mode = 1
 
 [node name="TextureButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(50, 50)
@@ -94,6 +101,6 @@ theme_override_fonts/font = ExtResource("1_lahtw")
 theme_override_font_sizes/font_size = 16
 text = "Submit"
 
-[connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

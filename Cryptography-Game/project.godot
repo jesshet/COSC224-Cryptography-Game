@@ -32,7 +32,7 @@ GlobalTimer="*res://scripts/global_timer.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
 
 [dotnet]
