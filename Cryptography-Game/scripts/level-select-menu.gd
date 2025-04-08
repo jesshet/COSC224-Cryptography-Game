@@ -7,14 +7,14 @@ func _ready() -> void:
 		$ScrollContainer/HBoxContainer/Level2/Button.text = "Locked"
 	else:
 		$ScrollContainer/HBoxContainer/Level2/Button.mouse_filter = MOUSE_FILTER_PASS
-		$ScrollContainer/HBoxContainer/Level2/Button.text = "Stream Cipher"
+		$ScrollContainer/HBoxContainer/Level2/Button.text = "Start Level"
 
 	if not Global.streamComplete:
 		$ScrollContainer/HBoxContainer/Level3/Button.mouse_filter = MOUSE_FILTER_IGNORE
 		$ScrollContainer/HBoxContainer/Level3/Button.text = "Locked"
 	else:
 		$ScrollContainer/HBoxContainer/Level3/Button.mouse_filter = MOUSE_FILTER_PASS
-		$ScrollContainer/HBoxContainer/Level3/Button.text = "Block Cipher"
+		$ScrollContainer/HBoxContainer/Level3/Button.text = "Start Level"
 	
 
 func _on_level_load_level(level: PackedScene, anim: String) -> void:
