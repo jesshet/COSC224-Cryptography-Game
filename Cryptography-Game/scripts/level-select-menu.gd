@@ -1,7 +1,7 @@
 extends Container
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("test")
+	pass
 	if Global.caesarComplete == false:
 		print("test")
 		$"AspectRatioContainer/Level Select Menu/Level2/Button".mouse_filter = MOUSE_FILTER_IGNORE

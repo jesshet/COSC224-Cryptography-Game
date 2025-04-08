@@ -134,7 +134,7 @@ body = "A stream cipher is a type of encryption method where plaintext is encryp
 
 Stream ciphers are based on the principle of bitwise or byte-wise operations, and the strength of the encryption relies heavily on the quality and unpredictability of the key stream."
 
-[node name="Block-Entry" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_cfxri")]
+[node name="Block-entry" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_cfxri")]
 visible = false
 layout_mode = 2
 title = "Block Cipher"

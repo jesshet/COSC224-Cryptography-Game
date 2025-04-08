@@ -33,7 +33,7 @@ func _on_submitbox_submit() -> void:
 	if(answer == solution):
 		Global.streamComplete = true
 		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
-		_submitBox._disable();
+		#_submitBox._disable();
 		$LevelStack.add_child(winScreen)
 	else:
 		GlobalSounds.incorrect.play()

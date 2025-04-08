@@ -10,12 +10,8 @@ func _ready() -> void:
 	assert(_textBox != null, "The textBox for the submit button is null");
 	$AnimationPlayer.play("open-window")
 
-func _disable() -> void:
-	_disabled = true;
 
 func _on_texture_button_pressed() -> void:
-	if _disabled: #prevent multiple winscreens
-		return;
 	submit.emit();
 
 func  _input(event: InputEvent) -> void:
