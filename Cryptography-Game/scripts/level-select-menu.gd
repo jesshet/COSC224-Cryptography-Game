@@ -25,6 +25,7 @@ func _on_level_load_level(level: PackedScene, anim: String) -> void:
 	queue_free();
 
 func _on_close_button_pressed() -> void:
+	GlobalSounds.close.play()
 	$AnimationPlayer.play("close-window")
 
 
@@ -34,5 +35,4 @@ func _on_close_button_mouse_entered() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "close-window":
-		GlobalSounds.close.play()
 		queue_free();
