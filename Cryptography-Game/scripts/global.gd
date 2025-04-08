@@ -1,6 +1,9 @@
 extends Node
 var game_scene = null
 var bg = null
+
+var _winState: bool = false;
+
 var caesarOpen: bool = false;
 var caesarComplete: bool = false;
 var streamOpen: bool = false;

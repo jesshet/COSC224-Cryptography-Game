@@ -35,8 +35,8 @@ func _load_new_level(level: PackedScene, anim: String) -> void:
 		return;
 	if _currentLevel != null:
 		var list: PackedStringArray = level._bundled.get("names");
-		#print(list[0] + "," + _currentLevel.name);
-		if list[0] == _currentLevel.name:
+		#is its the same level only reload if the game has been won.
+		if list[0] == _currentLevel.name and not Global._winState:
 			return;
 		_currentLevel.queue_free();
 	
@@ -48,5 +48,7 @@ func _load_new_level(level: PackedScene, anim: String) -> void:
 	else:
 		await get_tree().create_timer(2.0).timeout
 	
+	
+	Global._winState = false;
 	_currentLevel = level.instantiate();
 	_parentOfLevel.add_child(_currentLevel);
