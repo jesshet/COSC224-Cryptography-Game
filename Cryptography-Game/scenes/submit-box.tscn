@@ -33,7 +33,7 @@ _data = {
 shader = ExtResource("2_maqhm")
 shader_parameter/lod = 2.5
 
-[node name="submit-box" type="Control"]
+[node name="submit-box" type="Control" node_paths=PackedStringArray("_textBox", "_submitButton")]
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 3
 anchors_preset = 0
@@ -42,6 +42,8 @@ offset_bottom = 114.0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(278, 59)
 script = ExtResource("1_0lfxi")
+_textBox = NodePath("TextEdit")
+_submitButton = NodePath("TextureButton")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

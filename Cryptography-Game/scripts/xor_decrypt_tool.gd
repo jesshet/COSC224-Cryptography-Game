@@ -56,6 +56,7 @@ func animateChange(currentWord, targetWord):
 				if count+1 % 2 == 0:
 					currentWord[count] = get_random_char()
 			count += 1
+
 			updateText(upperCollider.node, upperCollider.textNode, currentWord.replace(" ",""))
 			
 		await get_tree().create_timer(0.03).timeout
@@ -78,6 +79,7 @@ func updateText(messageNode, textNode, message):
 	messageNode.updateSize()
 	messageNode.changeTextNodeSize($Control)
 	messageNode.global_position = $Control.global_position + ($Control.size - messageNode.size)/2;
+
 	
 
 func get_random_char():

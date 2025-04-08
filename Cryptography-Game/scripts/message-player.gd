@@ -11,6 +11,7 @@ var count: int
 
 var label
 signal message_complete
+signal _start_timer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -52,7 +53,8 @@ func printMessages(messageIndex) -> void:
 		#$Clicks.play();
 		count += 1
 		label.visible_characters = count
-		GlobalSounds.click.play()
+		if(count % 3 == 0):
+			GlobalSounds.click.play()
 		if(currentMessage[count - 1] == "."):
 			await get_tree().create_timer(0.3).timeout
 		else:
@@ -84,4 +86,4 @@ func _on_message_animations_animation_finished(anim_name: StringName) -> void:
 		printMessages(messageIndex)
 	if anim_name == "close-windows":
 		message_complete.emit();
-		
+		GlobalTimer._start_timer();

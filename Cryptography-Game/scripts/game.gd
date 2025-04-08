@@ -19,6 +19,7 @@ func _ready() -> void:
 	self.add_child(GlobalSounds.incorrect)
 	self.add_child(GlobalSounds.caesarClick)
 	self.add_child(GlobalSounds.finishDec)
+	self.add_child(GlobalSounds.tick)
 	
 	GlobalSounds.music.play()
 	Global.bg = $"Background/sphere-bg/SubViewport/sphere-bg"
@@ -40,6 +41,7 @@ func _load_new_level(level: PackedScene, anim: String) -> void:
 		_currentLevel.queue_free();
 	
 	Global.bg.playAnimation(anim)
+	GlobalTimer._reset_timer();
 	
 	if Global.bg.prevAnim == anim:
 		await get_tree().create_timer(1.0).timeout

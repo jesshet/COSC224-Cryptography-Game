@@ -94,6 +94,7 @@ offset_left = -360.0
 offset_top = -552.0
 offset_right = 844.0
 offset_bottom = 533.0
+mouse_force_pass_scroll_events = false
 
 [node name="Fade" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -102,6 +103,7 @@ offset_left = -364.0
 offset_top = -555.0
 offset_right = 846.0
 offset_bottom = 536.0
+mouse_force_pass_scroll_events = false
 color = Color(0, 0, 0, 0.619608)
 
 [node name="Panel" type="Sprite2D" parent="."]

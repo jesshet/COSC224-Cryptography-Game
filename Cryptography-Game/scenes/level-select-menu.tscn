@@ -1,4 +1,6 @@
+
 [gd_scene load_steps=15 format=3 uid="uid://qhppkbq1twcb"]
+
 
 [ext_resource type="PackedScene" uid="uid://dfkh1qqtl3hce" path="res://scenes/level-select-button.tscn" id="1_righb"]
 [ext_resource type="Script" path="res://scripts/level-select-menu.gd" id="1_rl0j8"]
@@ -9,8 +11,11 @@
 [ext_resource type="Animation" uid="uid://5itcm2oayjmc" path="res://assets/Animations/close-window.res" id="3_otdny"]
 [ext_resource type="Texture2D" uid="uid://bb77jobsltjme" path="res://assets/sprites/buttons/X.png" id="4_whacf"]
 [ext_resource type="PackedScene" uid="uid://bpt12i20n7flr" path="res://scenes/stream-level.tscn" id="5_81w6o"]
+
 [ext_resource type="Texture2D" uid="uid://c2kja5qykhblv" path="res://assets/sprites/buttons/X(Selected).png" id="5_rtr4w"]
 [ext_resource type="BitMap" uid="uid://dggeyftvnygtu" path="res://assets/sprites/buttons/X.bmp" id="6_k4ep4"]
+[ext_resource type="PackedScene" uid="uid://cp261xibjkxj5" path="res://scenes/block-level/block-level.tscn" id="7_oricm"]
+
 
 [sub_resource type="Animation" id="Animation_ubjlh"]
 resource_name = "RESET"
@@ -138,9 +143,11 @@ _animName = "Stream-level"
 
 [node name="Level3" parent="ScrollContainer/HBoxContainer" instance=ExtResource("1_righb")]
 layout_mode = 2
+
 _titleText = "Level - 03"
 _subTitleText = "Block - 01"
 _descriptionText = "An introducion to the block cipher, using a diagram to introduce users to the core concepts of the cipher.
+
 
 Difficulty: Easy"
 

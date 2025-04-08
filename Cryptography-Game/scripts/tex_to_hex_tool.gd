@@ -80,11 +80,13 @@ func animateChange(currentWord, targetWord):
 			for i in step:
 				currentWord += get_random_char()
 				
+
 		if currentWord.length() > targetWord.length():
 			currentWord = currentWord.left(currentWord.length() - step)
 			
 	GlobalSounds.finishDec.play()
 	updateText(textBox.node, textBox.textNode, targetWord)
+
 	textBox.node.mouse_filter = MOUSE_FILTER_STOP
 
 func updateText(messageNode, textNode, message):

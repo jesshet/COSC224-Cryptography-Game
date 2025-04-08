@@ -121,18 +121,21 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Caesar-entry" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_cfxri")]
+visible = false
 layout_mode = 2
 title = "Caesar Cipher"
 body = "The Caesar Cipher is one of the simplest and most well-known encryption techniques. Named after Julius Caesar, who reportedly used it to secure his military communications, this cipher involves shifting the letters of the alphabet by a fixed number of places. It is a substitution cipher, where each letter in the plaintext is replaced by a letter some fixed positions down or up the alphabet."
 
 [node name="Stream-entry" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_cfxri")]
+visible = false
 layout_mode = 2
 title = "Stream Cipher"
 body = "A stream cipher is a type of encryption method where plaintext is encrypted one bit or byte at a time, using a pseudorandom key stream. Unlike block ciphers, which operate on fixed-size chunks of data, stream ciphers work on a continuous stream of data, making them well-suited for real-time applications where data arrives in a flow, such as video streaming or wireless communication.
 
 Stream ciphers are based on the principle of bitwise or byte-wise operations, and the strength of the encryption relies heavily on the quality and unpredictability of the key stream."
 
-[node name="Block-Entry" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_cfxri")]
+[node name="Block-entry" parent="ScrollContainer/VBoxContainer" instance=ExtResource("1_cfxri")]
+visible = false
 layout_mode = 2
 title = "Block Cipher"
 body = "A block cipher is a method of encryption that divides plaintext data into fixed-size blocks and encrypts each block individually. Unlike stream ciphers, which work on continuous streams of data, block ciphers process data in discrete chunks, making them well-suited for applications where data is naturally segmented, such as file encryption.
@@ -149,6 +152,7 @@ offset_bottom = 199.0
 theme_override_colors/default_color = Color(0.560784, 0.866667, 1, 1)
 theme_override_fonts/normal_font = ExtResource("6_hv0ts")
 theme_override_font_sizes/normal_font_size = 18
+text = "About The Codex"
 
 [node name="Text-body" type="RichTextLabel" parent="."]
 texture_filter = 1
@@ -160,6 +164,7 @@ offset_bottom = 534.0
 theme_override_colors/default_color = Color(0.560784, 0.866667, 1, 1)
 theme_override_fonts/normal_font = ExtResource("6_hv0ts")
 theme_override_font_sizes/normal_font_size = 14
+text = "The Codex is your primary  resource for all crytographic concepts you encounter throughout your missions. After you discover a new concept it will be added to the list of Codex entries for you to refer back to."
 
 [node name="CloseButton" type="TextureButton" parent="."]
 layout_mode = 0

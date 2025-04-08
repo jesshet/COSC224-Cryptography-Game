@@ -3,11 +3,21 @@
 extends TextureButton
 
 @export var _rayCenter: RayCast2D;
+
 @export var _inputTBX: TextEdit;
 @export var textNode: RichTextLabel
+
+
+#Block Cipher
+enum Type {NA, Init, Key, Text};
+@export var _type: Type;
+
+
 var _lastMousePos: Vector2;
 var _isDragging: bool = false;
 var startPos: Vector2
+
+var _data: String;
 
 
 func  _ready() -> void:
@@ -39,7 +49,7 @@ func _on_button_up() -> void:
 	GlobalSounds.drop.play()
 	_isDragging = false;
 	var collide = false
-	var currentMousePos = get_viewport().get_mouse_position();
+	var _currentMousePos = get_viewport().get_mouse_position();
 	if _rayCenter.is_colliding(): #move to center of drop in box
 		var colliderParent = _rayCenter.get_collider().get_parent();
 		

@@ -2,7 +2,6 @@ extends HBoxContainer
 
 signal left_pressed;
 signal right_pressed;
-signal submit;
 
 var shift = 0;
 # Called when the node enters the scene tree for the first time.
