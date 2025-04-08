@@ -1,24 +1,20 @@
 extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
 	$AnimationPlayer.play("open-window")
-
-	pass
 	if Global.caesarComplete == false:
-		print("test")
-		$"AspectRatioContainer/Level Select Menu/Level2/Button".mouse_filter = MOUSE_FILTER_IGNORE
-		$"AspectRatioContainer/Level Select Menu/Level2/RichTextLabel".text = "Locked"
+		$ScrollContainer/HBoxContainer/Level2/Button.mouse_filter = MOUSE_FILTER_IGNORE
+		$ScrollContainer/HBoxContainer/Level2/Button.text = "Locked"
 	else:
-		$"AspectRatioContainer/Level Select Menu/Level2/Button".mouse_filter = MOUSE_FILTER_PASS
-		$"AspectRatioContainer/Level Select Menu/Level2/RichTextLabel".text = "Stream Cipher"
-		
+		$ScrollContainer/HBoxContainer/Level2/Button.mouse_filter = MOUSE_FILTER_PASS
+		$ScrollContainer/HBoxContainer/Level2/Button.text = "Stream Cipher"
+
 	if not Global.streamComplete:
-		$"AspectRatioContainer/Level Select Menu/Level3/Button".mouse_filter = MOUSE_FILTER_IGNORE
-		$"AspectRatioContainer/Level Select Menu/Level3/RichTextLabel".text = "Locked"
+		$ScrollContainer/HBoxContainer/Level3/Button.mouse_filter = MOUSE_FILTER_IGNORE
+		$ScrollContainer/HBoxContainer/Level3/Button.text = "Locked"
 	else:
-		$"AspectRatioContainer/Level Select Menu/Level3/Button".mouse_filter = MOUSE_FILTER_PASS
-		$"AspectRatioContainer/Level Select Menu/Level3/RichTextLabel".text = "Block Cipher"
+		$ScrollContainer/HBoxContainer/Level3/Button.mouse_filter = MOUSE_FILTER_PASS
+		$ScrollContainer/HBoxContainer/Level3/Button.text = "Block Cipher"
 	
 
 func _on_level_load_level(level: PackedScene, anim: String) -> void:

@@ -42,7 +42,7 @@ offset_bottom = 114.0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(278, 59)
 script = ExtResource("1_0lfxi")
-_textBox = NodePath("TextEdit")
+_textBox = NodePath("LineEdit")
 _submitButton = NodePath("TextureButton")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

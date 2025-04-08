@@ -1,7 +1,7 @@
 extends Control
 signal submit
 
-@export var _textBox: TextEdit;
+@export var _textBox: LineEdit;
 @export var _submitButton: TextureButton;
 var _disabled: bool = false;
 
