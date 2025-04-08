@@ -19,6 +19,7 @@ func _ready() -> void:
 	self.add_child(GlobalSounds.incorrect)
 	self.add_child(GlobalSounds.caesarClick)
 	self.add_child(GlobalSounds.finishDec)
+	self.add_child(GlobalSounds.tick)
 	
 	GlobalSounds.music.play()
 	Global.bg = $"Background/sphere-bg/SubViewport/sphere-bg"

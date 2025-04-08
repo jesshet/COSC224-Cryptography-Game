@@ -7,6 +7,8 @@ var hex_cipher
 
 @export_multiline var levelMessages : Array[String];
 
+@export var _submitBox: Control;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Generate hex key and cipher text based on solution:
@@ -21,6 +23,7 @@ func _ready() -> void:
 	await get_tree().create_timer(0.3).timeout
 	$Draggable.visible = true
 	$Dragable.visible = true
+	Global.streamOpen = true
 
 func playMessage():
 	$LevelStack/MessagePlayer.startMessages(levelMessages)
@@ -28,7 +31,9 @@ func playMessage():
 func _on_submitbox_submit() -> void:
 	var answer = $"submit-box/TextEdit".text
 	if(answer == solution):
+		Global.streamComplete = true
 		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
+		#_submitBox._disable();
 		$LevelStack.add_child(winScreen)
 	else:
 		GlobalSounds.incorrect.play()
