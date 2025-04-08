@@ -41,6 +41,9 @@ func _on_hex_to_text_btn_pressed() -> void:
 		$"../MessagePlayer".startMessage("Invalid input: Please provide a valid hexadecimal string.")
 		return
 	var output = GlobalAlgorithms.hex_to_text(nodeText)
+	
+	$TextToHexBTN.disabled = true
+	$HexToTextBTN.disabled = true
 	animateChange(textBox.textNode.text, output)
 
 func setInfo(s):
@@ -88,6 +91,8 @@ func animateChange(currentWord, targetWord):
 	updateText(textBox.node, textBox.textNode, targetWord)
 
 	textBox.node.mouse_filter = MOUSE_FILTER_STOP
+	$TextToHexBTN.disabled = false
+	$HexToTextBTN.disabled = false
 
 func updateText(messageNode, textNode, message):
 	textNode.text = message

@@ -38,6 +38,8 @@ func _on_xorbtn_pressed() -> void:
 		print("Test case: XOR result is in Hexadecimal: Success")
 	else:
 		print("Test case: XOR result is in Hexadecimal: Failure")
+	
+	$XORBTN.disabled = true
 	animateChange(upperCollider.textNode.text, output)
 	
 func animateChange(currentWord, targetWord):
@@ -73,6 +75,7 @@ func animateChange(currentWord, targetWord):
 	GlobalSounds.finishDec.play()
 	updateText(upperCollider.node, upperCollider.textNode, targetWord)
 	upperCollider.node.mouse_filter = MOUSE_FILTER_STOP
+	$XORBTN.disabled = false
 
 func updateText(messageNode, textNode, message):
 	textNode.text = message
