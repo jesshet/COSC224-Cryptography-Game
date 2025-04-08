@@ -3,12 +3,17 @@ extends Control
 
 @export var _submitBox: Control;
 
-@export var _key: Button;
-@export var _initialization: Button;
-@export var _text: Button;
+@export var _key: TextureButton;
+@export var _initialization: TextureButton;
+@export var _text: TextureButton;
 
 @export var _plainText: String;
 @export var _initStr: String;
+
+var _textLabel
+var _keyLabel
+var _initializationLabel
+
 var _answer: String = "Error";
 
 
@@ -22,15 +27,19 @@ func _ready() -> void:
 	assert(_initialization != null, "Initialization Dragable is null");
 	assert(_text != null, "Text Dragable is null");
 	
+	_textLabel = _text.get_child(0).get_child(0)
+	_keyLabel = _key.get_child(0).get_child(0)
+	_initializationLabel = _initialization.get_child(0).get_child(0)
+	
 	display_dragables(false);
 	
 	#create answer
-	_text.text = _plainText;
+	_textLabel.text = _plainText;
 	var hexPlainText = GlobalAlgorithms.text_to_hex(_plainText);
 	var key = GlobalAlgorithms.generate_hex_key(hexPlainText);
-	_key.text = key;
+	_keyLabel.text = key;
 	var init = GlobalAlgorithms.text_to_hex(_initStr);
-	_initialization.text = init;
+	_initializationLabel.text = init;
 	var xorafter = GlobalAlgorithms.xor(hexPlainText,init);
 	_answer = GlobalAlgorithms.xor(xorafter,key);
 	
@@ -53,7 +62,7 @@ func playMessage():
 	
 #win state
 func _on_submitbox_submit() -> void:
-	var text = $"submit-box/TextEdit".text.to_upper();
+	var text = $"submit-box/LineEdit".text.to_upper();
 	if(_answer.to_upper() == text):
 		Global.blockComplete = true
 		GlobalTimer._stop_timer();

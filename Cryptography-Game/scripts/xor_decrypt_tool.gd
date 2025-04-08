@@ -20,8 +20,8 @@ func _on_xorbtn_pressed() -> void:
 	if not (upperCollider.filled and lowerCollider.filled):
 		$"../MessagePlayer".startMessage("You need to supply two input values")
 		return
-	nodeText1 = upperCollider.node.text
-	nodeText2 = lowerCollider.node.text
+	nodeText1 = upperCollider.textNode.text
+	nodeText2 = lowerCollider.textNode.text
 	if nodeText1.length() != nodeText2.length():
 		$"../MessagePlayer".startMessage("Invalid input: make sure that the two values are the same length.")
 		return
@@ -38,32 +38,50 @@ func _on_xorbtn_pressed() -> void:
 		print("Test case: XOR result is in Hexadecimal: Success")
 	else:
 		print("Test case: XOR result is in Hexadecimal: Failure")
-	animateChange(upperCollider.node.text, output)
+	animateChange(upperCollider.textNode.text, output)
 	
 func animateChange(currentWord, targetWord):
 	upperCollider.node.mouse_filter = MOUSE_FILTER_IGNORE
-	var loop = 0
 	var count = 0
-	while(loop < 4):
-		while(count < targetWord.length()):
-			
-			if(loop < 3):
-				currentWord[count] = get_random_char()
-			else:
-				currentWord[count] = targetWord[count]
-			count += 1
-			
-			await get_tree().create_timer(0.005).timeout
-			upperCollider.node.text = currentWord
-			if(count % 5 == 0):
-				GlobalSounds.click.play()
-		count = 0
-		loop += 1
-		if(loop == 3):
-			GlobalSounds.finishDec.play()
-	#setInfo(currentWord)
-	upperCollider.node.mouse_filter = MOUSE_FILTER_STOP
+	var step = abs(targetWord.length() - currentWord.length()) / 10
+	var check = true
 	
+	for n in 40:
+		
+		while count < currentWord.length():
+			if n % 2 == 0:	#change even character
+				if count % 2 == 0:
+					currentWord[count] = get_random_char()
+			else:	#change odd characters
+				if count+1 % 2 == 0:
+					currentWord[count] = get_random_char()
+			count += 1
+
+			updateText(upperCollider.node, upperCollider.textNode, currentWord.replace(" ",""))
+			
+		await get_tree().create_timer(0.03).timeout
+		GlobalSounds.click.play()
+		count = 0
+		
+		if currentWord.length() < targetWord.length():
+			for i in step:
+				currentWord += get_random_char()
+				
+		if currentWord.length() > targetWord.length():
+			currentWord = currentWord.left(currentWord.length() - step)
+			
+	GlobalSounds.finishDec.play()
+	updateText(upperCollider.node, upperCollider.textNode, targetWord)
+	upperCollider.node.mouse_filter = MOUSE_FILTER_STOP
+
+func updateText(messageNode, textNode, message):
+	textNode.text = message
+	messageNode.updateSize()
+	messageNode.changeTextNodeSize($Control)
+	messageNode.global_position = $Control.global_position + ($Control.size - messageNode.size)/2;
+
+	
+
 func get_random_char():
 	var random_number = randi() % 26
 	var characters = 'abcdefghijklmnopqrstuvwxyz'
