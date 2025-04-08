@@ -1,11 +1,12 @@
 extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalTimer._stop_timer();
+	Global._winState = true;
+	
 	$AnimationPlayer.play("open-window")
 	GlobalSounds.success.play()
 	$Time.text = "Time: " + GlobalTimer._time_text()
-	GlobalTimer._stop_timer()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
