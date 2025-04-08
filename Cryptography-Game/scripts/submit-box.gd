@@ -1,7 +1,7 @@
 extends Control
 signal submit
 
-@export var _textBox: TextEdit;
+@export var _textBox: LineEdit;
 @export var _submitButton: TextureButton;
 
 # Called when the node enters the scene tree for the first time.
@@ -36,3 +36,7 @@ func _on_text_edit_text_changed() -> void:
 
 func _on_texture_button_mouse_entered() -> void:
 	GlobalSounds.hover.play()
+
+
+func _on_line_edit_text_changed(new_text: String) -> void:
+	GlobalSounds.click.play()

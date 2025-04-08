@@ -14,8 +14,12 @@ func _ready() -> void:
 	hex_key = GlobalAlgorithms.generate_hex_key(hex_solution)
 	hex_cipher = GlobalAlgorithms.xor(hex_key, hex_solution)
 	#set draggable text to these last two values^
-	$Draggable.text = GlobalAlgorithms.hex_to_text(hex_cipher)
-	$Dragable.text = hex_key
+	$Draggable/CenterContainer/text.text = GlobalAlgorithms.hex_to_text(hex_cipher)
+	$Dragable/CenterContainer/text.text = hex_key
+	
+	$Draggable.updateSize()
+	$Dragable.updateSize()
+	
 	playMessage()
 	$DraggableContainerFrame/AnimationPlayer.play("open-window")
 	await get_tree().create_timer(0.3).timeout
@@ -27,7 +31,7 @@ func playMessage():
 	$LevelStack/MessagePlayer.startMessages(levelMessages)
 	
 func _on_submitbox_submit() -> void:
-	var answer = $"submit-box/TextEdit".text
+	var answer = $"submit-box/LineEdit".text
 	if(answer == solution):
 		Global.streamComplete = true
 		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
