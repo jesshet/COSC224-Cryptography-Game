@@ -146,9 +146,6 @@ _descriptionText = "An introducion to the block cipher, using a diagram to intro
 Difficulty: Easy"
 _level = ExtResource("12_u11p1")
 
-[node name="Button" parent="ScrollContainer/HBoxContainer/Level3" index="5"]
-disabled = true
-
 [node name="HScrollBar" type="HScrollBar" parent="ScrollContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
