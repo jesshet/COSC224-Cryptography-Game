@@ -1,11 +1,9 @@
 extends Control
 @export_multiline var levelMessages : Array[String];
-#Test Comment
-@export var _submitBox: Control;
 
-@export var _key: TextureButton;
-@export var _initialization: TextureButton;
-@export var _text: TextureButton;
+@export var _key: Button;
+@export var _initialization: Button;
+@export var _text: Button;
 
 @export var _plainText: String;
 @export var _initStr: String;
