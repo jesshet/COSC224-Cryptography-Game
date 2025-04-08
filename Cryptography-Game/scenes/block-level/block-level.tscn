@@ -90,8 +90,8 @@ levelMessages = Array[String](["We are tring to create a message using a block c
 _key = NodePath("DragableKey")
 _initialization = NodePath("DragableInit")
 _text = NodePath("DragableText")
-_plainText = "Help"
-_initStr = "Next"
+_plainText = "Text To Encrypt"
+_initStr = "Next To Decrypt"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
