@@ -14,10 +14,19 @@ var walkieOn: AudioStreamPlayer = AudioStreamPlayer.new()
 var walkieOff: AudioStreamPlayer = AudioStreamPlayer.new()
 var caesarClick: AudioStreamPlayer = AudioStreamPlayer.new()
 var finishDec: AudioStreamPlayer = AudioStreamPlayer.new()
+var tick: AudioStreamPlayer = AudioStreamPlayer.new()
 
 var musicVol
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Audio Player for Clock tick Sound Effect
+	var tickStream: AudioStream = preload("res://assets/sounds/tick.mp3")
+	tick.set_stream(tickStream)
+	#Change This Value to set Audio Bus
+	tick.set_bus("SFX")
+	#Change This Value to set Volume
+	tick.set_volume_db(-45)
+	
 	#Audio Player for Decryption Completion Sound Effect
 	var finishDecStream: AudioStream = preload("res://assets/sounds/finish.wav")
 	finishDec.set_stream(finishDecStream)
@@ -32,7 +41,7 @@ func _ready() -> void:
 	#Change This Value to set Audio Bus
 	caesarClick.set_bus("SFX")
 	#Change This Value to set Volume
-	caesarClick.set_volume_db(-25)
+	caesarClick.set_volume_db(-35)
 	
 	#Audio Player for Incorrect Answer Sound Effect
 	var incorrectStream: AudioStream = preload("res://assets/sounds/incorrect.wav")
@@ -112,7 +121,7 @@ func _ready() -> void:
 	#Change This Value to set Audio Bus
 	close.set_bus("SFX")
 	#Change This Value to set Volume
-	close.set_volume_db(-25)
+	close.set_volume_db(-30)
 	
 	#Audio Player for Background Music
 	var musicStream: AudioStream = preload("res://assets/music/Soundtrack.mp3")

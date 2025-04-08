@@ -76,8 +76,9 @@ func animateChange(currentWord, targetWord):
 				
 			count += 1
 			if currentWord.length() > targetWord.length():
-				await get_tree().create_timer(0.035).timeout
-				GlobalSounds.click.play()
+				await get_tree().create_timer(0.005).timeout
+				if(count % 5 == 0):
+					GlobalSounds.click.play()
 			else:
 				await get_tree().create_timer(0.02).timeout
 				if(check):

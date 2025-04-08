@@ -53,7 +53,8 @@ func printMessages(messageIndex) -> void:
 		#$Clicks.play();
 		count += 1
 		label.visible_characters = count
-		GlobalSounds.click.play()
+		if(count % 3 == 0):
+			GlobalSounds.click.play()
 		if(currentMessage[count - 1] == "."):
 			await get_tree().create_timer(0.3).timeout
 		else:

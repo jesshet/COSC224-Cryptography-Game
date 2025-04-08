@@ -204,5 +204,5 @@ vertical_alignment = 1
 [connection signal="value_changed" from="VBoxControls/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="VBoxControls/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="mouse_entered" from="CloseButton" to="." method="_on_close_button_mouse_entered"]
-[connection signal="pressed" from="CloseButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_button_pressed"]

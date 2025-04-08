@@ -14,6 +14,7 @@ var _winScreen = preload("res://scenes/level-complete.tscn");
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.blockOpen = true
 	assert(_plainText.length() > 0, "PlainText is empty");
 	assert(_key != null, "Key Dragable is null");
 	assert(_initialization != null, "Initialization Dragable is null");
@@ -52,6 +53,7 @@ func playMessage():
 func _on_submitbox_submit() -> void:
 	var text = $"submit-box/TextEdit".text.to_upper();
 	if(_answer.to_upper() == text):
+		Global.blockComplete = true
 		GlobalTimer._stop_timer();
 		var winScreen = _winScreen.instantiate();
 		$LevelStack.add_child(winScreen);

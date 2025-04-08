@@ -21,6 +21,7 @@ func _ready() -> void:
 	await get_tree().create_timer(0.3).timeout
 	$Draggable.visible = true
 	$Dragable.visible = true
+	Global.streamOpen = true
 
 func playMessage():
 	$LevelStack/MessagePlayer.startMessages(levelMessages)
@@ -28,6 +29,7 @@ func playMessage():
 func _on_submitbox_submit() -> void:
 	var answer = $"submit-box/TextEdit".text
 	if(answer == solution):
+		Global.streamComplete = true
 		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
 		$LevelStack.add_child(winScreen)
 	else:

@@ -8,7 +8,7 @@ signal submit
 func _ready() -> void:
 	assert(_textBox != null, "The textBox for the submit button is null");
 	$AnimationPlayer.play("open-window")
-	
+
 func _on_texture_button_pressed() -> void:
 	if Global._winState: #prevent multiple winscreens
 		return;
