@@ -1,10 +1,9 @@
-@tool
+#@tool
 
 extends TextureButton
 
 @export var _rayCenter: RayCast2D;
 
-@export var _inputTBX: TextEdit;
 @export var textNode: RichTextLabel
 
 
