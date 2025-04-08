@@ -1,8 +1,6 @@
 extends Control
 @export_multiline var levelMessages : Array[String];
 
-@export var _submitBox: Control;
-
 @export var _key: Button;
 @export var _initialization: Button;
 @export var _text: Button;
@@ -55,6 +53,5 @@ func _on_submitbox_submit() -> void:
 	var text = $"submit-box/TextEdit".text.to_upper();
 	if(_answer.to_upper() == text):
 		GlobalTimer._stop_timer();
-		_submitBox._disable();
 		var winScreen = _winScreen.instantiate();
 		$LevelStack.add_child(winScreen);

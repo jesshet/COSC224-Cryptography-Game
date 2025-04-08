@@ -3,23 +3,22 @@ signal submit
 
 @export var _textBox: TextEdit;
 @export var _submitButton: TextureButton;
-var _disabled: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	assert(_textBox != null, "The textBox for the submit button is null");
 	$AnimationPlayer.play("open-window")
-
-func _disable() -> void:
-	_disabled = true;
-
+	
 func _on_texture_button_pressed() -> void:
-	if _disabled: #prevent multiple winscreens
+	if Global._winState: #prevent multiple winscreens
 		return;
 	submit.emit();
 
 func  _input(event: InputEvent) -> void:
 	if _textBox.has_focus() and event is InputEventKey and event.is_pressed():
+		if Global._winState: #prevent typing in text box after winscreen
+			get_viewport().set_input_as_handled();
+			return;
 		if event.key_label == KEY_ENTER:
 			_on_texture_button_pressed();
 			get_viewport().set_input_as_handled();

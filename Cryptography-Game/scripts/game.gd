@@ -37,7 +37,6 @@ func _load_new_level(level: PackedScene, anim: String) -> void:
 		#is its the same level only reload if the game has been won.
 		if list[0] == _currentLevel.name and not Global._winState:
 			return;
-		Global._winState = false;
 		_currentLevel.queue_free();
 	
 	Global.bg.playAnimation(anim)
@@ -48,5 +47,7 @@ func _load_new_level(level: PackedScene, anim: String) -> void:
 	else:
 		await get_tree().create_timer(2.0).timeout
 	
+	
+	Global._winState = false;
 	_currentLevel = level.instantiate();
 	_parentOfLevel.add_child(_currentLevel);

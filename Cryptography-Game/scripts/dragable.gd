@@ -28,6 +28,9 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_down() -> void:
+	#don't allow moving the dragables after loading win level screen 
+	if Global._winState:
+		return;
 	GlobalSounds.click.play()
 	_lastMousePos = get_viewport().get_mouse_position();
 	_isDragging = true;

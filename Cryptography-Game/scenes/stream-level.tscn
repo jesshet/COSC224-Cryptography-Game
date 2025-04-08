@@ -72,7 +72,7 @@ _data = {
 shader = ExtResource("11_mu3gg")
 shader_parameter/lod = 2.5
 
-[node name="StreamLevel" type="Control" node_paths=PackedStringArray("_submitBox")]
+[node name="StreamLevel" type="Control"]
 custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0
@@ -86,7 +86,6 @@ levelMessages = Array[String](["We recovered this stream of cipher text and we t
 found part of the key on the targets old hard drive. Based 
 on what we've gathered we believe it to be a stream cipher.
 You know what to do."])
-_submitBox = NodePath("submit-box")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

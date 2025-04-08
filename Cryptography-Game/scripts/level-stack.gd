@@ -6,6 +6,8 @@ var guesses;
 var Problem;
 var windowsOpen;
 
+var _winScreen = preload("res://scenes/level-complete.tscn");
+
 @export_category("Level Messages")
 @export_multiline var levelMessages : Array[String];
 
@@ -62,10 +64,12 @@ func _on_child_order_changed() -> void:
 		connect_caesar();
 
 func _on_submit_button_pressed() -> void:
+	if Global._winState: #prevent multiple winscreens
+		return;
 	print(guesses)
 	if($Problem.text == Solution):
 		#Play Success Sound
-		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
+		var winScreen = _winScreen.instantiate();
 		add_child(winScreen)
 	else:
 		#Play Incorrect Sound
