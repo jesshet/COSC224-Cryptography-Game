@@ -25,18 +25,15 @@ func  _input(event: InputEvent) -> void:
 			pass;
 		pass;
 	pass;
-
-func _on_text_edit_text_changed() -> void:
-	var pos = _textBox.get_caret_column();
-	var text = _textBox.text.to_upper();
-	_textBox.text = text;
-	_textBox.set_caret_column(pos);
-	GlobalSounds.click.play()
-
+	
 
 func _on_texture_button_mouse_entered() -> void:
 	GlobalSounds.hover.play()
 
 
 func _on_line_edit_text_changed(new_text: String) -> void:
+	var pos = _textBox.get_caret_column();
+	var text = _textBox.text.to_upper();
+	_textBox.text = text;
+	_textBox.set_caret_column(pos);
 	GlobalSounds.click.play()

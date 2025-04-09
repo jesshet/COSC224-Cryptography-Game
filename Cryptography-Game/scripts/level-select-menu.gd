@@ -1,6 +1,7 @@
 extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.menuOpen = true
 	$AnimationPlayer.play("open-window")
 	if Global.caesarComplete == false:
 		$ScrollContainer/HBoxContainer/Level2/Button.mouse_filter = MOUSE_FILTER_IGNORE
@@ -25,6 +26,7 @@ func _on_level_load_level(level: PackedScene, anim: String) -> void:
 	queue_free();
 
 func _on_close_button_pressed() -> void:
+	Global.menuOpen = false
 	GlobalSounds.close.play()
 	$AnimationPlayer.play("close-window")
 

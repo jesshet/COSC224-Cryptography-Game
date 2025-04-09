@@ -8,7 +8,7 @@ extends Control
 @onready var music_bus = AudioServer.get_bus_index("Music")
 
 func _ready() -> void:
-	
+	Global.menuOpen = true
 	$AnimationPlayer.play("open-window")
 	
 	if _music_slider == null or _sfx_slider == null or _mute_toggle == null:
@@ -41,6 +41,7 @@ func _on_mute_button_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(0, toggled_on)
 
 func _on_close_button_pressed() -> void:
+	Global.menuOpen = false
 	GlobalSounds.close.play()
 	$AnimationPlayer.play("close-window")
 

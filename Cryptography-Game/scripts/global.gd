@@ -4,6 +4,8 @@ var bg = null
 
 var _winState: bool = false;
 
+var menuOpen = false;
+
 var caesarOpen: bool = false;
 var caesarComplete: bool = false;
 var streamOpen: bool = false;
