@@ -190,6 +190,47 @@ offset_bottom = 144.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("11_cvdud")
 
+[node name="Title" type="Label" parent="LevelStack/Block_Cipher/BackGround/XOR"]
+texture_filter = 1
+offset_left = 45.3333
+offset_top = 14.0
+offset_right = 128.333
+offset_bottom = 34.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("7_uihpk")
+theme_override_font_sizes/font_size = 16
+text = "XOR"
+
+[node name="LinesAndArrows" type="Control" parent="LevelStack/Block_Cipher/BackGround"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Line2D" type="Line2D" parent="LevelStack/Block_Cipher/BackGround/LinesAndArrows"]
+position = Vector2(142.169, 55)
+scale = Vector2(1.01205, 1)
+points = PackedVector2Array(156, 12, 156, 33, 231, 33, 231.048, 132)
+width = 4.0
+default_color = Color(6.93083e-06, 0.740744, 0.952373, 1)
+
+[node name="Line2D2" type="Line2D" parent="LevelStack/Block_Cipher/BackGround/LinesAndArrows"]
+points = PackedVector2Array(275, 143, 312, 143, 312, 134, 347, 134)
+width = 4.0
+default_color = Color(0, 0.741176, 0.952941, 1)
+
+[node name="Line2D3" type="Line2D" parent="LevelStack/Block_Cipher/BackGround/LinesAndArrows"]
+position = Vector2(0, 64)
+points = PackedVector2Array(275, 143, 320, 143)
+width = 4.0
+default_color = Color(0, 0.741176, 0.952941, 1)
+
+[node name="Line2D4" type="Line2D" parent="LevelStack/Block_Cipher/BackGround/LinesAndArrows"]
+position = Vector2(53, 107)
+points = PackedVector2Array(323, 147, 323, 123)
+width = 4.0
+default_color = Color(0, 0.741176, 0.952941, 1)
+
 [node name="Text" type="Control" parent="LevelStack/Block_Cipher"]
 z_index = 2
 layout_mode = 3
