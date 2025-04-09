@@ -10,23 +10,30 @@ func _ready() -> void:
 
 
 func _on_settings_pressed() -> void:
-	GlobalSounds.select.play()
-	if Global.bg.isPlaying():
-		return
-	var settings = preload("res://scenes/settings-menu.tscn").instantiate()
-	print("settings clicked")
-	game.add_child(settings)
-	print("after settings node")
+	if !Global.menuOpen:
+		GlobalSounds.select.play()
+		if Global.bg.isPlaying():
+			return
+		var settings = preload("res://scenes/settings-menu.tscn").instantiate()
+		print("settings clicked")
+		game.add_child(settings)
+		print("after settings node")
+	else:
+		#play error sound maybe?
+		pass
 
 
 func _on_codex_pressed() -> void:
-	GlobalSounds.select.play()
-	if Global.bg.isPlaying():
-		return
-	var codex = preload("res://scenes/codex.tscn").instantiate()
-	print("codex clicked")
-	game.add_child(codex)
-	print("after codex node")
+	if !Global.menuOpen:
+		GlobalSounds.select.play()
+		if Global.bg.isPlaying():
+			return
+		var codex = preload("res://scenes/codex.tscn").instantiate()
+		print("codex clicked")
+		game.add_child(codex)
+		print("after codex node")
+	else:
+		pass
 
 
 func _on_exit_pressed() -> void:
@@ -35,13 +42,16 @@ func _on_exit_pressed() -> void:
 
 
 func _on_level_selector_pressed() -> void:
-	GlobalSounds.select.play()
-	if Global.bg.isPlaying():
-		return
-	print("level select clicked");
-	var codex = preload("res://scenes/level-select-menu.tscn").instantiate();
-	game.add_child(codex);
-	print("after level select node");
+	if !Global.menuOpen:
+		GlobalSounds.select.play()
+		if Global.bg.isPlaying():
+			return
+		print("level select clicked");
+		var codex = preload("res://scenes/level-select-menu.tscn").instantiate();
+		game.add_child(codex);
+		print("after level select node");
+	else:
+		pass
 
 
 func _on_level_selector_mouse_entered() -> void:

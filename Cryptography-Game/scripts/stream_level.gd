@@ -5,10 +5,13 @@ var hex_solution
 var hex_key
 var hex_cipher
 
+var guesses
+
 @export_multiline var levelMessages : Array[String];
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	guesses = 0
 	#Generate hex key and cipher text based on solution:
 	hex_solution = GlobalAlgorithms.text_to_hex(solution)
 	hex_key = GlobalAlgorithms.generate_hex_key(hex_solution)
@@ -37,6 +40,9 @@ func _on_submitbox_submit() -> void:
 		var winScreen = preload("res://scenes/level-complete.tscn").instantiate()
 		$LevelStack.add_child(winScreen)
 	else:
+		if guesses == 3:
+			$LevelStack/MessagePlayer.startMessage("Sample hint text, replace later")
+		guesses += 1
 		GlobalSounds.incorrect.play()
 
 func _on_repeat_text_pressed() -> void:
