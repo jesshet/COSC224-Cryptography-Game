@@ -14,7 +14,7 @@ func _on_texture_button_pressed() -> void:
 		return;
 	submit.emit();
 
-func  _input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if _textBox.has_focus() and event is InputEventKey and event.is_pressed():
 		if Global._winState: #prevent typing in text box after winscreen
 			get_viewport().set_input_as_handled();
@@ -25,7 +25,14 @@ func  _input(event: InputEvent) -> void:
 			pass;
 		pass;
 	pass;
-	
+
+func _on_text_edit_text_changed() -> void:
+	print("ece")
+	var pos = _textBox.get_caret_column();
+	var text = _textBox.text.to_upper();
+	_textBox.text = text;
+	_textBox.set_caret_column(pos);
+	GlobalSounds.click.play()
 
 func _on_texture_button_mouse_entered() -> void:
 	GlobalSounds.hover.play()
