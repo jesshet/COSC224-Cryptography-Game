@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cp261xibjkxj5"]
+[gd_scene load_steps=27 format=3 uid="uid://cp261xibjkxj5"]
 
 [ext_resource type="Script" path="res://scripts/block-level/block_level.gd" id="1_re2eq"]
 [ext_resource type="PackedScene" uid="uid://veyd8sbjwnbv" path="res://scenes/message-player.tscn" id="2_tllxi"]
@@ -10,9 +10,14 @@
 [ext_resource type="Script" path="res://scripts/drag-and-drop-collider.gd" id="8_0ip3c"]
 [ext_resource type="Script" path="res://scripts/block-level/block_cipher.gd" id="8_628b3"]
 [ext_resource type="AudioStream" uid="uid://drb60em6peswc" path="res://assets/sounds/click.wav" id="8_672xl"]
+[ext_resource type="Texture2D" uid="uid://b3scfro24f4l3" path="res://assets/sprites/window-frames/BlockLevel.png" id="9_7fp4h"]
 [ext_resource type="Animation" uid="uid://bo5lm4kv7nx3g" path="res://assets/Animations/open-window.res" id="9_20012"]
+[ext_resource type="Texture2D" uid="uid://bmygx7xyhrf1p" path="res://assets/sprites/toolSprites/Block-Level/EncryptIcon.png" id="10_5urdy"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="10_17ic7"]
+[ext_resource type="Texture2D" uid="uid://b4lnd2uwtjtfo" path="res://assets/sprites/buttons/CodexButton(selected).png" id="10_vu8b4"]
+[ext_resource type="Texture2D" uid="uid://dkimnal1tthqu" path="res://assets/sprites/toolSprites/Block-Level/XOR.png" id="11_cvdud"]
 [ext_resource type="Texture2D" uid="uid://blw52q31ete6q" path="res://assets/sprites/window-frames/DraggableList.png" id="11_i5gje"]
+[ext_resource type="Texture2D" uid="uid://s4vrloti4qxy" path="res://assets/sprites/buttons/CodexButton.png" id="11_oybng"]
 [ext_resource type="PackedScene" uid="uid://d0kvlxf7acn71" path="res://scenes/dragable.tscn" id="12_qi7yx"]
 [ext_resource type="PackedScene" uid="uid://c5d68u6kugplo" path="res://scenes/submit-box.tscn" id="13_dkm5j"]
 
@@ -25,7 +30,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7y7d"]
-size = Vector2(590.252, 23.6364)
+size = Vector2(218.182, 26.6942)
 
 [sub_resource type="Animation" id="Animation_gq6ja"]
 resource_name = "RESET"
@@ -101,9 +106,10 @@ libraries = {
 [node name="LevelStack" type="Control" parent="."]
 layout_mode = 2
 anchors_preset = 0
-offset_top = -2.0
-offset_right = 1151.0
-offset_bottom = 647.0
+offset_left = -128.0
+offset_top = 21.0
+offset_right = 1023.0
+offset_bottom = 670.0
 size_flags_horizontal = 3
 
 [node name="MessagePlayer" parent="LevelStack" instance=ExtResource("2_tllxi")]
@@ -135,16 +141,97 @@ vertical_alignment = 1
 
 [node name="Block_Cipher" type="Control" parent="LevelStack" node_paths=PackedStringArray("_text", "_init", "_key", "_output", "_level")]
 anchors_preset = 0
-offset_left = 584.0
+
+offset_left = 505.0
 offset_top = 100.0
-offset_right = 1069.0
-offset_bottom = 418.0
+offset_right = 1065.0
+offset_bottom = 420.0
+
 script = ExtResource("8_628b3")
 _text = NodePath("Text/UpperBox")
 _init = NodePath("Init/UpperBox")
 _key = NodePath("Key/UpperBox")
 _output = NodePath("Output/Output")
 _level = NodePath("../..")
+
+[node name="BackGround" type="TextureRect" parent="LevelStack/Block_Cipher"]
+texture_filter = 1
+layout_mode = 0
+offset_right = 560.0
+offset_bottom = 320.0
+texture = ExtResource("9_7fp4h")
+
+[node name="Encrypt" type="TextureRect" parent="LevelStack/Block_Cipher/BackGround"]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 184.0
+offset_right = 398.0
+offset_bottom = 216.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("10_5urdy")
+
+[node name="Title" type="Label" parent="LevelStack/Block_Cipher/BackGround/Encrypt"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 93.0
+offset_bottom = 28.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("7_uihpk")
+theme_override_font_sizes/font_size = 16
+text = "Encrypt"
+
+[node name="XOR" type="TextureRect" parent="LevelStack/Block_Cipher/BackGround"]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 104.0
+offset_right = 386.0
+offset_bottom = 144.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("11_cvdud")
+
+[node name="Title" type="Label" parent="LevelStack/Block_Cipher/BackGround/XOR"]
+texture_filter = 1
+offset_left = 45.3333
+offset_top = 14.0
+offset_right = 128.333
+offset_bottom = 34.0
+scale = Vector2(0.7, 0.7)
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("7_uihpk")
+theme_override_font_sizes/font_size = 16
+text = "XOR"
+
+[node name="LinesAndArrows" type="Control" parent="LevelStack/Block_Cipher/BackGround"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Line2D" type="Line2D" parent="LevelStack/Block_Cipher/BackGround/LinesAndArrows"]
+position = Vector2(142.169, 55)
+scale = Vector2(1.01205, 1)
+points = PackedVector2Array(156, 12, 156, 33, 231, 33, 231.048, 132)
+width = 4.0
+default_color = Color(6.93083e-06, 0.740744, 0.952373, 1)
+
+[node name="Line2D2" type="Line2D" parent="LevelStack/Block_Cipher/BackGround/LinesAndArrows"]
+points = PackedVector2Array(275, 143, 312, 143, 312, 134, 347, 134)
+width = 4.0
+default_color = Color(0, 0.741176, 0.952941, 1)
+
+[node name="Line2D3" type="Line2D" parent="LevelStack/Block_Cipher/BackGround/LinesAndArrows"]
+position = Vector2(0, 64)
+points = PackedVector2Array(275, 143, 320, 143)
+width = 4.0
+default_color = Color(0, 0.741176, 0.952941, 1)
+
+[node name="Line2D4" type="Line2D" parent="LevelStack/Block_Cipher/BackGround/LinesAndArrows"]
+position = Vector2(53, 107)
+points = PackedVector2Array(323, 147, 323, 123)
+width = 4.0
+default_color = Color(0, 0.741176, 0.952941, 1)
 
 [node name="Text" type="Control" parent="LevelStack/Block_Cipher"]
 z_index = 2
@@ -167,21 +254,36 @@ script = ExtResource("8_0ip3c")
 position = Vector2(0, -0.909091)
 shape = SubResource("RectangleShape2D_m7y7d")
 
+[node name="Title" type="Label" parent="LevelStack/Block_Cipher/Text"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -5.0
+offset_top = -31.0
+offset_right = 155.0
+offset_bottom = -11.0
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("7_uihpk")
+theme_override_font_sizes/font_size = 16
+text = "Plain Text"
+
 [node name="TopShadow" type="ColorRect" parent="LevelStack/Block_Cipher/Text"]
 layout_mode = 0
-offset_left = -9.0
-offset_top = -8.0
-offset_right = 220.0
-offset_bottom = 25.0
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 222.0
+offset_bottom = 26.0
+
 mouse_filter = 2
 color = Color(0.152941, 0.34902, 0.458824, 1)
 
 [node name="TopBG" type="ColorRect" parent="LevelStack/Block_Cipher/Text"]
 layout_mode = 0
-offset_left = -9.0
-offset_top = -6.0
-offset_right = 218.0
-offset_bottom = 25.0
+
+offset_left = -7.0
+offset_top = -5.0
+offset_right = 220.0
+offset_bottom = 26.0
+
 mouse_filter = 2
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
@@ -189,10 +291,10 @@ color = Color(0.103744, 0.103744, 0.103744, 1)
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
-offset_left = 35.0
-offset_top = 136.0
-offset_right = 243.0
-offset_bottom = 157.0
+offset_left = 62.0
+offset_top = 133.0
+offset_right = 270.0
+offset_bottom = 154.0
 
 [node name="UpperBox" type="Area2D" parent="LevelStack/Block_Cipher/Init"]
 position = Vector2(97, 8)
@@ -203,21 +305,34 @@ script = ExtResource("8_0ip3c")
 position = Vector2(5.41519, -0.909089)
 shape = SubResource("RectangleShape2D_m7y7d")
 
+[node name="Title" type="Label" parent="LevelStack/Block_Cipher/Init"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -12.0
+offset_top = -31.0
+offset_right = 161.0
+offset_bottom = -11.0
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("7_uihpk")
+theme_override_font_sizes/font_size = 16
+text = "Initilization Value"
+
 [node name="TopShadow" type="ColorRect" parent="LevelStack/Block_Cipher/Init"]
 layout_mode = 0
-offset_left = -15.0
-offset_top = -9.0
-offset_right = 214.0
-offset_bottom = 24.0
+offset_left = -14.0
+offset_top = -8.0
+offset_right = 215.0
+offset_bottom = 25.0
 mouse_filter = 2
 color = Color(0.152941, 0.34902, 0.458824, 1)
 
 [node name="TopBG" type="ColorRect" parent="LevelStack/Block_Cipher/Init"]
 layout_mode = 0
-offset_left = -15.0
-offset_top = -7.0
-offset_right = 212.0
-offset_bottom = 24.0
+offset_left = -14.0
+offset_top = -6.0
+offset_right = 213.0
+offset_bottom = 25.0
+
 mouse_filter = 2
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
@@ -225,10 +340,10 @@ color = Color(0.103744, 0.103744, 0.103744, 1)
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
-offset_left = 25.0
-offset_top = 217.0
-offset_right = 233.0
-offset_bottom = 238.0
+offset_left = 55.0
+offset_top = 199.0
+offset_right = 263.0
+offset_bottom = 220.0
 
 [node name="UpperBox" type="Area2D" parent="LevelStack/Block_Cipher/Key"]
 position = Vector2(104, 10)
@@ -238,6 +353,18 @@ script = ExtResource("8_0ip3c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStack/Block_Cipher/Key/UpperBox"]
 position = Vector2(-2.70752, -1.81819)
 shape = SubResource("RectangleShape2D_m7y7d")
+
+[node name="Title" type="Label" parent="LevelStack/Block_Cipher/Key"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -5.0
+offset_top = -31.0
+offset_right = 155.0
+offset_bottom = -11.0
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("7_uihpk")
+theme_override_font_sizes/font_size = 16
+text = "Encryption Key"
 
 [node name="TopShadow" type="ColorRect" parent="LevelStack/Block_Cipher/Key"]
 layout_mode = 0
@@ -261,19 +388,11 @@ color = Color(0.103744, 0.103744, 0.103744, 1)
 z_index = 2
 layout_mode = 3
 anchors_preset = 0
-offset_left = 234.0
-offset_top = 273.0
-offset_right = 442.0
-offset_bottom = 294.0
-
-[node name="UpperBox" type="Area2D" parent="LevelStack/Block_Cipher/Output"]
-position = Vector2(104, 10)
-scale = Vector2(0.369334, 1.1)
-script = ExtResource("8_0ip3c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelStack/Block_Cipher/Output/UpperBox"]
-position = Vector2(-2.70752, -1.81819)
-shape = SubResource("RectangleShape2D_m7y7d")
+offset_left = 240.0
+offset_top = 258.0
+offset_right = 448.0
+offset_bottom = 279.0
+scale = Vector2(1.1, 1.1)
 
 [node name="TopShadow" type="ColorRect" parent="LevelStack/Block_Cipher/Output"]
 layout_mode = 0
@@ -281,6 +400,7 @@ offset_left = -7.0
 offset_top = -7.0
 offset_right = 222.0
 offset_bottom = 26.0
+scale = Vector2(1.1, 1.1)
 mouse_filter = 2
 color = Color(0.152941, 0.34902, 0.458824, 1)
 
@@ -290,35 +410,46 @@ offset_left = -7.0
 offset_top = -5.0
 offset_right = 220.0
 offset_bottom = 26.0
+scale = Vector2(1.1, 1.1)
 mouse_filter = 2
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
 [node name="Output" type="Label" parent="LevelStack/Block_Cipher/Output"]
+texture_filter = 1
 layout_mode = 0
-offset_right = 208.0
-offset_bottom = 23.0
-
-[node name="CheckAnswer" type="TextureButton" parent="LevelStack/Block_Cipher"]
-layout_mode = 0
-offset_left = 75.9999
-offset_top = 268.0
-offset_right = 123.0
-offset_bottom = 282.0
-scale = Vector2(2.5, 2.5)
-texture_normal = ExtResource("3_n44j8")
-texture_pressed = ExtResource("5_2llld")
-texture_hover = ExtResource("4_wf00w")
-texture_click_mask = ExtResource("6_kngor")
-
-[node name="Label" type="Label" parent="LevelStack/Block_Cipher/CheckAnswer"]
-layout_mode = 2
-offset_left = 5.0
-offset_top = 2.0
-offset_right = 77.0
-offset_bottom = 22.0
-scale = Vector2(0.5, 0.5)
+offset_left = -4.0
+offset_top = -2.0
+offset_right = 240.0
+offset_bottom = 26.0
 theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
 theme_override_fonts/font = ExtResource("7_uihpk")
+theme_override_font_sizes/font_size = 14
+text = "OutPut"
+
+[node name="CheckAnswer" type="TextureButton" parent="LevelStack/Block_Cipher"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 53.0
+offset_top = 244.0
+offset_right = 253.0
+offset_bottom = 311.0
+scale = Vector2(0.75, 0.75)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("10_vu8b4")
+texture_hover = ExtResource("11_oybng")
+
+[node name="Title" type="Label" parent="LevelStack/Block_Cipher/CheckAnswer"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 60.0
+offset_top = 24.0
+offset_right = 132.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/font = ExtResource("7_uihpk")
+theme_override_font_sizes/font_size = 16
+
 text = "Submit"
 horizontal_alignment = 1
 vertical_alignment = 1
