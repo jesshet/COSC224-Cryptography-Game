@@ -34,7 +34,6 @@ func _on_text_edit_text_changed() -> void:
 	_textBox.set_caret_column(pos);
 	GlobalSounds.click.play()
 
-
 func _on_texture_button_mouse_entered() -> void:
 	GlobalSounds.hover.play()
 
