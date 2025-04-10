@@ -3,6 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.menuOpen = true
 	$AnimationPlayer.play("open-window")
 	if(Global.caesarOpen):
 		$"ScrollContainer/VBoxContainer/Caesar-entry".visible = true
@@ -19,6 +20,7 @@ func setBody(body : String) -> void:
 	$"Text-body".text = body
 
 func _on_close_button_pressed() -> void:
+	Global.menuOpen = false
 	GlobalSounds.close.play()
 	$AnimationPlayer.play("close-window")
 
