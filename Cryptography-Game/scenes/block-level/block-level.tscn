@@ -141,12 +141,10 @@ vertical_alignment = 1
 
 [node name="Block_Cipher" type="Control" parent="LevelStack" node_paths=PackedStringArray("_text", "_init", "_key", "_output", "_level")]
 anchors_preset = 0
-
 offset_left = 505.0
 offset_top = 100.0
 offset_right = 1065.0
 offset_bottom = 420.0
-
 script = ExtResource("8_628b3")
 _text = NodePath("Text/UpperBox")
 _init = NodePath("Init/UpperBox")
@@ -194,6 +192,7 @@ texture = ExtResource("11_cvdud")
 
 [node name="Title" type="Label" parent="LevelStack/Block_Cipher/BackGround/XOR"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 45.3333
 offset_top = 14.0
 offset_right = 128.333
@@ -272,18 +271,15 @@ offset_left = -7.0
 offset_top = -7.0
 offset_right = 222.0
 offset_bottom = 26.0
-
 mouse_filter = 2
 color = Color(0.152941, 0.34902, 0.458824, 1)
 
 [node name="TopBG" type="ColorRect" parent="LevelStack/Block_Cipher/Text"]
 layout_mode = 0
-
 offset_left = -7.0
 offset_top = -5.0
 offset_right = 220.0
 offset_bottom = 26.0
-
 mouse_filter = 2
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
@@ -332,7 +328,6 @@ offset_left = -14.0
 offset_top = -6.0
 offset_right = 213.0
 offset_bottom = 25.0
-
 mouse_filter = 2
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
@@ -449,7 +444,6 @@ offset_bottom = 44.0
 theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
 theme_override_fonts/font = ExtResource("7_uihpk")
 theme_override_font_sizes/font_size = 16
-
 text = "Submit"
 horizontal_alignment = 1
 vertical_alignment = 1

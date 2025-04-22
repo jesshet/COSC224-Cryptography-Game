@@ -32,7 +32,7 @@ func _on_button_pressed() -> void:
 	GlobalSounds.load.play()
 	GlobalSounds._fade_music()
 	await get_tree().create_timer(1).timeout
-		
+	Global.menuOpen = false
 	load_level.emit(_level, _animName);
 
 func _on_button_mouse_entered() -> void:
