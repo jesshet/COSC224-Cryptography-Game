@@ -68,6 +68,7 @@ offset_right = 426.0
 offset_bottom = 77.0
 theme_override_fonts/font = ExtResource("1_lahtw")
 placeholder_text = "Enter Message Here"
+max_length = 64
 
 [node name="TextureButton" type="TextureButton" parent="."]
 custom_minimum_size = Vector2(50, 50)

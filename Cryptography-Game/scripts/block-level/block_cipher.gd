@@ -4,7 +4,7 @@ extends Control
 @export var _init: Area2D;
 @export var _key: Area2D;
 
-@export var _output: Label;
+@export var _output: RichTextLabel;
 
 @export var _level: Control;
 

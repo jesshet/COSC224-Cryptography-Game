@@ -81,7 +81,7 @@ func _on_submit_button_pressed() -> void:
 		guesses = guesses + 1;
 	
 	if(guesses == 3 && $Problem.text != Solution):
-		$MessagePlayer.startMessage("This is a placeholder for the hint text.")
+		$MessagePlayer.startMessage("Try shifting until you can understand what the text says.")
 		#put code here to make a button that replays the hint
 		
 func _on_message_complete() -> void:

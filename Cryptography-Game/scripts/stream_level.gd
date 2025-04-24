@@ -44,7 +44,10 @@ func _on_submitbox_submit() -> void:
 			$LevelStack/MessagePlayer.startMessage("Sample hint text, replace later")
 		guesses += 1
 		GlobalSounds.incorrect.play()
-
+		$"submit-box/LineEdit".set("theme_override_colors/font_color", Color(1, 0, 0, 1))
+		await get_tree().create_timer(0.5).timeout
+		$"submit-box/LineEdit".set("theme_override_colors/font_color", Color(1, 1, 1, 1))
+		
 func _on_repeat_text_pressed() -> void:
 	playMessage()
 

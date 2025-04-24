@@ -136,7 +136,7 @@ offset_bottom = 575.0
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_kj5v7")
-levelMessages = Array[String](["I found this message on a piece of paper that the target left behind, but i can't figure out what it says. I think it might be a Caesar cipher.", "This is a second message for testing purposes. please replace later."])
+levelMessages = Array[String](["I found this message on a piece of paper that the target left behind, but i can't figure out what it says. I think it might be a Caesar cipher.", "Good Luck."])
 
 [node name="MessagePlayer" parent="Level/LevelStack" instance=ExtResource("3_dcoku")]
 
