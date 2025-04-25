@@ -106,10 +106,10 @@ libraries = {
 [node name="LevelStack" type="Control" parent="."]
 layout_mode = 2
 anchors_preset = 0
-offset_left = -128.0
-offset_top = 21.0
-offset_right = 1023.0
-offset_bottom = 670.0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 1150.0
+offset_bottom = 650.0
 size_flags_horizontal = 3
 
 [node name="MessagePlayer" parent="LevelStack" instance=ExtResource("2_tllxi")]
@@ -141,12 +141,10 @@ vertical_alignment = 1
 
 [node name="Block_Cipher" type="Control" parent="LevelStack" node_paths=PackedStringArray("_text", "_init", "_key", "_output", "_level")]
 anchors_preset = 0
-
-offset_left = 505.0
-offset_top = 100.0
-offset_right = 1065.0
-offset_bottom = 420.0
-
+offset_left = 504.0
+offset_top = 88.0
+offset_right = 1064.0
+offset_bottom = 408.0
 script = ExtResource("8_628b3")
 _text = NodePath("Text/UpperBox")
 _init = NodePath("Init/UpperBox")
@@ -194,6 +192,7 @@ texture = ExtResource("11_cvdud")
 
 [node name="Title" type="Label" parent="LevelStack/Block_Cipher/BackGround/XOR"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 45.3333
 offset_top = 14.0
 offset_right = 128.333
@@ -272,18 +271,15 @@ offset_left = -7.0
 offset_top = -7.0
 offset_right = 222.0
 offset_bottom = 26.0
-
 mouse_filter = 2
 color = Color(0.152941, 0.34902, 0.458824, 1)
 
 [node name="TopBG" type="ColorRect" parent="LevelStack/Block_Cipher/Text"]
 layout_mode = 0
-
 offset_left = -7.0
 offset_top = -5.0
 offset_right = 220.0
 offset_bottom = 26.0
-
 mouse_filter = 2
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
@@ -332,7 +328,6 @@ offset_left = -14.0
 offset_top = -6.0
 offset_right = 213.0
 offset_bottom = 25.0
-
 mouse_filter = 2
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
@@ -414,17 +409,18 @@ scale = Vector2(1.1, 1.1)
 mouse_filter = 2
 color = Color(0.103744, 0.103744, 0.103744, 1)
 
-[node name="Output" type="Label" parent="LevelStack/Block_Cipher/Output"]
+[node name="Output" type="RichTextLabel" parent="LevelStack/Block_Cipher/Output"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -4.0
-offset_top = -2.0
-offset_right = 240.0
-offset_bottom = 26.0
-theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
-theme_override_fonts/font = ExtResource("7_uihpk")
-theme_override_font_sizes/font_size = 14
-text = "OutPut"
+offset_left = -4.54545
+offset_top = -4.54546
+offset_right = 490.455
+offset_bottom = 61.4545
+scale = Vector2(0.5, 0.5)
+theme_override_colors/default_color = Color(0.560784, 0.866667, 1, 1)
+theme_override_fonts/normal_font = ExtResource("7_uihpk")
+theme_override_font_sizes/normal_font_size = 26
+text = "OutPut "
 
 [node name="CheckAnswer" type="TextureButton" parent="LevelStack/Block_Cipher"]
 custom_minimum_size = Vector2(50, 50)
@@ -449,7 +445,6 @@ offset_bottom = 44.0
 theme_override_colors/font_color = Color(0.560784, 0.866667, 1, 1)
 theme_override_fonts/font = ExtResource("7_uihpk")
 theme_override_font_sizes/font_size = 16
-
 text = "Submit"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -476,7 +471,6 @@ libraries = {
 speed_scale = 1.7
 
 [node name="Blur" type="Polygon2D" parent="DraggableContainerFrame"]
-modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_bd52l")
 polygon = PackedVector2Array(141, 128, 395, 128, 416, 148, 416, 263, 400, 278, 402, 468, 417, 484, 417, 533, 368, 582, 349, 582, 333, 600, 142, 599, 125, 580, 125, 141, 128, 134, 131, 130, 136, 128)
 
@@ -536,3 +530,5 @@ offset_bottom = 569.0
 [connection signal="pressed" from="LevelStack/RepeatText" to="." method="_on_repeat_text_pressed"]
 [connection signal="pressed" from="LevelStack/Block_Cipher/CheckAnswer" to="LevelStack/Block_Cipher" method="_box_populated"]
 [connection signal="submit" from="submit-box" to="." method="_on_submitbox_submit"]
+
+[editable path="submit-box"]

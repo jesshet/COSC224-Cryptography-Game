@@ -15,14 +15,20 @@ func _process(delta: float) -> void:
 
 func _on_codex_btn_pressed() -> void:
 	GlobalSounds.select.play()
-	var codex = preload("res://scenes/codex.tscn").instantiate()
-	get_tree().get_root().add_child(codex)
+	if(Global.menuOpen):
+		pass
+	else:
+		var codex = preload("res://scenes/codex.tscn").instantiate()
+		get_tree().get_root().add_child(codex)
 
 
 func _on_level_select_btn_pressed() -> void:
 	GlobalSounds.select.play()
-	var levelSelect = load("res://scenes/level-select-menu.tscn").instantiate()
-	get_tree().get_root().add_child(levelSelect)
+	if Global.menuOpen:
+		pass
+	else:
+		var levelSelect = load("res://scenes/level-select-menu.tscn").instantiate()
+		get_tree().get_root().add_child(levelSelect)
 
 
 func _on_codex_btn_mouse_entered() -> void:

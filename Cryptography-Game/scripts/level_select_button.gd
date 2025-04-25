@@ -31,6 +31,7 @@ func _on_button_pressed() -> void:
 	GlobalSounds.music.set_volume_db(-200)
 	GlobalSounds.load.play()
 	GlobalSounds._fade_music()
+	Global.menuOpen = false
 	await get_tree().create_timer(1).timeout
 		
 	load_level.emit(_level, _animName);
